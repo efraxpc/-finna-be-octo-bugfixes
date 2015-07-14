@@ -13,8 +13,23 @@
 
 Route::get('/', function()
 {
-	return View::make('inicio');
+	return View::make('hello');
 });
 
 
 Route::get('todos/', 		array('as' 		=> 'todo','uses' 	=>  'HomeController@testGet'));
+
+Route::get('api/contents', function(){
+    return Contents::paginate(10);
+});
+
+Route::get('feeds',function(){
+
+    for($i=1;$i<=100;$i++){
+        $contenido = 'contenido '.$i;
+        $orden =  $i;        
+        DB::table('contents')->insert(
+            array('conteudo' => $contenido, 'orden' => $orden)
+        );    
+    }
+});

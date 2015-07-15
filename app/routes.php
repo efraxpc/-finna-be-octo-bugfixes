@@ -13,23 +13,19 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('inicio');
 });
 
 
-Route::get('todos/', 		array('as' 		=> 'todo','uses' 	=>  'HomeController@testGet'));
+Route::get('api/contents/', 		array('as' 		=> 'api_contents','uses' 	=>  'HomeController@testGet'));
 
-Route::get('api/contents', function(){
-    return Contents::paginate(10);
-});
-
-Route::get('feeds',function(){
-
+Route::get('llenar/tabla/test',function(){
+    $precio = 10;
     for($i=1;$i<=100;$i++){
-        $contenido = 'contenido '.$i;
-        $orden =  $i;        
-        DB::table('contents')->insert(
-            array('conteudo' => $contenido, 'orden' => $orden)
-        );    
+        $descripcion =  'descripcion '.$i;        
+        DB::table('test')->insert(
+            array('precio' => $precio, 'descripcion' => $descripcion)
+        ); 
+        $precio = $precio + 100;
     }
 });

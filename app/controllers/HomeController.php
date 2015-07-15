@@ -17,7 +17,6 @@ class HomeController extends BaseController {
 
 	public function testGet()
 	{
-        return Test::all();
+        return Test::paginate(10);
 	}
-
 }

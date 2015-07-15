@@ -49,29 +49,29 @@
                     <div class="col-sm-9 padding-right" ng-controller="ContentsController" infinite-scroll="contents.nextPage()" infinite-scroll-distance="2" infinite-scroll-disabled="contents.busy">
                         <div class="features_items"><!--features_items-->
                             <h2 class="title text-center">Articulos</h2>                      
-                            <div ng-repeat="content in contents.items">
-
+                            <div ng-repeat="content in contents.items"  on-finish-render="ngRepeatFinished">
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="images/home/product1.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <img  alt="" id="imagen_{{$index}}"/>
+
+                                                <h2>{{content.precio}} S/.</h2>
+                                                <p>{{content.descripcion}}</p>
+                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Añadir al carrito</a>
                                             </div>
                                             <div class="product-overlay">
                                                 <div class="overlay-content">
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <h2>{{content.precio}} S/.</h2>
+                                                    <p>{{content.descripcion}}</p>
+                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Añadir al carrito</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="choose">
                                             <ul class="nav nav-pills nav-justified">
-                                                <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                                <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                                <li><a href=""><i class="fa fa-plus-square"></i>Añadir a la lista de deseos</a></li>
+                                                <li><a href=""><i class="fa fa-plus-square"></i>Comparar</a></li>
                                             </ul>
                                         </div>
                                     </div>

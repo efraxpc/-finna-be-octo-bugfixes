@@ -2,8 +2,25 @@
 
     var myApp = angular.module('myApp',['infinite-scroll']);
     
+    // linkar evento luego de que ng-repeat termine
+    myApp.directive('onFinishRender', function ($timeout) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr) {
+                if (scope.$last === true) {
+                    $timeout(function () {
+                        scope.$emit('ngRepeatFinished');
+                    });
+                }
+            }
+        }
+    });  
+    
     myApp.controller('ContentsController',function($scope, Contents){
         $scope.contents = new Contents();
+        $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+            $('#imagen_1').attr('src','images/home/product1.jpg')
+        });
     });
     
     myApp.factory('Contents',function($http){
@@ -29,5 +46,7 @@
             }.bind(this));
         };
         return Contents;
-    });
+    });  
 }).call(this);
+
+

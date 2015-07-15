@@ -18,14 +18,4 @@ Route::get('/', function()
 
 
 Route::get('api/contents/', 		array('as' 		=> 'api_contents','uses' 	=>  'HomeController@testGet'));
-
-Route::get('llenar/tabla/test',function(){
-    $precio = 10;
-    for($i=1;$i<=100;$i++){
-        $descripcion =  'descripcion '.$i;        
-        DB::table('test')->insert(
-            array('precio' => $precio, 'descripcion' => $descripcion)
-        ); 
-        $precio = $precio + 100;
-    }
-});
+Route::get('llenar/tabla/test', 	array('as' 		=> 'llenar_tabla_test','uses' 	=>  'HomeController@llenar_tabla_test'));

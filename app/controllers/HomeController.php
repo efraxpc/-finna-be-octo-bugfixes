@@ -15,8 +15,18 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function testGet()
-	{
+	public function testGet(){
         return Test::paginate(10);
 	}
+    
+    public function llenar_tabla_test(){
+        $precio = 10;
+        for($i=1;$i<=100;$i++){
+            $descripcion =  'descripcion '.$i;        
+            DB::table('test')->insert(
+                array('precio' => $precio, 'descripcion' => $descripcion)
+            ); 
+            $precio = $precio + 100;
+        }        
+    }
 }

@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * HomeController Class
+ *
+ * Clase para manejar el tema del inicio de la pagina
+ */
 class HomeController extends BaseController {
 
     /**

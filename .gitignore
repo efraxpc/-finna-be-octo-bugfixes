@@ -6,7 +6,7 @@ composer.lock
 .env.php
 .DS_Store
 
-app/storage/*
+/app/storage/
 tests/_output/*
 /nbproject/private/
 

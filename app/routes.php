@@ -11,11 +11,5 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('inicio');
-});
-
-
-Route::get('api/contents/', 		array('as' 		=> 'api_contents','uses' 	=>  'HomeController@testGet'));
-Route::get('llenar/tabla/test', 	array('as' 		=> 'llenar_tabla_test','uses' 	=>  'HomeController@llenar_tabla_test'));
+Route::get('/', 		array('as' 		=> 'api_contents','uses' 	=>  'HomeController@inicio'));
+Route::get('/api/contents/', 		array('as' 		=> 'api_contents','uses' 	=>  'HomeController@testGet'));

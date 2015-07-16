@@ -11,44 +11,23 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call('PostTableSeeder');
+		$this->call('TestTableSeeder');
 	}
 
 }
 
 //clase para insertar posts
-class PostTableSeeder extends Seeder {
+class TestTableSeeder extends Seeder {
  
     public function run()
     {
-        DB::table('posts')->insert(array(
-                'title' => 'laravel 4, un potente framework',
-                'content' => 'introducción a laravel 4'
-        ));
- 
-        DB::table('posts')->insert(array(
-                'title' => 'codeigniter, esperando su versión 3.0',
-                'content' => 'el día que llegué, se pondrá a la altura de laravel'
-        ));
- 
-        DB::table('posts')->insert(array(
-                'title' => 'zend framework, otro gran framework',
-                'content' => 'no soy muy amigo de él, aunque lo conozco'
-        ));
-
-        DB::table('posts')->insert(array(
-                'title' => 'symfony, gran framework',
-                'content' => 'laravel realmente usa muchos recursos de symfony'
-        ));
- 
-        DB::table('posts')->insert(array(
-                'title' => 'angularjs, mvc en javascript',
-                'content' => 'trabajando de forma ordenada en javascript'
-        ));
- 
-        DB::table('posts')->insert(array(
-                'title' => 'jQuery, la mejor librería javascript',
-                'content' => 'que mal lo ibamos a pasar sin él :D'
-        ));
+        $precio = 10;
+        for($i=1;$i<=100;$i++){
+            $descripcion =  'descripcion '.$i;        
+            DB::table('test')->insert(
+                array('precio' => $precio, 'descripcion' => $descripcion)
+            ); 
+            $precio = $precio + 100;
+        }  
     }
 }

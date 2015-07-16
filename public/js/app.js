@@ -1,8 +1,9 @@
 (function(){
-
+    
     var myApp = angular.module('myApp',['infinite-scroll']);
     
     // linkar evento luego de que ng-repeat termine
+    /*
     myApp.directive('onFinishRender', function ($timeout) {
         return {
             restrict: 'A',
@@ -14,15 +15,18 @@
                 }
             }
         }
-    });  
+    });  */
     
+    //Controlador
     myApp.controller('ContentsController',function($scope, Contents){
         $scope.contents = new Contents();
+        /*
         $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
             $('#imagen_1').attr('src','images/home/product1.jpg')
-        });
+        });*/
     });
     
+    // Proceso de paginacion
     myApp.factory('Contents',function($http){
         var Contents = function(){
             this.items = [];

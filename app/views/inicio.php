@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Shop | E-Shopper</title>
+        <title>Prueba Laravel - Angular</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -54,7 +54,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img  alt="" id="imagen_{{$index}}"/>
+                                                <img  alt="" src="images/home/product1.jpg" id="imagen_{{$index}}"/>
 
                                                 <h2>{{content.precio}} S/.</h2>
                                                 <p>{{content.descripcion}}</p>

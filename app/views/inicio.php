@@ -54,31 +54,27 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img  alt="" src="images/home/product1.jpg" id="imagen_{{$index}}"/>
+                                                <img  alt="" src="images/home/product1.jpg" id="imagen_{{$index{{"/>
 
                                                 <h2>{{content.precio}} S/.</h2>
                                                 <p>{{content.descripcion}}</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Añadir al carrito</a>
+<!--                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Añadir al carrito</a>-->
                                             </div>
                                             <div class="product-overlay">
                                                 <div class="overlay-content">
                                                     <h2>{{content.precio}} S/.</h2>
                                                     <p>{{content.descripcion}}</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Añadir al carrito</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="choose">
                                             <ul class="nav nav-pills nav-justified">
-                                                <li><a href=""><i class="fa fa-plus-square"></i>Añadir a la lista de deseos</a></li>
-                                                <li><a href=""><i class="fa fa-plus-square"></i>Comparar</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>                     
-                        </div><!--features_items-->
                     </div>
                 </div>
             </div>
@@ -90,7 +86,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.prettyPhoto.js"></script>
         <script src="js/main.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
         <script src="js/infinite-scroll.min.js"></script>
         <script src="js/app.js"></script>  
     </body>

@@ -24,7 +24,7 @@ class TestTableSeeder extends Seeder {
         $precio = 10;
         for($i=1;$i<=100;$i++){
             $descripcion =  'descripcion '.$i;        
-            DB::table('test')->insert(
+            DB::table('articulo')->insert(
                 array('precio' => $precio, 'descripcion' => $descripcion)
             ); 
             $precio = $precio + 100;

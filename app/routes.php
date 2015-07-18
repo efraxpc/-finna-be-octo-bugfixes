@@ -11,5 +11,9 @@
 |
 */
 
-Route::get('/', 		array('as' 		=> 'api_contents','uses' 	=>  'HomeController@inicio'));
-Route::get('/api/contents/', 		array('as' 		=> 'api_contents','uses' 	=>  'HomeController@testGet'));
+Route::get('/{ruta?}', 		array('as' 		=> 'api_contents','uses' 	=>  'PaginaController@mostrar'));
+
+Route::get('/api/contents/articulos', 		array('as' 		=> 'api_contents','uses' 	=>  'PaginacionController@generar_paginacion_articulos'));
+
+Route::get('/subir/multiples/imagenes/',array('as' 		=> 'subir_multiples_imagenes','uses' 	=>  'ImagenController@subirMultiplesImagenes'));
+

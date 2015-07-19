@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app = 'myApp'>
+<html lang="en" data-ng-app = 'app'>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,39 @@
     </head><!--/head-->
 
     <body>	
+        <div class="header-bottom"><!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left" ng-controller="MenuController">
+
+                            <ul class="nav navbar-nav collapse navbar-collapse" ng-repeat="categoria in categorias ">
+                                <li ng-hide="{{$index}} != 0" ><a href="index.html" class="active">Home</a></li>
+                                <li><a href="#">{{categoria.nombre}}</a></li>
+                                <!--                                <li><a href="contact-us.html"></a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            <input type="text" placeholder="Search"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-bottom-->
+        <!--        seccion para colocar espacio responsive, segun plantilla-->
+        <section id="slider"><!--slider-->
+            <div class="container"></div>
+        </section><!--/slider-->               
         <section id="advertisement">
             <div class="container">
                 <img src="images/shop/advertisement.jpg" alt="" />
@@ -49,16 +82,16 @@
                     <div class="col-sm-9 padding-right" ng-controller="ContentsController" infinite-scroll="contents.nextPage()" infinite-scroll-distance="2" infinite-scroll-disabled="contents.busy">
                         <div class="features_items"><!--features_items-->
                             <h2 class="title text-center">Articulos</h2>                      
-                            <div ng-repeat="content in contents.items"  on-finish-render="ngRepeatFinished">
+                            <div ng-repeat="content in contents.items" on-finish-render="ngRepeatFinished">
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img  alt="" src="images/home/product1.jpg" id="imagen_{{$index{{"/>
+                                                <img  alt="" src="images/home/product1.jpg" id="imagen_{{$index}}"/>
 
                                                 <h2>{{content.precio}} S/.</h2>
                                                 <p>{{content.descripcion}}</p>
-<!--                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Añadir al carrito</a>-->
+                                                <!--                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Añadir al carrito</a>-->
                                             </div>
                                             <div class="product-overlay">
                                                 <div class="overlay-content">
@@ -75,19 +108,19 @@
                                 </div>
 
                             </div>                     
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+                </section>
 
-        <script src="js/jquery.js"></script>
-        <script src="js/price-range.js"></script>
-        <script src="js/jquery.scrollUp.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.prettyPhoto.js"></script>
-        <script src="js/main.js"></script>
-        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-        <script src="js/infinite-scroll.min.js"></script>
-        <script src="js/app.js"></script>  
-    </body>
-</html>
+            <script src="js/jquery.js"></script>
+            <script src="js/price-range.js"></script>
+            <script src="js/jquery.scrollUp.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/jquery.prettyPhoto.js"></script>
+            <script src="js/main.js"></script>
+            <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+            <script src="js/infinite-scroll.min.js"></script>
+            <script src="js/app.js"></script>  
+            </body>
+        </html>

@@ -1,10 +1,10 @@
 (function(){
 
-    var myApp = angular.module('myApp',['infinite-scroll']);
+    var app = angular.module('app',['infinite-scroll']);
 
     // linkar evento luego de que ng-repeat termine
     /*
-    myApp.directive('onFinishRender', function ($timeout) {
+    app.directive('onFinishRender', function ($timeout) {
         return {
             restrict: 'A',
             link: function (scope, element, attr) {
@@ -18,7 +18,7 @@
     });  */
 
     //Controlador
-    myApp.controller('ContentsController',function($scope, Contents){
+    app.controller('ContentsController',function($scope, Contents){
         $scope.contents = new Contents();
         /*
         $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
@@ -26,8 +26,20 @@
         });*/
     });
 
+    app.controller('MenuController', function($scope,$http) {
+        $http.get('api/obtener/menus').
+        success(function(data, status, headers, config) {
+            $scope.categorias = data.oResultado;
+            console.log($scope.categorias);
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+        });
+
+    });      
+
     // Proceso de paginacion
-    myApp.factory('Contents',function($http){
+    app.factory('Contents',function($http){
         var Contents = function(){
             this.items = [];
             this.busy = false;
@@ -40,7 +52,7 @@
             var url = 'api/contents/articulos?page='+this.page;
 
             $http.get(url).success(function(oDatos){
-                console.log(oDatos.data);
+                //console.log(oDatos.data);
                 for(var i = 0; i < oDatos.data.length; i++ ){
                     this.items.push(oDatos.data[i]);
                 }
@@ -52,5 +64,3 @@
         return Contents;
     });  
 }).call(this);
-
-

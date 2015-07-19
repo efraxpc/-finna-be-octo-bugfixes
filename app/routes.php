@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/{ruta?}', 		array('as' 		=> 'api_contents','uses' 	=>  'PaginaController@mostrar'));
+Route::get('/', 		array('as' 		=> 'mostrar_inicio','uses' 	=>  'PaginaController@mostrar_inicio'));
 
-Route::get('/api/contents/articulos', 		array('as' 		=> 'api_contents','uses' 	=>  'PaginacionController@generar_paginacion_articulos'));
+Route::get('/subir/multiples/imagenes/',array('as' 		=> 'subir_multiples_imagenes','uses' 	=>  'PaginaController@mostrar_subir_imagen'));
 
-Route::get('/subir/multiples/imagenes/',array('as' 		=> 'subir_multiples_imagenes','uses' 	=>  'ImagenController@subirMultiplesImagenes'));
+Route::get('/api/contents/articulos', 	array('as' 		=> 'api_contents_articulos','uses' 	=>  'PaginacionController@generar_paginacion_articulos'));
+
+Route::get('/api/obtener/menus', 	array('as' 		=> 'api_obtener_menus','uses' 	=>  'MenuController@elaborar_menu_principal_home'));
+
+
+
 

@@ -5,17 +5,21 @@
  * Clase para mostrar paginas
  */
 class PaginaController extends BaseController {
+    private $sParte = array();
 
     /**
-     * Retorna la vista de la pagina de inicio
+     * Retorna la vista de inicio
      * @return callback
      */
-    public function mostrar(){
+    public function mostrar_inicio(){
+        return View::make('inicio');
+    }
 
-        $sRuta = Route::input('ruta');
-        if( is_null($sRuta) ){
-            $sRuta = 'inicio';
-        }
-        return View::make($sRuta);
+    /**
+     * Retorna la pagina de subir_imagen
+     * @return callback
+     */
+    public function mostrar_subir_imagen(){
+        return View::make('subir_imagen');
     }
 }

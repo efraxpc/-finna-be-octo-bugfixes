@@ -12,7 +12,7 @@ class PaginaController extends BaseController {
      * @return callback
      */
     public function mostrar_inicio(){
-        return View::make('inicio');
+        return View::make('home');
     }
 
     /**

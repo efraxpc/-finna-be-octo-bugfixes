@@ -11,15 +11,15 @@
             controller  : 'InicioController'
         })
 
-            .when('/inicio', {
+            .when('/', {
             templateUrl : 'templates/index.php',
             controller  : 'ContentsController'
         })
-                  /*
+
+
             .otherwise({
             redirectTo: '/'
-        });   
-        */
+        }); 
     });
 
     app.controller('InicioController', function($scope, $routeParams) {

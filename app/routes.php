@@ -15,10 +15,10 @@ Route::get('/', 		array('as' 		=> 'mostrar_inicio','uses' 	=>  'PaginaController
 
 Route::get('/subir/multiples/imagenes/',array('as' 		=> 'subir_multiples_imagenes','uses' 	=>  'PaginaController@mostrar_subir_imagen'));
 
-Route::get('/api/contents/articulos', 	array('as' 		=> 'api_contents_articulos','uses' 	=>  'PaginacionController@generar_paginacion_articulos'));
+Route::get('/api/contents/articulos', 	array('as' 	=> 'api_contents_articulos','uses' 	=>  'PaginacionController@generar_paginacion_articulos'));
 
-Route::get('/api/obtener/menus', 	array('as' 		=> 'api_obtener_menus','uses' 	=>  'MenuController@elaborar_menu_principal_home'));
+Route::get('/api/obtener/categorias/menu/home', array('as' => 'api_obtener_categorias','uses'=> 'MenuController@obtener_categorias_menu_principal_home'));
 
+Route::get('/api/obtener/caracteristicas/menu/home',array('as'=>'api_obtener_caracteristicas','uses'=> 'MenuController@obtener_caracteristcas_menu_principal_home'));
 
-
-
+Route::post('/api/obtener/articulos/segun/caracteristica',array('as'=>'api_obtener_articulos_segun_caracteristica','uses'=> 'ArticuloController@obtener_articulos_segun_caracteristica'));

@@ -5,10 +5,24 @@
  * Clase para crear menus
  */
 class MenuController extends BaseController {
-    
-    public function elaborar_menu_principal_home(){
+
+    /**
+     * Devuelve todas las categorias del menu home
+     * @return callback
+     */
+    public function obtener_categorias_menu_principal_home(){
         $oCategoria = new Categoria();
         $oResultado = $oCategoria->Obtener_todos();
+        return Response::json(array('oResultado' => $oResultado));
+    }
+
+    /**
+     * Devuelve todas las caracteristicas de acuerdo a las categorias en el menu principal home
+     * @return callback
+     */
+    public function obtener_caracteristcas_menu_principal_home(){
+        $oCategoriaCaracteristica = new CategoriaCaracteristica();
+        $oResultado = $oCategoriaCaracteristica->Obtener_todos();
         return Response::json(array('oResultado' => $oResultado));
     }
 }

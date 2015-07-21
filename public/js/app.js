@@ -1,6 +1,51 @@
 (function(){
+    var app = angular.module('app',["infinite-scroll","ngRoute"]);
 
-    var app = angular.module('app',['infinite-scroll']);
+    // configure our routes
+    app.config(function($routeProvider) {
+        $routeProvider
+
+        // route for the home page
+            .when('/caracteristica/:id_caracteristica', {
+            templateUrl : 'templates/caracteristica.php',
+            controller  : 'InicioController'
+        })
+        /*
+            .when('/', {
+            templateUrl : 'pages/about.html',
+            controller  : 'aboutController'
+        })*/
+    });
+
+    app.controller('InicioController', function($scope, $routeParams) {
+        $scope.mostrar_productos = true;
+        $scope.cambiarMostrar_productos = function(newVal) {
+            $scope.mostrar_productos = newVal;
+        };
+    });
+
+    app.controller('ClickMenuController', function($scope, $routeParams) {
+        $scope.primerMetodo = function() {
+            $scope.cambiarMostrar_productos(false);
+            console.log("ClickMenuController");
+            console.log($scope.mostrar_productos);
+        };
+    });
+
+    app.controller('AjaxBuscarProductosController', function($scope,$routeParams,$http) {
+        $scope.id_caracteristica = $routeParams.id_caracteristica;
+        console.log($scope.id_caracteristica);
+
+        //ajax obtener productos segun descripcion_caracteristica
+        $http.post('api/obtener/articulos/segun/caracteristica',{id_caracteristica: $scope.id_caracteristica}).
+        success(function(data, status, headers, config) {
+            $scope.oArticulos = data.oResultado;
+            //console.log($scope.oArticulos);
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+        });
+    });
 
     // linkar evento luego de que ng-repeat termine
     /*
@@ -26,18 +71,39 @@
         });*/
     });
 
-    app.controller('MenuController', function($scope,$http) {
-        $http.get('api/obtener/menus').
+    app.controller('MenuCategoriasController', function($scope,$http) {
+        //ajax obtener categorias
+        $http.get('api/obtener/categorias/menu/home').
         success(function(data, status, headers, config) {
             $scope.categorias = data.oResultado;
-            console.log($scope.categorias);
+            //console.log($scope.categorias);
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+        });
+        //ajax obtener caracteristicas
+        $http.get('api/obtener/caracteristicas/menu/home').
+        success(function(data, status, headers, config) {
+            $scope.caracteristicas = data.oResultado;
+            //            console.log(data.oResultado);
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+        });
+    });      
+    /*
+    app.controller('MenuCaracteristicasController', function($scope,$http) {
+        $http.get('api/obtener/caracteristicas/menu/home').
+        success(function(data, status, headers, config) {
+            $scope.caracteristicas = data.oResultado;
+            //            console.log(data.oResultado);
         }).
         error(function(data, status, headers, config) {
             // log error
         });
 
     });      
-
+*/
     // Proceso de paginacion
     app.factory('Contents',function($http){
         var Contents = function(){

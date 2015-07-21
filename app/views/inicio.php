@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app = 'app'>
+<html lang="en" data-ng-app = 'app' ng-controller="InicioController">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
         <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     </head><!--/head-->
 
-    <body>	
+    <body ng-controller="ClickMenuController">	
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
@@ -37,14 +37,28 @@
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-                        <div class="mainmenu pull-left" ng-controller="MenuController">
+                        <div class="mainmenu pull-left" ng-controller="MenuCategoriasController">
 
-                            <ul class="nav navbar-nav collapse navbar-collapse" ng-repeat="categoria in categorias ">
-                                <li ng-hide="{{$index}} != 0" ><a href="index.html" class="active">Home</a></li>
-                                <li><a href="#">{{categoria.nombre}}</a></li>
+                            <ul class="nav navbar-nav collapse navbar-collapse" >
+                                <li><a href="index.html" class="active">Inicio</a></li>
+                                <li class="dropdown" ng-repeat="categoria in categorias"><a href="#">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu"  >
+                                        <li ng-repeat="caracteristica in caracteristicas"  ng-if="categoria.nombre == caracteristica.nombre_categoria">
+                                            <a ng-href="#caracteristica/{{caracteristica.id_caracteristica}}" ng-click="primerMetodo()">{{caracteristica.descripcion_caracteristica}}</a>
+                                        </li>
+                                    </ul>
+
+                                </li>                                
                                 <!--                                <li><a href="contact-us.html"></a></li>-->
                             </ul>
+
                         </div>
+                        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+
+
+                        <!-- angular templating -->
+                        <!-- this is where content will be injected -->
+
                     </div>
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
@@ -63,9 +77,10 @@
                 <img src="images/shop/advertisement.jpg" alt="" />
             </div>
         </section>
-
+        <div ng-view>
+        </div>
         <section>
-            <div class="container">
+            <div class="container" ng-hide="mostrar_productos == false">
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="left-sidebar">
@@ -111,16 +126,17 @@
                         </div>
                     </div>
                 </div>
-                </section>
-
-            <script src="js/jquery.js"></script>
-            <script src="js/price-range.js"></script>
-            <script src="js/jquery.scrollUp.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.prettyPhoto.js"></script>
-            <script src="js/main.js"></script>
-            <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-            <script src="js/infinite-scroll.min.js"></script>
-            <script src="js/app.js"></script>  
-            </body>
-        </html>
+            </div>
+        </section>
+        <script src="js/jquery.js"></script>
+        <script src="js/price-range.js"></script>
+        <script src="js/jquery.scrollUp.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.prettyPhoto.js"></script>
+        <script src="js/main.js"></script>
+        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+        <script src="js/infinite-scroll.min.js"></script>
+        <script src="js/app.js"></script>  
+    </body>
+</html>

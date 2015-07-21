@@ -21,4 +21,4 @@ Route::get('/api/obtener/categorias/menu/home', array('as' => 'api_obtener_categ
 
 Route::get('/api/obtener/caracteristicas/menu/home',array('as'=>'api_obtener_caracteristicas','uses'=> 'MenuController@obtener_caracteristcas_menu_principal_home'));
 
-Route::post('/api/obtener/articulos/segun/caracteristica',array('as'=>'api_obtener_articulos_segun_caracteristica','uses'=> 'ArticuloController@obtener_articulos_segun_caracteristica'));
+Route::post('/api/obtener/articulos/segun/caracteristica',array('as'=>'api_obtener_articulos_segun_caracteristica','uses'=> 'PaginacionController@generar_paginacion_articulos_segun_caracteristica'));

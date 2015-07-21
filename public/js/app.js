@@ -10,11 +10,16 @@
             templateUrl : 'templates/caracteristica.php',
             controller  : 'InicioController'
         })
-        /*
-            .when('/', {
-            templateUrl : 'pages/about.html',
-            controller  : 'aboutController'
-        })*/
+
+            .when('/inicio', {
+            templateUrl : 'templates/index.php',
+            controller  : 'ContentsController'
+        })
+                  /*
+            .otherwise({
+            redirectTo: '/'
+        });   
+        */
     });
 
     app.controller('InicioController', function($scope, $routeParams) {
@@ -32,19 +37,38 @@
         };
     });
 
-    app.controller('AjaxBuscarProductosController', function($scope,$routeParams,$http) {
-        $scope.id_caracteristica = $routeParams.id_caracteristica;
-        console.log($scope.id_caracteristica);
+    app.controller('AjaxBuscarProductosController', function($scope,articulos) {
 
-        //ajax obtener productos segun descripcion_caracteristica
-        $http.post('api/obtener/articulos/segun/caracteristica',{id_caracteristica: $scope.id_caracteristica}).
-        success(function(data, status, headers, config) {
-            $scope.oArticulos = data.oResultado;
-            //console.log($scope.oArticulos);
-        }).
-        error(function(data, status, headers, config) {
-            // log error
-        });
+        //$scope.id_caracteristica = $routeParams.id_caracteristica;
+        $scope.articulos = new articulos();   
+        console.log($scope.articulos);
+    });
+
+    // Proceso de paginacion
+    app.factory('articulos',function($http,$routeParams){
+        var articulos = function(){
+            this.items = [];
+            this.busy = false;
+            this.page = 1;
+        }
+
+        articulos.prototype.nextPage = function(){
+            if(this.busy) return;
+            this.busy = true;
+            var url = 'api/obtener/articulos/segun/caracteristica?page='+this.page;
+
+            $http.post(url,{id_caracteristica : $routeParams.id_caracteristica}).success(function(oDatos){
+                console.log('aqui');
+                console.log(oDatos);
+                for(var i = 0; i < oDatos.data.length; i++ ){
+                    this.items.push(oDatos.data[i]);
+                }
+
+                this.page++;
+                this.busy = false;
+            }.bind(this));
+        };
+        return articulos;
     });
 
     // linkar evento luego de que ng-repeat termine
@@ -103,7 +127,7 @@
         });
 
     });      
-*/
+    */
     // Proceso de paginacion
     app.factory('Contents',function($http){
         var Contents = function(){
@@ -128,5 +152,5 @@
             }.bind(this));
         };
         return Contents;
-    });  
+    });
 }).call(this);

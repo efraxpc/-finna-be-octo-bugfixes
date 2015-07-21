@@ -40,7 +40,7 @@
                         <div class="mainmenu pull-left" ng-controller="MenuCategoriasController">
 
                             <ul class="nav navbar-nav collapse navbar-collapse" >
-                                <li><a href="index.html" class="active">Inicio</a></li>
+                                <li><a ng-href="#inicio" class="active" ng-hide="mostrar_productos == true">Inicio</a></li>
                                 <li class="dropdown" ng-repeat="categoria in categorias"><a href="#">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu"  >
                                         <li ng-repeat="caracteristica in caracteristicas"  ng-if="categoria.nombre == caracteristica.nombre_categoria">

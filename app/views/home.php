@@ -106,6 +106,8 @@
         <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
         <script src="js/infinite-scroll.min.js"></script>
-        <script src="js/app.js"></script>  
+        <script src="js/angular/app.js"></script>  
+        <script src="js/angular/paginacion.js"></script>  
+        <script src="js/angular/menu.js"></script>  
     </body>
 </html>

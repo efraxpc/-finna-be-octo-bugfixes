@@ -40,10 +40,10 @@
                         <div class="mainmenu pull-left" ng-controller="MenuCategoriasController">
 
                             <ul class="nav navbar-nav collapse navbar-collapse" >
-                                <li><a href="#inicio" class="active" ng-hide="mostrar_productos == true">Inicio</a></li>
-                                <li class="dropdown" ng-repeat="categoria in categorias"><a href="#categoria/{{categoria.id}}">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
+                                <li><a href="#inicio" class="active" ng-hide="mostrar_productos == false" ng-click="mostrar_inicio()">Inicio</a></li>
+                                <li class="dropdown" ng-repeat="categoria in categorias"><a ng-click="esconder_inicio()" ng-href="#categoria/{{categoria.id}}">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li ng-repeat="caracteristica in caracteristicas"  ng-if="categoria.nombre == caracteristica.nombre_categoria">
+                                        <li ng-repeat="caracteristica in caracteristicas" ng-click="esconder_inicio()" ng-if="categoria.nombre == caracteristica.nombre_categoria">
                                             <a ng-href="#caracteristica/{{caracteristica.id_caracteristica}}" ng-click="primerMetodo()">{{caracteristica.descripcion_caracteristica}}</a>
                                         </li>
                                     </ul>
@@ -60,7 +60,7 @@
                         <!-- this is where content will be injected -->
 
                     </div
-                    <div class="col-sm-3">
+                        <div class="col-sm-3">
                         <div class="search_box pull-right">
                             <input type="text" placeholder="Search"/>
                         </div>

@@ -1,6 +1,6 @@
 <div class="col-sm-9 padding-right" ng-controller="AjaxBuscarProductosSegunCategoriaController" infinite-scroll="articulos_segun_categorias.nextPage()" infinite-scroll-distance="2" infinite-scroll-disabled="articulos_segun_categorias.busy">
     <div class="features_items"><!--features_items-->
-        <h2 class="title text-center">articulos_segun_categorias</h2>                      
+        <h2 class="title text-center">Articulos</h2>                      
         <div ng-repeat="articulo in articulos_segun_categorias.items" on-finish-render="ngRepeatFinished">
             <div class="col-sm-4">
                 <div class="product-image-wrapper">

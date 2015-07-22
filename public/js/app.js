@@ -27,7 +27,12 @@
     });
 
     app.controller('InicioController', function($scope, $routeParams) {
-        $scope.mostrar_productos = true;
+        $scope.esconder_inicio = function() {
+            $scope.mostrar_productos = true;
+        }
+        $scope.mostrar_inicio = function() {
+            $scope.mostrar_productos = false;
+        }
         $scope.cambiarMostrar_productos = function(newVal) {
             $scope.mostrar_productos = newVal;
         };
@@ -36,13 +41,13 @@
     app.controller('ClickMenuController', function($scope, $routeParams) {
         $scope.primerMetodo = function() {
             $scope.cambiarMostrar_productos(false);
-            console.log("ClickMenuController");
             console.log($scope.mostrar_productos);
         };
     });
-//////// paginacion segun caracteristica
+    //////// paginacion segun caracteristica
     app.controller('AjaxBuscarProductosSegunCaracteristicaController', function($scope,articulos_segun_caracteristica) {
         $scope.articulos_segun_caracteristica = new articulos_segun_caracteristica();   
+        $scope.cambiarMostrar_productos(false);
         console.log($scope.articulos);
     });
 
@@ -72,8 +77,9 @@
         };
         return articulos_segun_caracteristica;
     });
-/////////// paginacion segun categoria
+    /////////// paginacion segun categoria
     app.controller('AjaxBuscarProductosSegunCategoriaController', function($scope,articulos_segun_categorias) {
+        $scope.cambiarMostrar_productos(false);
         $scope.articulos_segun_categorias = new articulos_segun_categorias();   
         console.log($scope.articulos_segun_categorias);
     });
@@ -104,8 +110,8 @@
         };
         return articulos_segun_categorias;
     });
-    
-/////////////
+
+    /////////////
     // linkar evento luego de que ng-repeat termine
     /*
     app.directive('onFinishRender', function ($timeout) {

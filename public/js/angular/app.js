@@ -25,13 +25,13 @@
         }); 
     });
 
-    app.controller('InicioController', function($scope, $routeParams) {
+    app.controller('InicioController', function($scope) {
         $scope.esconder_inicio = function() {
-            $scope.mostrar_productos = true;
-        }
-        $scope.mostrar_inicio = function() {
             $scope.mostrar_productos = false;
-        }
+        };
+        $scope.mostrar_inicio = function() {
+            $scope.mostrar_productos = true;
+        };
         $scope.cambiarMostrar_productos = function(newVal) {
             $scope.mostrar_productos = newVal;
         };

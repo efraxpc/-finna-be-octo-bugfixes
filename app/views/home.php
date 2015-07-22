@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app = 'app' ng-controller="InicioController">
+<html lang="en" data-ng-app = 'app' ng-controller="InicioController" >
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
         <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     </head><!--/head-->
 
-    <body ng-controller="ClickMenuController">	
+    <body ng-controller="ClickMenuController" data-ng-init="esconder_inicio()">	
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
@@ -40,10 +40,10 @@
                         <div class="mainmenu pull-left" ng-controller="MenuCategoriasController">
 
                             <ul class="nav navbar-nav collapse navbar-collapse" >
-                                <li><a href="#inicio" class="active" ng-hide="mostrar_productos == false" ng-click="mostrar_inicio()">Inicio</a></li>
-                                <li class="dropdown" ng-repeat="categoria in categorias"><a ng-click="esconder_inicio()" ng-href="#categoria/{{categoria.id}}">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
+                                <li><a href="#inicio" class="active" ng-hide="mostrar_productos == false" ng-click="esconder_inicio()">Inicio</a></li>
+                                <li class="dropdown" ng-repeat="categoria in categorias"><a ng-click="mostrar_inicio()" ng-href="#categoria/{{categoria.id}}">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li ng-repeat="caracteristica in caracteristicas" ng-click="esconder_inicio()" ng-if="categoria.nombre == caracteristica.nombre_categoria">
+                                        <li ng-repeat="caracteristica in caracteristicas" ng-click="mostrar_inicio()" ng-if="categoria.nombre == caracteristica.nombre_categoria">
                                             <a ng-href="#caracteristica/{{caracteristica.id_caracteristica}}" ng-click="primerMetodo()">{{caracteristica.descripcion_caracteristica}}</a>
                                         </li>
                                     </ul>
@@ -59,11 +59,12 @@
                         <!-- angular templating -->
                         <!-- this is where content will be injected -->
 
-                    </div
-                        <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-3"  ng-controller="BuscadorController">
                         <div class="search_box pull-right">
-                            <input type="text" placeholder="Search"/>
+                            <input type="text" ng-model="sValorBusqueda" ng-change="buscar();" placeholder="Buscar"/>
                         </div>
+                        {{sValorBusqueda}}
                     </div>
                 </div>
             </div>
@@ -109,5 +110,7 @@
         <script src="js/angular/app.js"></script>  
         <script src="js/angular/paginacion.js"></script>  
         <script src="js/angular/menu.js"></script>  
+        <script src="js/angular/buscador.js"></script>  
+
     </body>
 </html>

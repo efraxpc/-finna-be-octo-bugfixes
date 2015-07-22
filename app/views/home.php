@@ -41,8 +41,8 @@
 
                             <ul class="nav navbar-nav collapse navbar-collapse" >
                                 <li><a href="#inicio" class="active" ng-hide="mostrar_productos == true">Inicio</a></li>
-                                <li class="dropdown" ng-repeat="categoria in categorias"><a href="#">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu"  >
+                                <li class="dropdown" ng-repeat="categoria in categorias"><a href="#categoria/{{categoria.id}}">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
                                         <li ng-repeat="caracteristica in caracteristicas"  ng-if="categoria.nombre == caracteristica.nombre_categoria">
                                             <a ng-href="#caracteristica/{{caracteristica.id_caracteristica}}" ng-click="primerMetodo()">{{caracteristica.descripcion_caracteristica}}</a>
                                         </li>
@@ -59,7 +59,7 @@
                         <!-- angular templating -->
                         <!-- this is where content will be injected -->
 
-                    </div>
+                    </div
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
                             <input type="text" placeholder="Search"/>

@@ -14,7 +14,21 @@ class Articulo extends Eloquent{
         return DB::select('CALL articulo_Obtener_todos_paginacion()');
     }
 
+    /**
+     * Obtiene todos los articulos segun su caracteristica
+     * @param  integer $iIdCaracteristica
+     * @return object
+     */
     public function Obtener_todos_segun_caracteristica($iIdCaracteristica){
         return DB::select('CALL articulo_Obtener_todos_segun_caracteristica(?)',array($iIdCaracteristica));
+    }
+    
+    /**
+     * Obtiene todos los articulos segun su categoria
+     * @param  integer $iIdCategoria
+     * @return object 
+     */
+    public function Obtener_todos_segun_categoria($iIdCategoria){
+        return DB::select('CALL articulo_Obtener_todos_segun_categoria(?)',array($iIdCategoria));
     }
 }

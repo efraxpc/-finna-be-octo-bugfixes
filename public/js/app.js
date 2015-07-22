@@ -10,6 +10,10 @@
             templateUrl : 'templates/caracteristica.php',
             controller  : 'InicioController'
         })
+            .when('/categoria/:id_categoria', {
+            templateUrl : 'templates/categoria.php',
+            controller  : 'InicioController'
+        })
 
             .when('/', {
             templateUrl : 'templates/index.php',
@@ -36,23 +40,21 @@
             console.log($scope.mostrar_productos);
         };
     });
-
-    app.controller('AjaxBuscarProductosController', function($scope,articulos) {
-
-        //$scope.id_caracteristica = $routeParams.id_caracteristica;
-        $scope.articulos = new articulos();   
+//////// paginacion segun caracteristica
+    app.controller('AjaxBuscarProductosSegunCaracteristicaController', function($scope,articulos_segun_caracteristica) {
+        $scope.articulos_segun_caracteristica = new articulos_segun_caracteristica();   
         console.log($scope.articulos);
     });
 
     // Proceso de paginacion
-    app.factory('articulos',function($http,$routeParams){
-        var articulos = function(){
+    app.factory('articulos_segun_caracteristica',function($http,$routeParams){
+        var articulos_segun_caracteristica = function(){
             this.items = [];
             this.busy = false;
             this.page = 1;
         }
 
-        articulos.prototype.nextPage = function(){
+        articulos_segun_caracteristica.prototype.nextPage = function(){
             if(this.busy) return;
             this.busy = true;
             var url = 'api/obtener/articulos/segun/caracteristica?page='+this.page;
@@ -68,9 +70,42 @@
                 this.busy = false;
             }.bind(this));
         };
-        return articulos;
+        return articulos_segun_caracteristica;
+    });
+/////////// paginacion segun categoria
+    app.controller('AjaxBuscarProductosSegunCategoriaController', function($scope,articulos_segun_categorias) {
+        $scope.articulos_segun_categorias = new articulos_segun_categorias();   
+        console.log($scope.articulos_segun_categorias);
     });
 
+    // Proceso de paginacion
+    app.factory('articulos_segun_categorias',function($http,$routeParams){
+        var articulos_segun_categorias = function(){
+            this.items = [];
+            this.busy = false;
+            this.page = 1;
+        }
+
+        articulos_segun_categorias.prototype.nextPage = function(){
+            if(this.busy) return;
+            this.busy = true;
+            var url = 'api/obtener/articulos/segun/categoria?page='+this.page;
+
+            $http.post(url,{id_categoria : $routeParams.id_categoria}).success(function(oDatos){
+                console.log('aqui');
+                console.log(oDatos);
+                for(var i = 0; i < oDatos.data.length; i++ ){
+                    this.items.push(oDatos.data[i]);
+                }
+
+                this.page++;
+                this.busy = false;
+            }.bind(this));
+        };
+        return articulos_segun_categorias;
+    });
+    
+/////////////
     // linkar evento luego de que ng-repeat termine
     /*
     app.directive('onFinishRender', function ($timeout) {

@@ -7,10 +7,8 @@
                     <div class="single-products">
                         <div class="productinfo text-center">
                             <img  alt="" src="images/home/product1.jpg" id="imagen_{{$index}}"/>
-
                             <h2>{{content.precio}} S/.</h2>
                             <p>{{content.descripcion}}</p>
-                            <!--                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Añadir al carrito</a>-->
                         </div>
                         <div class="product-overlay">
                             <div class="overlay-content">
@@ -28,3 +26,4 @@
 
         </div>                     
     </div>
+</div>

@@ -4,6 +4,7 @@
     ///////// paginacion home
     app.controller('ContentsController',function($scope, Contents){
         $scope.contents = new Contents();
+        console.log($scope.contents);
         /*
         $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
             $('#imagen_1').attr('src','images/home/product1.jpg')

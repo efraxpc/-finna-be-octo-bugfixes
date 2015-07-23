@@ -15,11 +15,15 @@
             controller  : 'InicioController'
         })
 
+            .when('/buscador', {
+            templateUrl : 'templates/resultado_buscador.php',
+            controller  : 'BuscadorController',
+        })
+
             .when('/', {
             templateUrl : 'templates/index.php',
             controller  : 'ContentsController'
         })
-
             .otherwise({
             redirectTo: '/'
         }); 

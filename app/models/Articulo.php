@@ -22,7 +22,7 @@ class Articulo extends Eloquent{
     public function Obtener_todos_segun_caracteristica($iIdCaracteristica){
         return DB::select('CALL articulo_Obtener_todos_segun_caracteristica(?)',array($iIdCaracteristica));
     }
-    
+
     /**
      * Obtiene todos los articulos segun su categoria
      * @param  integer $iIdCategoria
@@ -30,5 +30,14 @@ class Articulo extends Eloquent{
      */
     public function Obtener_todos_segun_categoria($iIdCategoria){
         return DB::select('CALL articulo_Obtener_todos_segun_categoria(?)',array($iIdCategoria));
+    }
+
+    /**
+     * Obtiene todos los articulos segun tag
+     * @param string $sTag con el fragmento del tag
+     * @return object 
+     */
+    public function Obtener_todos_segun_tag($sTag){
+        return DB::select('CALL articulo_Obtener_todos_segun_tag(?)',array($sTag));
     }
 }

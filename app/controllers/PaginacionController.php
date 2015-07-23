@@ -69,4 +69,27 @@ class PaginacionController extends BaseController {
         // Create a paginator instance.
         return Paginator::make($oColeccion->all(), $iTotalElementosPaginacion, $iElementpsPorPagina);   
     }
+
+    /**
+     * Retorna articulos segun tag
+     * @return object
+     */
+    public function generar_paginacion_articulos_segun_tag(){
+        $sTag = Input::get('sTag');
+        $articulo = new Articulo();
+        $oElementosPaginacion = $articulo->Obtener_todos_segun_tag($sTag);
+        //dd($oElementosPaginacion);die;
+
+        // Get pagination information and slice the results.
+        $iElementpsPorPagina = 4;
+        $iTotalElementosPaginacion = count($oElementosPaginacion);
+        $start = (Paginator::getCurrentPage() - 1) * $iElementpsPorPagina;
+        $sliced = array_slice($oElementosPaginacion, $start, $iElementpsPorPagina);
+
+        // Eager load the relation.
+        $oColeccion = Articulo::hydrate($sliced);
+
+        // Create a paginator instance.
+        return Paginator::make($oColeccion->all(), $iTotalElementosPaginacion, $iElementpsPorPagina);  
+    }
 }

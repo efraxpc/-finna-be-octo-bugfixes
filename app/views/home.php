@@ -23,8 +23,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     </head><!--/head-->
-
-    <body ng-controller="ClickMenuController" data-ng-init="esconder_inicio()">	
+    <body ng-controller="ClickMenuController" ng-init="esconder_inicio()">	
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
@@ -38,7 +37,6 @@
                             </button>
                         </div>
                         <div class="mainmenu pull-left" ng-controller="MenuCategoriasController">
-
                             <ul class="nav navbar-nav collapse navbar-collapse" >
                                 <li><a href="#inicio" class="active" ng-hide="mostrar_productos == false" ng-click="esconder_inicio()">Inicio</a></li>
                                 <li class="dropdown" ng-repeat="categoria in categorias"><a ng-click="mostrar_inicio()" ng-href="#categoria/{{categoria.id}}">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
@@ -47,18 +45,13 @@
                                             <a ng-href="#caracteristica/{{caracteristica.id_caracteristica}}" ng-click="primerMetodo()">{{caracteristica.descripcion_caracteristica}}</a>
                                         </li>
                                     </ul>
-
                                 </li>                                
                                 <!--                                <li><a href="contact-us.html"></a></li>-->
                             </ul>
-
                         </div>
                         <!-- MAIN CONTENT AND INJECTED VIEWS -->
-
-
                         <!-- angular templating -->
                         <!-- this is where content will be injected -->
-
                     </div>
                     <div class="col-sm-3"  ng-controller="BuscadorController">
                         <div class="search_box pull-right">
@@ -78,7 +71,6 @@
                 <img src="images/shop/advertisement.jpg" alt="" />
             </div>
         </section>
-
         <section>
             <div class="container">
                 <div class="row">
@@ -96,21 +88,20 @@
                     <div ng-view></div>
                 </div>
             </div>
+            </div>
         </section>
-
-        <script src="js/jquery.js"></script>
-        <script src="js/price-range.js"></script>
-        <script src="js/jquery.scrollUp.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.prettyPhoto.js"></script>
-        <script src="js/main.js"></script>
-        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-        <script src="js/infinite-scroll.min.js"></script>
-        <script src="js/angular/app.js"></script>  
-        <script src="js/angular/paginacion.js"></script>  
-        <script src="js/angular/menu.js"></script>  
-        <script src="js/angular/buscador.js"></script>  
-
+    <script src="js/jquery.js"></script>
+    <script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="js/infinite-scroll.min.js"></script>
+    <script src="js/angular/app.js"></script>  
+    <script src="js/angular/paginacion.js"></script>  
+    <script src="js/angular/menu.js"></script>  
+    <script src="js/angular/buscador.js"></script>  
     </body>
 </html>

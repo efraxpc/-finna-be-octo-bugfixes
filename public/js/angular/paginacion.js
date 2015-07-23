@@ -36,7 +36,7 @@
         };
         return Contents;
     });
-  
+
     //////// paginacion segun caracteristica
     app.controller('AjaxBuscarProductosSegunCaracteristicaController', function($scope,articulos_segun_caracteristica) {
         $scope.articulos_segun_caracteristica = new articulos_segun_caracteristica();   

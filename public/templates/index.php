@@ -1,4 +1,4 @@
-<div ng-hide="buscador== true" class="col-sm-9 padding-right" ng-controller="ContentsController" infinite-scroll="contents.nextPage()" infinite-scroll-distance="2" infinite-scroll-disabled="contents.busy">
+<div ng-hide="buscador == true" class="col-sm-9 padding-right" ng-controller="ContentsController" ng-init="buscar_ocultar();" infinite-scroll="contents.nextPage()" infinite-scroll-distance="2" infinite-scroll-disabled="contents.busy">
     <div class="features_items"><!--features_items-->
         <h2 class="title text-center">Articulos</h2>                      
         <div ng-repeat="content in contents.items" on-finish-render="ngRepeatFinished">

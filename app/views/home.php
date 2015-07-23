@@ -53,11 +53,10 @@
                         <!-- angular templating -->
                         <!-- this is where content will be injected -->
                     </div>
-                    <div class="col-sm-3"  ng-controller="BuscadorController">
+                    <div class="col-sm-3"  ng-controller="BarraBuscadorController">
                         <div class="search_box pull-right">
                             <input type="text" ng-model="sValorBusqueda" ng-change="buscar();" placeholder="Buscar"/>
                         </div>
-                        {{sValorBusqueda}}
                     </div>
                 </div>
             </div>

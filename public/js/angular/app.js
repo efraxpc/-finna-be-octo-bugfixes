@@ -15,7 +15,7 @@
             controller  : 'InicioController'
         })
 
-            .when('/buscador', {
+            .when('/buscador/:textoBuscador', {
             templateUrl : 'templates/resultado_buscador.php',
             controller  : 'BuscadorController',
         })
@@ -39,6 +39,10 @@
         $scope.cambiarMostrar_productos = function(newVal) {
             $scope.mostrar_productos = newVal;
         };
+        /*
+        $scope.cambiarBuscador = function(newVal) {
+            $scope.buscador = newVal;
+        };*/
     });
 
     /////////////
@@ -69,7 +73,6 @@
         error(function(data, status, headers, config) {
             // log error
         });
-
     });      
     */
 

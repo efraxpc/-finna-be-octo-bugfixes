@@ -40,16 +40,16 @@
             $scope.mostrar_productos = newVal;
         };
 
-        $scope.mostrar_imagen = function(){
+/*        $scope.mostrar_imagen = function(){
             $http.get('obtener_imagen').
             success(function(data, status, headers, config) {
                 $scope.imagen = data.oResultado;
-                console.log(data);
+                console.log($scope.imagen);
             }).
             error(function(data, status, headers, config) {
                 // log error
             });
-        }
+        }*/
         /*
         $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
             console.log('hola');

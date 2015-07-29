@@ -6,16 +6,16 @@
     </div>
 </div>
 
-<div ng-hide="buscador == true" class="col-sm-9 padding-right" ng-controller="PortadaController" ng-init="paginar();" ng-controller="InicioController" infinite-scroll="contents.nextPage()" infinite-scroll-distance="2" infinite-scroll-disabled="contents.busy">
+<div ng-hide="buscador == true" class="col-sm-9 padding-right" ng-controller="PortadaController" ng-init="paginar();" infinite-scroll="contents.nextPage()" infinite-scroll-distance="2" infinite-scroll-disabled="contents.busy">
     <div class="features_items"><!--features_items-->
         <h2 class="title text-center">Articulos</h2>                      
         <div ng-repeat="content in contents.items" on-finish-render="ngRepeatFinished">
             <div class="col-sm-4">
                 <div class="product-image-wrapper" >
                     <div class="single-products" >
-                        <div class="productinfo text-center" ng-init="mostrar_imagen();">
+                        <div class="productinfo text-center">
        <!--                     <img  alt="" src="{{imagen}}" id="imagen_{{$index}}"/>-->
-                            <img ng-src="data:image/jpeg;base64,{{imagen.picture}}" id="imagen_{{$index}}"/>
+                            <img ng-src="{{content.archivo}}" id="imagen_{{$index}}"/>
                             <h2>{{content.precio}} S/.</h2>
                             <p>{{content.descripcion  | limitTo: 73}}</p>
                         </div>

@@ -11,11 +11,14 @@ class ImagenController extends BaseController {
      * @return object
      */
     public function obtener(){
-        $obj = new stdClass();
+        $obj = array();
         $oImagen = new Imagen();
         $oResultado = $oImagen->Obtener_todos();
-        //dd($oResultado[0]->archivo);die;
-        $obj->picture = base64_encode($oResultado[0]->archivo);
+        //$obj->picture = base64_encode($oResultado[0]->archivo);
+        
+        foreach ($oResultado as $key => $value) {
+            $obj[$key]['picture'] = base64_encode($oResultado[$key]->archivo);
+        }
         return Response::json(array('oResultado' => $obj));
     }
 }

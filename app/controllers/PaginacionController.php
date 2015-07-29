@@ -21,6 +21,7 @@ class PaginacionController extends BaseController {
 
         // Eager load the relation.
         $oColeccion = Articulo::hydrate($sliced);
+        //dd($oColeccion);die;
 
         // Create a paginator instance.
         return Paginator::make($oColeccion->all(), $iTotalElementosPaginacion, $iElementpsPorPagina);        

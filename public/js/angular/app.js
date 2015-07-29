@@ -15,21 +15,21 @@
             controller  : 'InicioController'
         })
 
-            .when('/buscador/:textoBuscador', {
+            .when('/buscar/:textoBuscador', {
             templateUrl : 'templates/resultado_buscador.php',
             controller  : 'BuscadorController',
         })
 
             .when('/', {
             templateUrl : 'templates/index.php',
-            controller  : 'ContentsController'
+            controller  : 'PortadaController'
         })
             .otherwise({
             redirectTo: '/'
         }); 
     });
 
-    app.controller('InicioController', function($scope) {
+    app.controller('InicioController', function($scope,$http) {
         $scope.esconder_inicio = function() {
             $scope.mostrar_productos = false;
         };
@@ -39,10 +39,22 @@
         $scope.cambiarMostrar_productos = function(newVal) {
             $scope.mostrar_productos = newVal;
         };
+
+        $scope.mostrar_imagen = function(){
+            $http.get('obtener_imagen').
+            success(function(data, status, headers, config) {
+                $scope.imagen = data.oResultado;
+                console.log(data);
+            }).
+            error(function(data, status, headers, config) {
+                // log error
+            });
+        }
         /*
-        $scope.cambiarBuscador = function(newVal) {
-            $scope.buscador = newVal;
-        };*/
+        $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+            console.log('hola');
+        });
+        */
     });
 
     /////////////
@@ -59,21 +71,6 @@
                 }
             }
         }
-    });  */
-
-    //Controlador
-
-    /*
-    app.controller('MenuCaracteristicasController', function($scope,$http) {
-        $http.get('api/obtener/caracteristicas/menu/home').
-        success(function(data, status, headers, config) {
-            $scope.caracteristicas = data.oResultado;
-            //            console.log(data.oResultado);
-        }).
-        error(function(data, status, headers, config) {
-            // log error
-        });
-    });      
+    });  
     */
-
 }).call(this);

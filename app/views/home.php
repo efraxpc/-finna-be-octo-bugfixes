@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Prueba Laravel - Angular</title>
+        <title>.::Proyecto Catalogo::.</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -73,17 +73,6 @@
         <section>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <div class="left-sidebar">
-                            <div class="price-range"><!--price-range-->
-                                <h2>Rango de precios</h2>
-                                <div class="well">
-                                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-                                    <b>$ 0</b> <b class="pull-right">$ 600</b>
-                                </div>
-                            </div><!--/price-range-->
-                        </div>
-                    </div>
                     <div ng-view></div>
                 </div>
             </div>
@@ -102,5 +91,6 @@
     <script src="js/angular/paginacion.js"></script>  
     <script src="js/angular/menu.js"></script>  
     <script src="js/angular/buscador.js"></script>  
+    <script src="js/angular/filtro.js"></script>  
     </body>
 </html>

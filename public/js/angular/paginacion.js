@@ -2,9 +2,16 @@
     var app = angular.module('app');  
 
     ///////// paginacion home
-    app.controller('ContentsController',function($scope, Contents){
-        $scope.contents = new Contents();
-        console.log($scope.contents);
+    app.controller('PortadaController',function($scope, Contents){
+
+        /**
+         * Paginar todos los articulos en general
+         */
+        $scope.paginar = function() {
+            $scope.contents = new Contents();
+            //console.log($scope.contents);
+        }
+
         /*
         $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
             $('#imagen_1').attr('src','images/home/product1.jpg')
@@ -41,7 +48,7 @@
     app.controller('AjaxBuscarProductosSegunCaracteristicaController', function($scope,articulos_segun_caracteristica) {
         $scope.articulos_segun_caracteristica = new articulos_segun_caracteristica();   
         $scope.cambiarMostrar_productos(false);
-        console.log($scope.articulos);
+        //console.log($scope.articulos);
     });
 
     // Proceso de paginacion
@@ -58,8 +65,8 @@
             var url = 'api/obtener/articulos/segun/caracteristica?page='+this.page;
 
             $http.post(url,{id_caracteristica : $routeParams.id_caracteristica}).success(function(oDatos){
-                console.log('aqui');
-                console.log(oDatos);
+                //console.log('aqui');
+                //console.log(oDatos);
                 for(var i = 0; i < oDatos.data.length; i++ ){
                     this.items.push(oDatos.data[i]);
                 }
@@ -74,7 +81,7 @@
     app.controller('AjaxBuscarProductosSegunCategoriaController', function($scope,articulos_segun_categorias) {
         $scope.cambiarMostrar_productos(false);
         $scope.articulos_segun_categorias = new articulos_segun_categorias();   
-        console.log($scope.articulos_segun_categorias);
+        //console.log($scope.articulos_segun_categorias);
     });
 
     // Proceso de paginacion
@@ -91,8 +98,8 @@
             var url = 'api/obtener/articulos/segun/categoria?page='+this.page;
 
             $http.post(url,{id_categoria : $routeParams.id_categoria}).success(function(oDatos){
-                console.log('aqui');
-                console.log(oDatos);
+                //console.log('aqui');
+                //console.log(oDatos);
                 for(var i = 0; i < oDatos.data.length; i++ ){
                     this.items.push(oDatos.data[i]);
                 }

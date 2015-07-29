@@ -22,11 +22,10 @@
         });
     }); 
 
-
     app.controller('ClickMenuController', function($scope, $routeParams) {
         $scope.primerMetodo = function() {
             $scope.cambiarMostrar_productos(false);
-            console.log($scope.mostrar_productos);
+            //console.log($scope.mostrar_productos);
         };
     });
 }).call(this);

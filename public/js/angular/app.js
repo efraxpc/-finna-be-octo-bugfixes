@@ -6,7 +6,7 @@
         $routeProvider
 
         // route for the home page
-            .when('/caracteristica/:id_caracteristica', {
+            .when('/categoria/:id_categoria/caracteristica/:id_caracteristica', {
             templateUrl : 'templates/caracteristica.php',
             controller  : 'InicioController'
         })
@@ -19,7 +19,6 @@
             templateUrl : 'templates/resultado_buscador.php',
             controller  : 'BuscadorController',
         })
-
             .when('/', {
             templateUrl : 'templates/index.php',
             controller  : 'PortadaController'

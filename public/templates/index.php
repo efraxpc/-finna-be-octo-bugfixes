@@ -18,12 +18,12 @@
                             <h2>{{content.precio}} S/.</h2>
                             <p>{{content.descripcion  | limitTo: 73}}</p>
                         </div>
-<!--                        <div class="product-overlay">
-                            <div class="overlay-content">
-                                <h2>{{content.precio}} S/.</h2>
-                                <p>{{content.descripcion | limitTo: 37}}</p>
-                            </div>
-                        </div>-->
+                        <!--                        <div class="product-overlay">
+<div class="overlay-content">
+<h2>{{content.precio}} S/.</h2>
+<p>{{content.descripcion | limitTo: 37}}</p>
+</div>
+</div>-->
                     </div>
                     <div class="choose">
                         <ul class="nav nav-pills nav-justified">

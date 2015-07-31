@@ -21,8 +21,8 @@ class MenuController extends BaseController {
      * @return callback
      */
     public function obtener_caracteristcas_menu_principal_home(){
-        $oCategoriaCaracteristica = new CategoriaCaracteristica();
-        $oResultado = $oCategoriaCaracteristica->Obtener_todos();
+        $oArticuloCaracteristicaValorCategoria = new ArticuloCaracteristicaValorCategoria();
+        $oResultado = $oArticuloCaracteristicaValorCategoria->Obtener_todos_segun_menu();
         return Response::json(array('oResultado' => $oResultado));
     }
 }

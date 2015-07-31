@@ -33,8 +33,10 @@ class PaginacionController extends BaseController {
      */
     public function generar_paginacion_articulos_segun_caracteristica(){
         $iIdCaracteristica = Input::get('id_caracteristica');
+        $iIdCategoria = Input::get('id_categoria');
+        //dd($iIdCaracteristica);die;
         $articulo = new Articulo();
-        $oElementosPaginacion = $articulo->Obtener_todos_segun_caracteristica($iIdCaracteristica);
+        $oElementosPaginacion = $articulo->Obtener_todos_segun_caracteristica($iIdCategoria,$iIdCaracteristica);
 
         // Get pagination information and slice the results.
         $iElementpsPorPagina = 4;
@@ -58,6 +60,7 @@ class PaginacionController extends BaseController {
         $articulo = new Articulo();
         $oElementosPaginacion = $articulo->Obtener_todos_segun_categoria($iIdCategoria);
 
+
         // Get pagination information and slice the results.
         $iElementpsPorPagina = 4;
         $iTotalElementosPaginacion = count($oElementosPaginacion);
@@ -76,10 +79,10 @@ class PaginacionController extends BaseController {
      * @return object
      */
     public function generar_paginacion_articulos_segun_tag(){
-        $sTag = Input::get('sTag');
-        $articulo = new Articulo();
-        $oElementosPaginacion = $articulo->Obtener_todos_segun_tag($sTag);
-
+        $sEntrada = Input::get('sEntrada');
+        $oArticuloCaracteristicaValorCategoriaTag = new ArticuloCaracteristicaValorCategoriaTag();
+        $oElementosPaginacion = $oArticuloCaracteristicaValorCategoriaTag->Obtener_todos_segun_tag($sEntrada);
+        //dd($oElementosPaginacion);die;
         // Get pagination information and slice the results.
         $iElementpsPorPagina = 4;
         $iTotalElementosPaginacion = count($oElementosPaginacion);

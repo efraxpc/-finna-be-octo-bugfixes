@@ -1,9 +1,9 @@
 (function(){
     var app = angular.module('app');
 
-    app.controller('BarraBuscadorController', function($scope,$location,$route,Articulos_segun_tag) {
+    app.controller('BarraBuscadorController', function($scope,$location,$route,Articulos_segun_tag){
         $scope.buscar = function() {
-            $location.path('/buscador/'+ $scope.sValorBusqueda);
+            $location.path('/buscar/'+ $scope.sValorBusqueda);
             $scope.nextPage = 'buscador';
             $scope.articulos_segun_tag = new Articulos_segun_tag();
             //console.log($scope.articulos_segun_tag);
@@ -28,13 +28,12 @@
             this.busy = true;
             var url   = 'api/obtener/articulos/segun/tag?page='+this.page;
 
-            $http.post(url,{sTag : $routeParams.textoBuscador}).success(function(oDatos){
+            $http.post(url,{sEntrada : $routeParams.textoBuscador}).success(function(oDatos){
                 console.log('aqui');
                 console.log(oDatos);
                 for(var i = 0; i < oDatos.data.length; i++ ){
                     this.items.push(oDatos.data[i]);
                 }
-
                 this.page++;
                 this.busy = false;
             }.bind(this));

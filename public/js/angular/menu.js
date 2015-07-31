@@ -1,7 +1,7 @@
 (function(){
     var app = angular.module('app');
 
-    app.controller('MenuCategoriasController', function($scope,$http) {
+    app.controller('MenuCategoriasController', function($scope,$http,$route) {
         //ajax obtener categorias
         $http.get('api/obtener/categorias/menu/home').
         success(function(data, status, headers, config) {
@@ -15,7 +15,8 @@
         $http.get('api/obtener/caracteristicas/menu/home').
         success(function(data, status, headers, config) {
             $scope.caracteristicas = data.oResultado;
-            //            console.log(data.oResultado);
+            //console.log($scope.caracteristicas);
+            //$route.reload();
         }).
         error(function(data, status, headers, config) {
             // log error

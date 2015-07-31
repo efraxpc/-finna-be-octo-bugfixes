@@ -1,29 +1,29 @@
 <div class="col-sm-3" ng-controller="FiltroController" ng-init="mostrar_filtro();">
     <div class="left-sidebar">
         <h2>Filtrar Productos</h2>
-        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+        <div class="panel-group category-products" id="accordian">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                            Sportswear
-                        </a>
+                        <p>{{categoria}}</p>
                     </h4>
-                </div>
-                <div id="sportswear" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul>
-                            <li><a href="#">Nike </a></li>
-                            <li><a href="#">Under Armour </a></li>
-                            <li><a href="#">Adidas </a></li>
-                            <li><a href="#">Puma</a></li>
-                            <li><a href="#">ASICS </a></li>
+                            <li ng-repeat="caracteristica in caracteristicas"> {{caracteristica.nombre_caracteristica}}
+                                <ul>
+                                   <!-- Diferenciacion de valores de categorias en filtro-->
+                                    <li ng-repeat="caracteristica_valor in caracteristicas_valores">
+                                        <p ng-show="caracteristica_valor.id_caracteristica == caracteristica.id">
+                                            {{caracteristica_valor.valor}}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div><!--/category-products-->
+        </div>
     </div>
 </div>
 

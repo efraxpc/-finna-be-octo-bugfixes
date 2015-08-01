@@ -33,10 +33,10 @@ class PaginacionController extends BaseController {
      */
     public function generar_paginacion_articulos_segun_caracteristica(){
         $iIdCaracteristica = Input::get('id_caracteristica');
-        $iIdCategoria = Input::get('id_categoria');
+        //$iIdCategoria = Input::get('id_categoria');
         //dd($iIdCaracteristica);die;
         $articulo = new Articulo();
-        $oElementosPaginacion = $articulo->Obtener_todos_segun_caracteristica($iIdCategoria,$iIdCaracteristica);
+        $oElementosPaginacion = $articulo->Obtener_todos_segun_caracteristica($iIdCaracteristica);
 
         // Get pagination information and slice the results.
         $iElementpsPorPagina = 4;

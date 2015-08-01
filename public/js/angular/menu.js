@@ -16,7 +16,6 @@
         success(function(data, status, headers, config) {
             $scope.caracteristicas = data.oResultado;
             //console.log($scope.caracteristicas);
-            //$route.reload();
         }).
         error(function(data, status, headers, config) {
             // log error

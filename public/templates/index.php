@@ -16,7 +16,7 @@
                         <div class="productinfo text-center">
                             <img ng-src="{{content.archivo}}" id="imagen_{{$index}}"/>
                             <h2>{{content.precio}} S/.</h2>
-                            <p>{{content.descripcion  | limitTo: 73}}</p>
+                            <p>{{content.descripcion  | limitTo: 70}}</p>
                         </div>
                         <!--                        <div class="product-overlay">
 <div class="overlay-content">

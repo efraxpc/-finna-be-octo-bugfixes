@@ -10,7 +10,7 @@
             $http.post('api/obtener/caracteristicas/filtro',{id_categoria : $routeParams.id_categoria}).
             success(function(data, status, headers, config) {
                 $scope.caracteristicas = data.oResultado;
-                //console.log(data.oResultado);
+                console.log(data.oResultado);
             }).
             error(function(data, status, headers, config) {
                 // log error
@@ -19,7 +19,7 @@
             $http.post('api/obtener/caracteristicas/valores/filtro',{id_categoria : $routeParams.id_categoria}).
             success(function(data, status, headers, config) {
                 $scope.caracteristicas_valores = data.oResultado;
-                //console.log($routeParams.id_categoria);
+                //console.log($scope.caracteristicas_valores);
             }).
             error(function(data, status, headers, config) {
                 // log error

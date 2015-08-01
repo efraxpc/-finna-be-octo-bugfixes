@@ -42,7 +42,7 @@
                                 <li class="dropdown" ng-repeat="categoria in categorias"><a ng-click="mostrar_inicio()" ng-href="#categoria/{{categoria.id}}">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li ng-repeat="caracteristica in caracteristicas" ng-click="mostrar_inicio()" ng-if="categoria.nombre == caracteristica.nombre_categoria">
-                                            <a ng-href="#categoria/{{categoria.id}}/caracteristica/{{caracteristica.id_valor_caracteristica}}" ng-click="primerMetodo()">{{caracteristica.valor}}</a>
+                                            <a ng-href="#categoria/{{categoria.id}}/caracteristica/{{caracteristica.id_valor}}" ng-click="primerMetodo()">{{caracteristica.valor}}</a>
                                         </li>
                                     </ul>
                                 </li>                                

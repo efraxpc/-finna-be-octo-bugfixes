@@ -19,6 +19,10 @@
             templateUrl : 'templates/resultado_buscador.php',
             controller  : 'BuscadorController',
         })
+
+//            .when('/admin', {
+//            templateUrl : 'templates/admin.php',
+//        })
             .when('/', {
             templateUrl : 'templates/index.php',
             controller  : 'PortadaController'
@@ -39,7 +43,7 @@
             $scope.mostrar_productos = newVal;
         };
 
-/*        $scope.mostrar_imagen = function(){
+        /*        $scope.mostrar_imagen = function(){
             $http.get('obtener_imagen').
             success(function(data, status, headers, config) {
                 $scope.imagen = data.oResultado;

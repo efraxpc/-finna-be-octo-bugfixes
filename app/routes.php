@@ -31,4 +31,10 @@ Route::post('/api/obtener/caracteristicas/valores/filtro',array('as'=>'api_obten
 
 Route::post('/api/obtener/caracteristicas/filtro',array('as'=>'api_obtener_categorias_filtro','uses'=> 'FiltroController@obtener_caracteristicas'));
 
-//Route::get('/obtener_imagen',array('as'=>'obtener_imagen','uses'=> 'ImagenController@obtener'));
+Route::get('administracion', 		array('as' 		=> 'mostrar_admin','uses' 	=>  'PaginaController@mostrar_panel_admin'));
+/*
+Route::get('/admin2', function()
+{
+	echo "tollo";
+});
+*/

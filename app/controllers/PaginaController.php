@@ -16,10 +16,10 @@ class PaginaController extends BaseController {
     }
 
     /**
-     * Retorna la pagina de subir_imagen
+     * Retorna el administrador
      * @return callback
      */
-    public function mostrar_subir_imagen(){
-        return View::make('subir_imagen');
+    public function mostrar_panel_admin(){
+        return View::make('admin');
     }
 }

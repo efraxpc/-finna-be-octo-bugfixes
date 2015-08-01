@@ -48,7 +48,7 @@
     app.controller('AjaxBuscarProductosSegunCaracteristicaController', function($scope,articulos_segun_caracteristica) {
         $scope.articulos_segun_caracteristica = new articulos_segun_caracteristica();   
         $scope.cambiarMostrar_productos(false);
-        console.log($scope.articulos);
+        //console.log($scope.articulos);
     });
 
     // Proceso de paginacion
@@ -64,7 +64,7 @@
             this.busy = true;
             var url = 'api/obtener/articulos/segun/caracteristica?page='+this.page;
 
-            $http.post(url,{id_categoria : $routeParams.id_categoria, id_caracteristica : $routeParams.id_caracteristica}).success(function(oDatos){
+            $http.post(url,{ id_caracteristica : $routeParams.id_caracteristica}).success(function(oDatos){
                 console.log($routeParams.id_caracteristica);
                 console.log(oDatos);
                 for(var i = 0; i < oDatos.data.length; i++ ){

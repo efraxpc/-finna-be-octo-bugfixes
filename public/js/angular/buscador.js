@@ -29,8 +29,8 @@
             var url   = 'api/obtener/articulos/segun/tag?page='+this.page;
 
             $http.post(url,{sEntrada : $routeParams.textoBuscador}).success(function(oDatos){
-                console.log('aqui');
-                console.log(oDatos);
+                //console.log('aqui');
+                //console.log(oDatos);
                 for(var i = 0; i < oDatos.data.length; i++ ){
                     this.items.push(oDatos.data[i]);
                 }

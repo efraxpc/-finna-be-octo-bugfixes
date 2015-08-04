@@ -32,7 +32,7 @@
             var url = 'api/contents/articulos?page='+this.page;
 
             $http.get(url).success(function(oDatos){
-                console.log(oDatos.data);
+                console.log(oDatos);
                 for(var i = 0; i < oDatos.data.length; i++ ){
                     this.items.push(oDatos.data[i]);
                 }
@@ -65,8 +65,8 @@
             var url = 'api/obtener/articulos/segun/caracteristica?page='+this.page;
 
             $http.post(url,{ id_caracteristica : $routeParams.id_caracteristica}).success(function(oDatos){
-                console.log($routeParams.id_caracteristica);
-                console.log(oDatos);
+                //console.log($routeParams.id_caracteristica);
+                //console.log(oDatos);
                 for(var i = 0; i < oDatos.data.length; i++ ){
                     this.items.push(oDatos.data[i]);
                 }

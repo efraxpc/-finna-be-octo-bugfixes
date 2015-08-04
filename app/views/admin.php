@@ -18,6 +18,13 @@
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/rickshaw/rickshaw.css?1422792967" />
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/morris/morris.core.css?1420463396" />
+        <style type="text/css">
+            .scroll-area {
+                height: 250px;
+                position: relative;
+                overflow: auto;
+            }
+        </style>
         <!-- END STYLESHEETS -->
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -49,19 +56,6 @@
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="headerbar-right">
-                    <ul class="header-nav header-nav-options">
-                        <li>
-                            <!-- Search form -->
-                            <form class="navbar-search" role="search">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
-                                </div>
-                                <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
-                            </form>
-                        </li>
-
-
-                    </ul><!--end .header-nav-options -->
                     <ul class="header-nav header-nav-profile">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
@@ -100,8 +94,8 @@
                         <div class="row">
                             <!-- BEGIN SITE ACTIVITY -->
                             <div ng-view></div>
-                            <!-- END SITE ACTIVITY -->
 
+                            <!-- END SITE ACTIVITY -->
                         </div><!--end .row -->
                     </div><!--end .section-body -->
                 </section>
@@ -129,34 +123,28 @@
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
-                            <a href="../../html/dashboards/dashboard.html" class="active">
+                            <a ng-href="#inicio" class="active">
                                 <div class="gui-icon"><i class="md md-home"></i></div>
-                                <span class="title">Panel de Control</span>
+                                <span class="title"><p>Panel de Control</p></span>
                             </a>
                         </li><!--end /menu-li -->
                         <!-- END DASHBOARD -->
 
                         <!-- BEGIN EMAIL -->
-                        <li class="gui-folder">
-                            <a>
-                                <div class="gui-icon"><i class="md md-email"></i></div>
-                                <span class="title">Email</span>
+                        <li>
+                            <a ng-href="#articulos">
+                                <div class="gui-icon"><i class="md md-web"></i></div>
+                                <span class="title"><p>Articulo</p></span>
                             </a>
-                            <!--start submenu -->
-                            <ul>
-                                <li><a href="../../html/mail/inbox.html" ><span class="title">Inbox</span></a></li>
-                                <li><a href="../../html/mail/compose.html" ><span class="title">Compose</span></a></li>
-                                <li><a href="../../html/mail/reply.html" ><span class="title">Reply</span></a></li>
-                                <li><a href="../../html/mail/message.html" ><span class="title">View message</span></a></li>
-                            </ul><!--end /submenu -->
-                        </li><!--end /menu-li -->
+                        </li>
+                        <!--end /menu-li -->
                         <!-- END EMAIL -->
                     </ul><!--end .main-menu -->
                     <!-- END MAIN MENU -->
 
                     <div class="menubar-foot-panel">
                         <small class="no-linebreak hidden-folded">
-                            <span class="opacity-75">Copyright &copy; 2014</span> <strong>CodeCovers</strong>
+                            <span class="opacity-75">Copyright &copy; 2015</span> <strong>Rose Consultores</strong>
                         </small>
                     </div>
                 </div><!--end .menubar-scroll-panel-->

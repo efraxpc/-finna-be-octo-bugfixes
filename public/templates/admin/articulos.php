@@ -3,15 +3,7 @@
         <!-- Barrita de buscador -->
         <div class="col-md-12">
             <div class="scroll-area" data-spy="scroll" data-offset="0">
-                <div class="section-body">
-                    <div class="col-lg-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="buscar();" placeholder="Buscar por...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Ir!</button>
-                            </span>
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->                   
+                <div class="section-body">               
                     <table class="table table-hover">
                         <thead>
                             <tr>

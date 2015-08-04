@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app = 'appAdmin'>
+<html lang="en" data-ng-app = 'appAdmin' ng-controller="CrudController">
     <head>
         <title>.::Admin::.</title>
 
@@ -93,6 +93,15 @@
                     <div class="section-body">
                         <div class="row">
                             <!-- BEGIN SITE ACTIVITY -->
+                            <div class="col-lg-3" ng-if="bMostrarBuscador == 1" >
+                               {{bMostrarBuscador}}
+                                <div class="input-group" >
+                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="buscar();" placeholder="Buscar por...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Ir!</button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->    
                             <div ng-view></div>
 
                             <!-- END SITE ACTIVITY -->
@@ -119,13 +128,13 @@
                 <div class="menubar-scroll-panel">
 
                     <!-- BEGIN MAIN MENU -->
-                    <ul id="main-menu" class="gui-controls">
+                    <ul id="main-menu" class="gui-controls" >
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
                             <a ng-href="#inicio" class="active">
                                 <div class="gui-icon"><i class="md md-home"></i></div>
-                                <span class="title"><p>Panel de Control</p></span>
+                                <span class="title" ng-click="ocultarBuscador();"><p>Panel de Control</p></span>
                             </a>
                         </li><!--end /menu-li -->
                         <!-- END DASHBOARD -->
@@ -134,7 +143,7 @@
                         <li>
                             <a ng-href="#articulos">
                                 <div class="gui-icon"><i class="md md-web"></i></div>
-                                <span class="title"><p>Articulo</p></span>
+                                <span class="title" ng-click="mostrarBuscador();"><p>Articulo</p></span>
                             </a>
                         </li>
                         <!--end /menu-li -->

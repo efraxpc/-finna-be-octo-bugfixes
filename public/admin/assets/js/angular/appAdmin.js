@@ -4,15 +4,6 @@ var app = angular.module('appAdmin',["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
 
-    // route for the home page
-    /*            .when('/categoria/:id_categoria/caracteristica/:id_caracteristica', {
-            templateUrl : 'templates/caracteristica.php',
-            controller  : 'InicioController'
-        })
-            .when('/categoria/:id_categoria', {
-            templateUrl : 'templates/categoria.php',
-            controller  : 'InicioController'
-        })*/
         .when('/articulos', {
         templateUrl : 'templates/admin/articulos.php',
         controller  : 'CrudController'
@@ -27,7 +18,24 @@ app.config(function($routeProvider) {
 });
 
 app.controller('CrudController', function($scope,$http) {
+    /**
+     * Ocultar el buscador de articulos
+     */
+    $scope.ocultarBuscador = function(){
+        $scope.bMostrarBuscador = false;
+    }
 
+    /**
+     * Mostrar el buscador de articulos
+     */
+    $scope.mostrarBuscador = function(){
+        //$scope.bMostrarBuscador = true;
+        $scope.bMostrarBuscador = true;
+        console.log('estoy mostrando un buscador');
+    }
+    /**
+     * Ajax para obtener todos los articulos ordenados por antiguedad
+     */
     $scope.obtenerArticulosSinPaginar = function() {
         $http.get('api/obtener/articulos/sin/paginacion').
         success(function(data, status, headers, config) {

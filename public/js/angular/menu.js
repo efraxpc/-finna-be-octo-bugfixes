@@ -11,6 +11,7 @@
         error(function(data, status, headers, config) {
             // log error
         });
+        /*
         //ajax obtener caracteristicas
         $http.get('api/obtener/caracteristicas/menu/home').
         success(function(data, status, headers, config) {
@@ -20,6 +21,7 @@
         error(function(data, status, headers, config) {
             // log error
         });
+        */
     }); 
 
     app.controller('ClickMenuController', function($scope, $routeParams) {

@@ -32,7 +32,7 @@
             var url = 'api/contents/articulos?page='+this.page;
 
             $http.get(url).success(function(oDatos){
-                //console.log(oDatos.data);
+                console.log(oDatos.data);
                 for(var i = 0; i < oDatos.data.length; i++ ){
                     this.items.push(oDatos.data[i]);
                 }

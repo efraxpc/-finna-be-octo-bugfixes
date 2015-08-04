@@ -39,12 +39,8 @@
                         <div class="mainmenu pull-left" ng-controller="MenuCategoriasController">
                             <ul class="nav navbar-nav collapse navbar-collapse" >
                                 <li><a href="#inicio" class="active" ng-hide="mostrar_productos == false" ng-click="esconder_inicio()">Inicio</a></li>
-                                <li class="dropdown" ng-repeat="categoria in categorias"><a ng-click="mostrar_inicio()" ng-href="#categoria/{{categoria.id}}">{{categoria.nombre}}<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li ng-repeat="caracteristica in caracteristicas" ng-click="mostrar_inicio()" ng-if="categoria.nombre == caracteristica.nombre_categoria">
-                                            <a ng-href="#categoria/{{categoria.id}}/caracteristica/{{caracteristica.id_valor}}" ng-click="primerMetodo()">{{caracteristica.valor}}</a>
-                                        </li>
-                                    </ul>
+                                <li class="dropdown" ng-repeat="categoria in categorias"><a ng-click="mostrar_inicio()" ng-href="#categoria/{{categoria.id}}">{{categoria.nombre}}</a>
+
                                 </li>                                
                                 <!--                                <li><a href="contact-us.html"></a></li>-->
                             </ul>
@@ -62,14 +58,13 @@
             </div>
         </div><!--/header-bottom-->
         <!--        seccion para colocar espacio responsive, segun plantilla-->
-        <section id="slider"><!--slider-->
-            <div class="container"></div>
-        </section><!--/slider-->               
-        <section id="advertisement">
+<!--        
+           <section id="advertisement">
             <div class="container">
                 <img src="images/shop/advertisement.jpg" alt="" />
             </div>
         </section>
+        -->
         <section>
             <div class="container">
                 <div class="row">

@@ -37,7 +37,7 @@
                         <div class="productinfo text-center">
                             <img ng-src="{{articulo.archivo}}" id="imagen_{{$index}}"/>
                             <h2>{{articulo.precio}} S/.</h2>
-                            <p>{{articulo.descripcion | limitTo: 73}}</p>
+                            <p>{{articulo.descripcion | limitTo: 65}}</p>
                         </div>
                     </div>
                     <div class="choose">

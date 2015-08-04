@@ -14,7 +14,7 @@ class PaginacionController extends BaseController {
         $oElementosPaginacion = $articulo->Obtener_todos_paginacion();
 
         // Get pagination information and slice the results.
-        $iElementpsPorPagina = 3;
+        $iElementpsPorPagina = 4;
         $iTotalElementosPaginacion = count($oElementosPaginacion);
         $start = (Paginator::getCurrentPage() - 1) * $iElementpsPorPagina;
         $sliced = array_slice($oElementosPaginacion, $start, $iElementpsPorPagina);
@@ -80,8 +80,8 @@ class PaginacionController extends BaseController {
      */
     public function generar_paginacion_articulos_segun_tag(){
         $sEntrada = Input::get('sEntrada');
-        $oArticuloCaracteristicaValorCategoriaTag = new ArticuloCaracteristicaValorCategoriaTag();
-        $oElementosPaginacion = $oArticuloCaracteristicaValorCategoriaTag->Obtener_todos_segun_tag($sEntrada);
+        $oArticuloCaracteristicaValorCategoria = new ArticuloCaracteristicaValorCategoria();
+        $oElementosPaginacion = $oArticuloCaracteristicaValorCategoria->Obtener_todos_segun_tag($sEntrada);
         //dd($oElementosPaginacion);die;
         // Get pagination information and slice the results.
         $iElementpsPorPagina = 4;

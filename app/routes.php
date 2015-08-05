@@ -35,6 +35,8 @@ Route::get('administracion', array('as' => 'mostrar_admin','uses' 	=>  'PaginaCo
 
 Route::get('/api/obtener/articulos/sin/paginacion', array('as' => 'api_obtener_articulos_sin_paginacion','uses' =>  'ElementoController@obtener_articulos_sin_paginacion'));
 
+Route::post('/api/obtener/articulos/buscador/backend', array('as' => 'api_obtener_articulos_buscador_backend','uses' =>  'ElementoController@api_obtener_articulos_buscador_backend'));
+
 
 
 /*

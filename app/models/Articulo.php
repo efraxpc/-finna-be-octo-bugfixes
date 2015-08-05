@@ -31,12 +31,20 @@ class Articulo extends Eloquent{
     public function Obtener_todos_segun_categoria($iIdCategoria){
         return DB::select('CALL articulo_Obtener_todos_segun_categoria(?)',array($iIdCategoria));
     }
-    
+
     /**
      * Obtiene todos los articulos en bruto
      * @return object
      */
     public function Obtener_todos_sin_paginacion(){
         return DB::select('CALL articulo_Obtener_todos()');
+    }
+
+    /**
+     * Obtiene todos los articulos segun buscador en backend
+     * @return object
+     */
+    public function Obtener_articulos_buscador_backend($sTextoBuscador){
+        return DB::select('CALL articulo_Obtener_segun_buscador_backend(?)',array($sTextoBuscador));
     }
 }

@@ -1,4 +1,4 @@
-<div class="card" ng-init="obtenerArticulosSinPaginar();">
+<div class="card" >
     <div class="row">
         <!-- Barrita de buscador -->
         <div class="col-md-12">

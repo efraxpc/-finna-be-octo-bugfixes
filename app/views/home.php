@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-sm-3"  ng-controller="BarraBuscadorController">
                         <div class="search_box pull-right">
-                            <input type="text" ng-model="sValorBusqueda" ng-change="buscar();" placeholder="Buscar"/>
+                            <input type="text" ng-model="sValorBusqueda" ng-change="buscar();" placeholder="Buscar por..."/>
                         </div>
                     </div>
                 </div>
@@ -81,6 +81,7 @@
     <script src="js/main.js"></script>
     <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script src="js/infinite-scroll.min.js"></script>
     <script src="js/angular/app.js"></script>  
     <script src="js/angular/paginacion.js"></script>  

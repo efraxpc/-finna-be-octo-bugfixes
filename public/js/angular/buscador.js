@@ -5,7 +5,7 @@
         $scope.buscar = function() {
             $location.path('/buscar/'+ $scope.sValorBusqueda);
             $scope.nextPage = 'buscador';
-            $scope.articulos_segun_tag = new Articulos_segun_tag();
+            //$scope.articulos_segun_tag = new Articulos_segun_tag();
             //console.log($scope.articulos_segun_tag);
             //console.log($scope.sValorBusqueda);
         }; 

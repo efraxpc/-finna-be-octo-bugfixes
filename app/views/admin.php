@@ -33,7 +33,7 @@
 <script type="text/javascript" src="admin/assets/js/libs/utils/respond.min.js?1403934956"></script>
 <![endif]-->
     </head>
-    <body class="menubar-hoverable header-fixed ">
+    <body class="menubar-hoverable header-fixed " >
         <!-- BEGIN HEADER-->
         <header id="header" >
             <div class="headerbar">
@@ -42,8 +42,8 @@
                     <ul class="header-nav header-nav-options">
                         <li class="header-nav-brand" >
                             <div class="brand-holder">
-                                <a href="../../html/dashboards/dashboard.html">
-                                    <span class="text-lg text-bold text-primary">Proyecto Catalogo</span>
+                                <a ng-href="#inicio">
+                                    <span class="text-lg text-bold text-primary" >Proyecto Catalogo</span>
                                 </a>
                             </div>
                         </li>
@@ -61,7 +61,7 @@
                             <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
                                 <img src="admin/assets/img/avatar1.jpg?1403934956" alt="" />
                                 <span class="profile-info">
-                                    Daniel Johnson
+                                    John vivas
                                     <small>Administrator</small>
                                 </span>
                             </a>
@@ -93,17 +93,14 @@
                     <div class="section-body">
                         <div class="row">
                             <!-- BEGIN SITE ACTIVITY -->
-                            <div class="col-lg-3" ng-if="bMostrarBuscador == 1" >
-                               {{bMostrarBuscador}}
+                            <div class="col-lg-6" ng-if="bMostrarBuscador==true" ng-controller="BarraBuscadorController">
                                 <div class="input-group" >
-                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="buscar();" placeholder="Buscar por...">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">Ir!</button>
-                                    </span>
-                                </div><!-- /input-group -->
-                            </div><!-- /.col-lg-6 -->    
-                            <div ng-view></div>
-
+                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">
+                                </div>
+                            </div>
+                            <!-- /.col-lg-6 -->    
+                            <!--                            <div ng-view></div>-->
+                            <div ui-view></div>
                             <!-- END SITE ACTIVITY -->
                         </div><!--end .row -->
                     </div><!--end .section-body -->
@@ -132,8 +129,8 @@
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
-                            <a ng-href="#inicio" class="active">
-                                <div class="gui-icon"><i class="md md-home"></i></div>
+                            <a ui-sref="index" class="active" ng-click="ocultarBuscador();">
+                                <div class="gui-icon"><i class="md md-home" ng-click="ocultarBuscador();"></i></div>
                                 <span class="title" ng-click="ocultarBuscador();"><p>Panel de Control</p></span>
                             </a>
                         </li><!--end /menu-li -->
@@ -141,8 +138,8 @@
 
                         <!-- BEGIN EMAIL -->
                         <li>
-                            <a ng-href="#articulos">
-                                <div class="gui-icon"><i class="md md-web"></i></div>
+                            <a ui-sref="articulos" ng-click="mostrarBuscador();">
+                                <div class="gui-icon"><i class="md md-web" ng-click="mostrarBuscador();"></i></div>
                                 <span class="title" ng-click="mostrarBuscador();"><p>Articulo</p></span>
                             </a>
                         </li>
@@ -164,6 +161,7 @@
 
         <!-- BEGIN JAVASCRIPT -->
         <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
         <script src="admin/assets/js/angular/appAdmin.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>

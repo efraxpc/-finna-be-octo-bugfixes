@@ -1,4 +1,4 @@
-<div class="card ">
+<div class="card">
     <div class="row">
         <!-- Barrita de buscador -->
         <div class="col-md-12">
@@ -12,7 +12,6 @@
                     <div id="flot-visitors" class="flot height-7" data-title="Activity entry" data-color="#7dd8d2,#0aa89e"></div>
                 </div><!--end .card-body -->
             </div><!--end .col -->
-
         </div>
     </div>
 </div>

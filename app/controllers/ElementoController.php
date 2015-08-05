@@ -15,16 +15,17 @@ class ElementoController extends BaseController {
         $oResultado = $oArticulo->Obtener_todos_sin_paginacion();
         return Response::json(array('oResultado' => $oResultado));
     }
-
+    
     /**
-     * Devuelve todas las caracteristicas de acuerdo a las categorias en el menu principal home
+     * Obtiene todos los articulos segun buscador en backend
      * @return callback
      */
-    /*
-    public function obtener_caracteristcas_menu_principal_home(){
-        $oArticuloCaracteristicaValorCategoria = new ArticuloCaracteristicaValorCategoria();
-        $oResultado = $oArticuloCaracteristicaValorCategoria->Obtener_todos_segun_menu();
+    public function api_obtener_articulos_buscador_backend(){
+        $sTextoBuscador = Input::get('sTextoBuscador');
+        //dd($sTextoBuscador);die;
+        $oArticulo = new Articulo();
+        $oResultado = $oArticulo->Obtener_articulos_buscador_backend($sTextoBuscador);
+        //dd($oResultado);die;
         return Response::json(array('oResultado' => $oResultado));
     }
-    */
 }

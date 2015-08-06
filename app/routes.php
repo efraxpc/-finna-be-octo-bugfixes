@@ -35,7 +35,10 @@ Route::get('administracion', array('as' => 'mostrar_admin','uses' 	=>  'PaginaCo
 
 Route::get('/api/obtener/articulos/sin/paginacion', array('as' => 'api_obtener_articulos_sin_paginacion','uses' =>  'ElementoController@obtener_articulos_sin_paginacion'));
 
-Route::post('/api/obtener/articulos/buscador/backend', array('as' => 'api_obtener_articulos_buscador_backend','uses' =>  'ElementoController@api_obtener_articulos_buscador_backend'));
+Route::post('/api/obtener/articulos/buscador/backend', array('as' => 'api_obtener_articulos_buscador_backend','uses' =>  'ElementoController@obtener_articulos_buscador_backend'));
+
+Route::post('/api/obtener/datos/articulos/backend', array('as' => 'api_obtener_datos_articulos_backend','uses' =>  'ElementoController@obtener_datos_articulo_backend'));
+
 
 
 

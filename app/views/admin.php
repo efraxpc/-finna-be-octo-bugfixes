@@ -20,7 +20,7 @@
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/morris/morris.core.css?1420463396" />
         <style type="text/css">
             .scroll-area {
-                height: 250px;
+                height: 600px;
                 position: relative;
                 overflow: auto;
             }

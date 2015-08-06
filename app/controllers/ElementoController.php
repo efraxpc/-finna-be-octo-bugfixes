@@ -15,17 +15,26 @@ class ElementoController extends BaseController {
         $oResultado = $oArticulo->Obtener_todos_sin_paginacion();
         return Response::json(array('oResultado' => $oResultado));
     }
-    
+
     /**
      * Obtiene todos los articulos segun buscador en backend
      * @return callback
      */
-    public function api_obtener_articulos_buscador_backend(){
+    public function obtener_articulos_buscador_backend(){
         $sTextoBuscador = Input::get('sTextoBuscador');
-        //dd($sTextoBuscador);die;
         $oArticulo = new Articulo();
         $oResultado = $oArticulo->Obtener_articulos_buscador_backend($sTextoBuscador);
-        //dd($oResultado);die;
         return Response::json(array('oResultado' => $oResultado));
+    }
+
+    /**
+     * Obtener datos de un articulo dato
+     * @return callback
+     */
+    public function obtener_datos_articulo_backend(){
+        $sIdArticulo = Input::get('sIdArticulo');
+        $oArticulo = new Articulo();
+        $oResultado = $oArticulo->Obtener_datos_articulo_backend($sIdArticulo);
+        return Response::json(array('oResultado' => $oResultado[0]));
     }
 }

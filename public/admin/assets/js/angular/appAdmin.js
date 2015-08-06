@@ -31,7 +31,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: "/",
         templateUrl: "templates/admin/index.php"
     })
-/*        .state('state1.list', {
+    /*        .state('state1.list', {
         url: "/list",
         templateUrl: "partials/state1.list.html",
         controller: function($scope) {
@@ -42,6 +42,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: "/articulos",
         templateUrl: "templates/admin/articulos.php"
     })
+        .state('articulos-editar', {
+        url: "/editar-articulo/:id_articulo",
+        templateUrl: "templates/admin/articulos_editar.php",
+        controller: "ProcesarEditarController"
+    })
         .state('buscar', {
         url: "/buscar/:textoBuscador",
         templateUrl: "templates/admin/resultado_buscador.php",
@@ -49,7 +54,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     });
 });
 
-app.controller('CrudController', function($scope,$http,$state,$stateParams,$location) {
+app.controller('CrudController', function($scope,$http,$state,$stateParams,$location,$location) {
     /**
      * Ocultar el buscador de articulos
      */
@@ -61,7 +66,6 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Mostrar el buscador de articulos
      */
     $scope.mostrarBuscador = function(){
-        //$scope.bMostrarBuscador = true;
         $scope.bMostrarBuscador = true;
         //console.log('estoy mostrando un buscador');
     }
@@ -79,6 +83,33 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             // log error
         });
     }
+
+    $scope.editar = function(id_articulo){
+        $location.path('/editar-articulo/'+id_articulo);
+    }
+
+});
+app.controller('ProcesarEditarController', function($http,$scope,$location,$stateParams){
+    $http.post('api/obtener/datos/articulos/backend',{sIdArticulo : $stateParams.id_articulo}).
+    success(function(data, status, headers, config) {
+        $scope.articulo = data.oResultado;
+        $scope.articulo = {titulo: $scope.articulo.titulo
+                           ,descripcion: $scope.articulo.descripcion
+                           ,activo : $scope.articulo.activo};
+
+        console.log($scope.articulo.activo);
+    }).
+    error(function(data, status, headers, config) {
+        // log error
+    });
+
+
+    $scope.set = function(titulo,descripcion,activo) {
+        this.articulo.titulo = titulo;
+        this.articulo.descripcion = descripcion;
+        this.articulo.activo = activo;
+
+    }
 });
 
 app.controller('BuscarController', function($http,$scope,$location,$stateParams){
@@ -93,7 +124,7 @@ app.controller('BuscarController', function($http,$scope,$location,$stateParams)
     error(function(data, status, headers, config) {
         // log error
     });
-    console.log('buscando...');
+    //console.log('buscando...');
 });
 
 app.controller('BarraBuscadorController', function($scope,$location){

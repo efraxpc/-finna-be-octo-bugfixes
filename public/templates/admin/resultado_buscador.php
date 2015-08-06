@@ -19,8 +19,7 @@
                                 <td>{{articulo.titulo}}</td>
                                 <td>{{articulo.precio}} S/.</td>
                                 <td class="text-right">
-                                    <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button>
-                                    <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Copy row"><i class="fa fa-copy"></i></button>
+                                    <a class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit row" ng-click="editar(articulo.id);"><i class="fa fa-pencil" ></i></a>
                                     <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>

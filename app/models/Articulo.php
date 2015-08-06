@@ -47,4 +47,12 @@ class Articulo extends Eloquent{
     public function Obtener_articulos_buscador_backend($sTextoBuscador){
         return DB::select('CALL articulo_Obtener_segun_buscador_backend(?)',array($sTextoBuscador));
     }
+
+    /**
+     * Obtiene datos de un articulo dado
+     * @return object
+     */
+    public function Obtener_datos_articulo_backend($sIdArticulo){
+        return DB::select('CALL articulo_Obtener_datos_articulo_backend(?)',array($sIdArticulo));
+    }
 }

@@ -1,58 +1,109 @@
-<div class="card" ng-init="ocultarBuscador();">
-    <div class="row">
+<div class="card" ng-init="ocultarBuscador();" >
+    <div class="row" ng-init="obtenerPreciosArticulo();">
         <div class="col-md-12">
             <!-- Formulario -->
             <div class="col-lg-offset-2 col-md-8 col-sm-6">
-                <div class="card-body">
+                <div class="card-body" ng-controller="obtenerChecksCaracteristicasController">
                     <form class="form">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" ng-model="articulo.titulo">
                             <label for="regular1">Titulo</label>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="password1">
-                            <label for="password1">Password</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="placeholder1" placeholder="Placeholder">
-                            <label for="placeholder1">Placeholder</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="help1">
-                            <label for="help1">Input with help text</label>
-                            <p class="help-block">Help text</p>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tooltip1" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Example input tooltip text here">
-                            <label for="help1">Input with tooltip</label>
-                        </div>
-                        <div class="form-group">
-                            <select id="select1" name="select1" class="form-control">
-                                <option value="">&nbsp;</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                                <option value="60">60</option>
-                                <option value="70">70</option>
-                            </select>
-                            <label for="select1">Select</label>
-                        </div>
-                        <div class="form-group">
                             <textarea name="textarea1" id="textarea1" class="form-control" rows="3" placeholder="" ng-model="articulo.descripcion"></textarea>
                             <label for="textarea1">Descipcion</label>
                         </div>
                         <div class="form-group">
-                            <label>Activo</label>
-                            <div class="card-body">
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn ink-reaction btn-primary">
-                                        <input type="radio" name="options" id="option1" ng-checked="articulo.activo == 1" ng-class="{active: (articulo.activo == 1)}"> Si
-                                    </label>
-                                    <label class="btn ink-reaction btn-primary">
-                                        <input type="radio" name="options" id="option3" ng-checked="articulo.activo == 0" ng-class="{warning: (articulo.activo == 1)}"> No
-                                    </label>
-                                </div><!--end .btn-group -->
-                            </div><!--end .card-body -->
+                            <select id="select1" name="select1" class="form-control">
+                                <option value="{{articulo.id_categoria}}" selected>{{articulo.nombre_categoria}}</option>
+                                <option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+                            </select>
+                            <label for="select1">Categoria</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="scroll-area-historico-precios" data-spy="scroll" data-offset="0">
+                                <div class="section-body">   
+                                    <table style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Precio</th>
+                                                <th>Valido desde</th> 
+                                                <th>Valido hasta</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="precio_articulo in precios_articulos">
+                                                <td>{{precio_articulo.precio}} S/.</td>
+                                                <td>{{precio_articulo.valido_desde}}</td> 
+                                                <td>{{precio_articulo.valido_hasta}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <label for="password1">Historico de precios</label>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox checkbox-styled tile-text">
+                                <label>
+                                    <input type="checkbox" ng-model="articulo.activo" ng-true-value="1" ng-false-value="0">
+                                    <span>
+                                        <small>Habilitado</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div ng-controller="BuscadorArticulosController">
+                                <div mass-autocomplete>
+                                    <input ng-model="dirty.value" id="sValorCaracteristica" class="form-control" mass-autocomplete-item="autocomplete_options" ng-change="foo();" valor-categoria = {{articulo.id_categoria}}>
+                                </div>
+                            </div>
+                            <label>Buscar caracteristicas por...</label>
+                        </div>
+
+                        <div class="form-group" >
+                            <div class="checkbox checkbox-styled tile-text" ng-repeat="subscription in entities">
+                                <label>
+                                    <input class="input-check" type="checkbox" ng-model="subscription.checked" ng-click="updateSelection($index, entities)" id_caracteristica={{subscription.id}} />
+                                    <span>
+                                        <small>{{subscription.nombre}}</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-block ink-reaction btn-flat btn-accent-light" ng-click="agregarValorCaracteristica()">Agregar</button>
+                            </div>
+                        </div>
+
+                        <div class="florm-group" ng-init="cargarCaracterislicasDeArticulo();">
+                            <section class="style-default-bright">
+                                <div class="section-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo</th>
+                                                <th>Valor</th>
+                                                <th class="text-right">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="caracteristica_tabla in caracteristicas_tabla">
+                                                <td>{{caracteristica_tabla.nombre}}</td>
+                                                <td>{{caracteristica_tabla.valor}}</td>
+                                                <td class="text-right">
+                                                    <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--end .section-body -->
+                            </section>
+
                         </div>
                     </form>
                 </div><!--end .card-body -->
@@ -60,7 +111,3 @@
         </div>
     </div>
 </div>
-
-
-
-

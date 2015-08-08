@@ -18,13 +18,36 @@
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/rickshaw/rickshaw.css?1422792967" />
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/morris/morris.core.css?1420463396" />
+        <link type="text/css" rel="stylesheet" href="libs/mass-autocomplete-master/massautocomplete.theme.css" />
+        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
         <style type="text/css">
             .scroll-area {
                 height: 600px;
                 position: relative;
                 overflow: auto;
             }
+            .scroll-area-historico-precios{
+                height: 100px;
+                position: relative;
+                overflow: auto;
+            }
+            [mass-autocomplete] {
+                position: relative;
+            }
+
+            .ac-container {
+                position: absolute;
+                top: 100% !important;
+                left: 0 !important;
+                width: 100% !important;
+            }
         </style>
+        <!--        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+<script src="js/angular/admin/appAdmin.js"></script>-->
         <!-- END STYLESHEETS -->
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -160,10 +183,10 @@
         <!-- END BASE -->
 
         <!-- BEGIN JAVASCRIPT -->
-        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+        <!--        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>-->
+
         <script src="admin/assets/js/angular/appAdmin.js"></script>
+        <script src="libs/mass-autocomplete-master/massautocomplete.min.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
         <script src="admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>

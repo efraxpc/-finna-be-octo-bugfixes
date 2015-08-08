@@ -33,14 +33,23 @@ Route::post('/api/obtener/caracteristicas/filtro',array('as'=>'api_obtener_categ
 
 Route::get('administracion', array('as' => 'mostrar_admin','uses' 	=>  'PaginaController@mostrar_panel_admin'));
 
-Route::get('/api/obtener/articulos/sin/paginacion', array('as' => 'api_obtener_articulos_sin_paginacion','uses' =>  'ElementoController@obtener_articulos_sin_paginacion'));
+Route::get('/api-obtener-articulos-sin-paginacion', array('as' => 'api_obtener_articulos_sin_paginacion','uses' =>  'ElementoController@obtener_articulos_sin_paginacion'));
 
-Route::post('/api/obtener/articulos/buscador/backend', array('as' => 'api_obtener_articulos_buscador_backend','uses' =>  'ElementoController@obtener_articulos_buscador_backend'));
+Route::post('/api-obtener-articulos-buscador-backend', array('as' => 'api_obtener_articulos_buscador_backend','uses' =>  'ElementoController@obtener_articulos_buscador_backend'));
 
-Route::post('/api/obtener/datos/articulos/backend', array('as' => 'api_obtener_datos_articulos_backend','uses' =>  'ElementoController@obtener_datos_articulo_backend'));
+Route::post('/api-obtener-datos-articulos-backend', array('as' => 'api_obtener_datos_articulos_backend','uses' =>  'ElementoController@obtener_datos_articulo_backend'));
 
+Route::post('/api-obtener-categorias-condicionado-backend', array('as' => 'api_obtener_categorias_condicionado_backend','uses' =>  'ElementoController@obtener_categorias_condicionado_backend'));
 
+Route::post('/api-obtener-historico-precios-segun-articulo', array('as' => 'api_obtener_historico_precios_segun_articulo','uses' =>  'ElementoController@obtener_historico_precios_segun_articulo'));
 
+Route::post('/api-obtener-caracteristicas-segun-tag', array('as' => 'api_obtener_caracteristicas_segun_tag','uses' =>  'ElementoController@obtener_caracteristicas_segun_tag'));
+
+Route::post('/api-setear-caracterisricas-articulos-backend', array('as' => 'api_setear_caracterisricas_articulos_backend','uses' =>  'ElementoController@setear_caracterisricas_articulos_backend'));
+
+Route::post('/api-obtener-valores-caracterisricas-segun-categoria', array('as' => 'api_obtener_valores_caracterisricas_segun_categoria_backend','uses' =>  'ElementoController@obtener_valores_caracterisricas_segun_categoria_backend'));
+
+Route::post('/api-obtener-valores-caracteristicas-articulo-backend', array('as' => 'api_obtener_valores_caracteristicas_articulo_backend','uses' =>  'ElementoController@obtener_valores_caracteristicas_articulo_backend'));
 
 /*
 Route::get('/admin2', function()

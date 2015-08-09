@@ -1,4 +1,4 @@
-var app = angular.module('appAdmin',["ui.router","ngSanitize","MassAutoComplete"]);
+var app = angular.module('appAdmin',["ui.router","ngSanitize","MassAutoComplete","growlNotifications"]);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     //
@@ -80,7 +80,8 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Agregar una caracteristica de un articulo
      */
     $scope.agregarValorCaracteristica = function(){
-
+        $scope.tipo = false;
+        $scope.tipo = null;
         var sCaracteristica = document.getElementById('sValorCaracteristica').value;
         $scope.sIdCategoria = document.getElementById('sValorCaracteristica').getAttribute("valor-categoria");
         var oInputCheck = document.getElementsByClassName("input-check");
@@ -95,15 +96,20 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         $http.post('api-setear-caracterisricas-articulos-backend',{sValorCaracteristica: sCaracteristica, sIdCategoria : $scope.sIdCategoria, sIdCaracteristica : $scope.sIdCaracteristica, sIdArticulo:  $stateParams.id_articulo}).
         success(function(data, status, headers, config) {
             var iResultado = data.oResultado[0].tupla;
+            $scope.tipo = data.oResultado[0].tipo;
+            $scope.mensaje = data.oResultado[0].mensajes;
             //caso haya seteado en la bd
             if (iResultado === 1){
                 //recargar pagina
-                $state.go($state.current, {}, {reload: true});
+                $state.go($state.current, {}, {reload: true});                
+            }else{
+                $scope.error = true;
             }
         }).
         error(function(data, status, headers, config) {
             // log error
         });
+        $scope.sIdCaracteristica = "";
     }
 
     /**
@@ -124,7 +130,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Obtiene todas las caracteristicas de una categoria, aplicada al mentenimeinto de articulos
      */
 // correjir, se necesita obtener absolutamente todas las caracteristicas para mostrarlas en los checks y cambiar nombre
-app.controller('obtenerChecksCaracteristicasController', function($scope,$http,$stateParams) {
+app.controller('ObtenerChecksCaracteristicasController', function($scope,$http,$stateParams) {
     var sIdArticulo = $stateParams.id_articulo;
     //Ajax obtener valores de las caracteristicas a ser seleccionadas (cheks)
     $http.post('api-obtener-valores-caracterisricas-segun-categoria',{sIdArticulo:sIdArticulo}).

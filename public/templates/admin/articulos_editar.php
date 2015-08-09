@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <!-- Formulario -->
             <div class="col-lg-offset-2 col-md-8 col-sm-6">
-                <div class="card-body" ng-controller="obtenerChecksCaracteristicasController">
+                <div class="card-body" ng-controller="ObtenerChecksCaracteristicasController">
                     <form class="form">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" ng-model="articulo.titulo">
@@ -20,6 +20,9 @@
                             </select>
                             <label for="select1">Categoria</label>
                         </div>
+                        <growl-notification ng-if="tipo == 1">
+                            {{mensaje}}
+                        </growl-notification>
                         <div class="form-group">
                             <div class="scroll-area-historico-precios" data-spy="scroll" data-offset="0">
                                 <div class="section-body">   
@@ -55,6 +58,8 @@
                             </div>
                         </div>
 
+
+                        <!-- Button to display second notification -->
                         <div class="form-group">
                             <div ng-controller="BuscadorArticulosController">
                                 <div mass-autocomplete>
@@ -63,7 +68,6 @@
                             </div>
                             <label>Buscar caracteristicas por...</label>
                         </div>
-
                         <div class="form-group" >
                             <div class="checkbox checkbox-styled tile-text" ng-repeat="subscription in entities">
                                 <label>

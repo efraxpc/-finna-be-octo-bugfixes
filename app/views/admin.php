@@ -2,7 +2,6 @@
 <html lang="en" data-ng-app = 'appAdmin' ng-controller="CrudController">
     <head>
         <title>.::Admin::.</title>
-
         <!-- BEGIN META -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +21,8 @@
         <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
         <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-animate.min.js"></script>
+        <script src="libs/angular-growl-notifications/angular-growl-notifications.min.js"></script>
         <style type="text/css">
             .scroll-area {
                 height: 600px;
@@ -44,6 +45,24 @@
                 width: 100% !important;
             }
         </style>
+        <style>
+            growl-notifications {
+                position: fixed;
+                top: 150px;
+                right: 10px;
+                z-index: 1000;
+            }
+
+            growl-notifications growl-notification {
+                background: rgba(215, 44, 44, 0.9);
+                color: white;
+                padding: 15px 30px;
+                width: 200px;
+                display: block;
+                border-radius: 5px;
+                margin-top: 15px;
+            }
+        </style>
         <!--        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
@@ -57,6 +76,8 @@
 <![endif]-->
     </head>
     <body class="menubar-hoverable header-fixed " >
+        <growl-notifications></growl-notifications>
+
         <!-- BEGIN HEADER-->
         <header id="header" >
             <div class="headerbar">
@@ -124,13 +145,15 @@
                             <!-- /.col-lg-6 -->    
                             <!--                            <div ng-view></div>-->
                             <div ui-view></div>
+                            <growl-notification ng-if="showGrowl">
+                                Both fade in and out are animated
+                            </growl-notification>
                             <!-- END SITE ACTIVITY -->
                         </div><!--end .row -->
                     </div><!--end .section-body -->
                 </section>
             </div><!--end #content-->
             <!-- END CONTENT -->
-
             <!-- BEGIN MENUBAR-->
             <div id="menubar" class="menubar-inverse ">
                 <div class="menubar-fixed-panel">
@@ -146,7 +169,7 @@
                     </div>
                 </div>
                 <div class="menubar-scroll-panel">
-
+                    <!-- Notification will automatically disappear after 10 seconds -->
                     <!-- BEGIN MAIN MENU -->
                     <ul id="main-menu" class="gui-controls" >
 

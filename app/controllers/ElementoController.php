@@ -35,7 +35,6 @@ class ElementoController extends BaseController {
         $sIdArticulo = Input::get('sIdArticulo');
         $oArticulo = new Articulo();
         $oResultado = $oArticulo->Obtener_datos_articulo_backend($sIdArticulo);
-        //dd($oResultado);die;
         return Response::json(array('oResultado' => $oResultado[0]));
     }
 
@@ -58,7 +57,6 @@ class ElementoController extends BaseController {
         $sIdArticulo = Input::get('sIdArticulo');
         $oHistoricoPrecios = new HistoricoPrecios();
         $oResultado = $oHistoricoPrecios->Obtener_segun_articulo($sIdArticulo);
-        //dd($oResultado);die;
         return Response::json(array('oResultado' => $oResultado));
     }
 
@@ -82,7 +80,6 @@ class ElementoController extends BaseController {
         $sIdCategoria = Input::get('sIdCategoria');
         $sIdCaracteristica = Input::get('sIdCaracteristica');
         $sIdArticulo = Input::get('sIdArticulo');
-        //dd($sIdCaracteristica);die;
         $oCategoriaCaracteristica = new CategoriaCaracteristica();
         $oResultado = $oCategoriaCaracteristica->Setear_segun_categoria($sValorCaracteristica,$sIdCategoria,$sIdCaracteristica,$sIdArticulo); 
         return Response::json(array('oResultado' => $oResultado));

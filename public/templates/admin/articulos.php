@@ -1,5 +1,8 @@
-<div class="card" ng-init="obtenerArticulosSinPaginar();">
-    <div class="row">
+<div class="row">
+    <div class="card" ng-init="obtenerArticulosSinPaginar();">
+        <div class="col-md-1">
+            <button type="button" class="btn btn-success">Agregar</button>
+        </div>
         <!-- Barrita de buscador -->
         <div class="col-md-12">
             <div class="scroll-area" data-spy="scroll" data-offset="0">

@@ -29,6 +29,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
 });
 
 app.controller('InicioController',function($scope,$state,$stateParams,$location){
+    /**
+     * Evento dar click en INICIO (pueden ser varios botones diferentes)
+     */
     $scope.IrAInicio = function(){
         $scope.bMostrarBuscador = false;
         console.log($scope.bMostrarBuscador);
@@ -90,6 +93,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      */
     $scope.agregarValorCaracteristica = function(){
         $scope.tipo = 0;
+        $scope.error = 0;
         var sCaracteristica = document.getElementById('sValorCaracteristica').value;
         $scope.sIdCategoria = document.getElementById('sValorCaracteristica').getAttribute("valor-categoria");
         var oInputCheck = document.getElementsByClassName("input-check");
@@ -135,9 +139,10 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
     }
 
     /**
-     * Ajax para agregar un articulo
+     * Click Ajax para agregar un articulo
      */
     $scope.modificarArtitulo = function(){
+        $scope.tipo = 0;
         var sTitulo = document.getElementById('titulo').value;
         var sDescripcion = document.getElementById('descripcion').value;
         var iCategoria = document.getElementById('categoria').value;
@@ -154,15 +159,6 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             var iResultado = data.oResultado[0].tupla;
             $scope.tipo = data.oResultado[0].tipo;
             $scope.mensaje = data.oResultado[0].mensajes;
-
-            //caso haya seteado en la bd
-            if (iResultado === 1){
-                //recargar pagina
-                $state.go($state.current, {}, {reload: true});                
-            }else{
-                $scope.error = true;
-            }
-            //console.log($scope.caracteristicas_tabla);
         }).
         error(function(data, status, headers, config) {
             // log error

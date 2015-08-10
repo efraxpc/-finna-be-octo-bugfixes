@@ -136,19 +136,18 @@
             <div id="content">
                 <section>
                     <div class="section-body">
+                        <!--                        <div class="row">
+<div class="col-md-4 "><button type="button" class="btn btn-block ink-reaction btn-flat btn-success">Success</button></div>
+</div>-->
                         <div class="row">
                             <!-- BEGIN SITE ACTIVITY -->
-                            <div class="col-lg-6" ng-if="bMostrarBuscador==true" ng-controller="BarraBuscadorController" ng-hide="bMostrarBuscador==true==false">
+                            <div class="col-md-11" ng-if="bMostrarBuscador==true" ng-controller="BarraBuscadorController" ng-hide="bMostrarBuscador==true==false">
                                 <div class="input-group" >
-                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">
+                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">                                
                                 </div>
                             </div>
                             <!-- /.col-lg-6 -->    
-                            <!--                            <div ng-view></div>-->
                             <div ui-view></div>
-                            <growl-notification ng-if="showGrowl">
-                                Both fade in and out are animated
-                            </growl-notification>
                             <!-- END SITE ACTIVITY -->
                         </div><!--end .row -->
                     </div><!--end .section-body -->
@@ -187,7 +186,7 @@
                         <li>
                             <a ui-sref="articulos" ng-click="mostrarBuscador();">
                                 <div class="gui-icon"><i class="md md-web" ng-click="mostrarBuscador();"></i></div>
-                                <span class="title" ng-click="mostrarBuscador();"><p>Articulo</p></span>
+                                <span class="title" ng-click="mostrarBuscador();"><p>Articulos</p></span>
                             </a>
                         </li>
                         <!--end /menu-li -->
@@ -197,7 +196,7 @@
 
                     <div class="menubar-foot-panel">
                         <small class="no-linebreak hidden-folded">
-                            <span class="opacity-75">Copyright &copy; 2015</span> <strong>Rose Consultores</strong>
+                            <span class="opacity-75">Copyright &copy; 2015</span> <strong>.:Rose Consultores:.</strong>
                         </small>
                     </div>
                 </div><!--end .menubar-scroll-panel-->

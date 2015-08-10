@@ -27,9 +27,17 @@
                                     {{mensaje}}
                                 </div>
                             </div>
-
                         </growl-notification>
                         <!-- Fin Notificacion de error-->
+                        <!-- Notificacion de satisfactoriedad-->
+                        <growl-notification ng-if="tipo == 2" ng-click="$growlNotification.remove()" style="background: rgba(81, 255, 44, 1)">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    {{mensaje}}
+                                </div>
+                            </div>
+                        </growl-notification>
+                        <!-- Fin Notificacion de satisfactoriedad-->
                         <div class="form-group">
                             <div class="scroll-area-historico-precios" data-spy="scroll" data-offset="0">
                                 <div class="section-body">   

@@ -51,6 +51,8 @@ Route::post('/api-obtener-valores-caracterisricas-segun-categoria', array('as' =
 
 Route::post('/api-obtener-valores-caracteristicas-articulo-backend', array('as' => 'api_obtener_valores_caracteristicas_articulo_backend','uses' =>  'ElementoController@obtener_valores_caracteristicas_articulo_backend'));
 
+Route::post('/api-actualizar-articulo-backend', array('as' => 'api_actualizar_articulo_backend','uses' =>  'ElementoController@actualizar_articulo_backend'));
+
 /*
 Route::get('/admin2', function()
 {

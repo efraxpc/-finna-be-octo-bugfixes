@@ -62,6 +62,7 @@
                 border-radius: 5px;
                 margin-top: 15px;
             }
+
         </style>
         <!--        <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
@@ -82,12 +83,12 @@
         <header id="header" >
             <div class="headerbar">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="headerbar-left">
+                <div class="headerbar-left" ng-controller="InicioController">
                     <ul class="header-nav header-nav-options">
                         <li class="header-nav-brand" >
                             <div class="brand-holder">
-                                <a ng-href="#inicio">
-                                    <span class="text-lg text-bold text-primary" >Proyecto Catalogo</span>
+                                <a ng-href="#inicio" ng-click="IrAInicio();">
+                                    <span class="text-lg text-bold text-primary">Proyecto Catalogo</span>
                                 </a>
                             </div>
                         </li>
@@ -137,7 +138,7 @@
                     <div class="section-body">
                         <div class="row">
                             <!-- BEGIN SITE ACTIVITY -->
-                            <div class="col-lg-6" ng-if="bMostrarBuscador==true" ng-controller="BarraBuscadorController">
+                            <div class="col-lg-6" ng-if="bMostrarBuscador==true" ng-controller="BarraBuscadorController" ng-hide="bMostrarBuscador==true==false">
                                 <div class="input-group" >
                                     <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">
                                 </div>

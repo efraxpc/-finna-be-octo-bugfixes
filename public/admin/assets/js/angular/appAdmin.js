@@ -9,7 +9,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('index', {
         url: "/",
-        templateUrl: "templates/admin/index.php"
+        templateUrl: "templates/admin/index.php",
+        controller: "InicioController"
     })
         .state('articulos', {
         url: "/articulos",
@@ -27,6 +28,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     });
 });
 
+app.controller('InicioController',function($scope,$state,$stateParams,$location){
+    $scope.IrAInicio = function(){
+        $scope.bMostrarBuscador = false;
+        console.log($scope.bMostrarBuscador);
+    }
+});
 app.controller('CrudController', function($scope,$http,$state,$stateParams,$location) {
     /**
      * Ocultar el buscador de articulos
@@ -94,7 +101,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             }
         });
         //***Ajax setear caracteristica en administracion de articulos***//
-        $http.post('api-setear-caracterisricas-articulos-backend',{sValorCaracteristica: sCaracteristica, sIdCategoria : $scope.sIdCategoria, sIdCaracteristica : $scope.sIdCaracteristica, sIdArticulo:  $stateParams.id_articulo}).
+        $http.post('api-setear-caracterisricas-articulos-backend',{sValorCaracteristica: sCaracteristica, sIdCategoria : $scope.sIdCategoria, sIdCaracteristica : $scope.sIdCaracteristica, sIdArticulo:$stateParams.id_articulo}).
         success(function(data, status, headers, config) {
             var iResultado = data.oResultado[0].tupla;
             $scope.tipo = data.oResultado[0].tipo;
@@ -134,19 +141,32 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         var sTitulo = document.getElementById('titulo').value;
         var sDescripcion = document.getElementById('descripcion').value;
         var iCategoria = document.getElementById('categoria').value;
-        //var iHabilitado = $('#habilitado').is(':checkbox');
-        var iHabilitado = document.getElementById('habilitado').value;
-
-        console.log($scope);
-        /*
-        $http.post('api-modificar-articulo-backend',{sTitulo:sTitulo,sDescripcion:sDescripcion,iCategoria:iCategoria}).
+        var sIdArticulo = $stateParams.id_articulo;
+        //saber si #habilitao esta checked o no
+        if ($('#habilitado').is(":checked")){
+            var iHabilitado = 1;
+        }else{
+            var iHabilitado = 0;
+        }
+        //Ajax para agregar un articulo
+        $http.post('api-actualizar-articulo-backend',{sIdArticulo:sIdArticulo,sTitulo:sTitulo,sDescripcion:sDescripcion,iCategoria:iCategoria,iHabilitado:iHabilitado}).
         success(function(data, status, headers, config) {
-            $scope.caracteristicas_tabla = data.oResultado;
+            var iResultado = data.oResultado[0].tupla;
+            $scope.tipo = data.oResultado[0].tipo;
+            $scope.mensaje = data.oResultado[0].mensajes;
+
+            //caso haya seteado en la bd
+            if (iResultado === 1){
+                //recargar pagina
+                $state.go($state.current, {}, {reload: true});                
+            }else{
+                $scope.error = true;
+            }
             //console.log($scope.caracteristicas_tabla);
         }).
         error(function(data, status, headers, config) {
             // log error
-        });*/
+        });
     }
 });
 /**

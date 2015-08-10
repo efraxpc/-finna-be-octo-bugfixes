@@ -107,4 +107,20 @@ class ElementoController extends BaseController {
         $oResultado = $oCategoriaCaracteristica->Obtener_valores_segun_articulo($sIdArticulo);  
         return Response::json(array('oResultado' => $oResultado));
     }
+
+    /**
+     * Modifica un articulo
+     * @return object
+     */
+    public function actualizar_articulo_backend(){
+        $sTitulo = Input::get('sTitulo');
+        $sDescripcion = Input::get('sDescripcion');
+        $iCategoria = Input::get('iCategoria');
+        $iHabilitado = Input::get('iHabilitado');
+        $sIdArticulo = Input::get('sIdArticulo');
+
+        $oArticulo = new Articulo();
+        $oResultado = $oArticulo->Actualizar_backend($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo);  
+        return Response::json(array('oResultado' => $oResultado));        
+    }
 }

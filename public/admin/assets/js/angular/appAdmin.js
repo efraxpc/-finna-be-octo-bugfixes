@@ -63,6 +63,8 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Ajax para obtener todos precios del articulo
      */
     $scope.obtenerPreciosArticulo = function() {
+        //ocultar la etiqueta de mensajes
+        $scope.tipo = 0;
         $http.post('api-obtener-historico-precios-segun-articulo',{sIdArticulo : $stateParams.id_articulo}).
         success(function(data, status, headers, config) {
             $scope.precios_articulos = data.oResultado;
@@ -80,8 +82,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Agregar una caracteristica de un articulo
      */
     $scope.agregarValorCaracteristica = function(){
-        $scope.tipo = false;
-        $scope.tipo = null;
+        $scope.tipo = 0;
         var sCaracteristica = document.getElementById('sValorCaracteristica').value;
         $scope.sIdCategoria = document.getElementById('sValorCaracteristica').getAttribute("valor-categoria");
         var oInputCheck = document.getElementsByClassName("input-check");
@@ -124,6 +125,28 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         error(function(data, status, headers, config) {
             // log error
         });
+    }
+
+    /**
+     * Ajax para agregar un articulo
+     */
+    $scope.modificarArtitulo = function(){
+        var sTitulo = document.getElementById('titulo').value;
+        var sDescripcion = document.getElementById('descripcion').value;
+        var iCategoria = document.getElementById('categoria').value;
+        //var iHabilitado = $('#habilitado').is(':checkbox');
+        var iHabilitado = document.getElementById('habilitado').value;
+
+        console.log($scope);
+        /*
+        $http.post('api-modificar-articulo-backend',{sTitulo:sTitulo,sDescripcion:sDescripcion,iCategoria:iCategoria}).
+        success(function(data, status, headers, config) {
+            $scope.caracteristicas_tabla = data.oResultado;
+            //console.log($scope.caracteristicas_tabla);
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+        });*/
     }
 });
 /**

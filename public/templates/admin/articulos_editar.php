@@ -6,23 +6,30 @@
                 <div class="card-body" ng-controller="ObtenerChecksCaracteristicasController">
                     <form class="form">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="regular1" ng-model="articulo.titulo">
+                            <input type="text" class="form-control" id="titulo" ng-model="articulo.titulo">
                             <label for="regular1">Titulo</label>
                         </div>
                         <div class="form-group">
-                            <textarea name="textarea1" id="textarea1" class="form-control" rows="3" placeholder="" ng-model="articulo.descripcion"></textarea>
+                            <textarea name="textarea1" id="descripcion" class="form-control" rows="3" placeholder="" ng-model="articulo.descripcion"></textarea>
                             <label for="textarea1">Descipcion</label>
                         </div>
                         <div class="form-group">
-                            <select id="select1" name="select1" class="form-control">
+                            <select id="categoria" name="select1" class="form-control">
                                 <option value="{{articulo.id_categoria}}" selected>{{articulo.nombre_categoria}}</option>
                                 <option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
                             </select>
                             <label for="select1">Categoria</label>
                         </div>
-                        <growl-notification ng-if="tipo == 1">
-                            {{mensaje}}
+                        <!-- Notificacion de error-->
+                        <growl-notification ng-if="tipo == 1" ng-click="$growlNotification.remove()">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    {{mensaje}}
+                                </div>
+                            </div>
+
                         </growl-notification>
+                        <!-- Fin Notificacion de error-->
                         <div class="form-group">
                             <div class="scroll-area-historico-precios" data-spy="scroll" data-offset="0">
                                 <div class="section-body">   
@@ -50,7 +57,7 @@
                         <div class="form-group">
                             <div class="checkbox checkbox-styled tile-text">
                                 <label>
-                                    <input type="checkbox" ng-model="articulo.activo" ng-true-value="1" ng-false-value="0">
+                                    <input type="checkbox" id="habilitado" ng-model="articulo.activo" ng-checked="articulo.activo == 1">
                                     <span>
                                         <small>Habilitado</small>
                                     </span>
@@ -79,8 +86,8 @@
                             </div>
                         </div>
                         <div class="row text-center">
-                            <div class="col-sm-3">
-                                <button type="button" class="btn btn-block ink-reaction btn-flat btn-accent-light" ng-click="agregarValorCaracteristica()">Agregar</button>
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-block ink-reaction btn-flat btn-accent-light" ng-click="agregarValorCaracteristica()">Agregar caracteristica</button>
                             </div>
                         </div>
 
@@ -107,7 +114,11 @@
                                     </table>
                                 </div><!--end .section-body -->
                             </section>
-
+                            <div class="row text-center">
+                                <div class="col-sm-4  col-md-offset-4">
+                                    <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarArtitulo();">Modificar</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div><!--end .card-body -->

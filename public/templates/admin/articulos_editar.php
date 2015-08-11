@@ -1,7 +1,7 @@
 <div class="card" ng-init="ocultarBuscador();" >
     <div class="row" ng-init="obtenerPreciosArticulo();">
         <div class="col-md-1">
-            <div class="form-group">
+            <div class="form-group text-center">
                 <img ng-src="{{articulo.archivo}}" class="img-rounded" height="310" width="310"/>
             </div>           
         </div>

@@ -1,6 +1,9 @@
 var app = angular.module('appAdmin');
 
 app.controller('CrudController', function($scope,$http,$state,$stateParams,$location, $rootScope) {
+    $scope.cambiariExito = function(newVal) {
+        $scope.iExito = newVal;
+    }
     /**
      * Ocultar el buscador de articulos
      */
@@ -73,7 +76,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             //var iResultado = data.oResultado[0].tupla;
             $scope.tipo = data.oResultado[0].tipo;
             $scope.mensaje = data.oResultado[0].mensajes;
-            $scope.iExito = data.oResultado[0].exito_caracteristica;
+            $scope.cambiariExito(data.oResultado[0].exito_caracteristica);
             //caso haya seteado en la bd
             if ($scope.iExito === 1){
                 //recargar pagina
@@ -125,9 +128,9 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         success(function(data, status, headers, config) {
             var iResultado = data.oResultado[0].tupla;
             $scope.tipo = data.oResultado[0].tipo;
-            $scope.iExito = data.oResultado[0].exito_modificar;
+            $scope.cambiariExito(data.oResultado[0].exito_modificar);
             $scope.mensaje = data.oResultado[0].mensajes;
-            console.log(iResultado);
+            console.log($scope.iExito);
             //caso haya seteado un nuevo precio en la bd
             if( $scope.iExito === 1){
                 //recargar la pagina con delay

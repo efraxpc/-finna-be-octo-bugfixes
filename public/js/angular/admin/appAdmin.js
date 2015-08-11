@@ -47,7 +47,6 @@ app.controller('InicioController',function($scope,$state,$stateParams,$location)
 /**
      * Obtiene todas las caracteristicas de una categoria, aplicada al mentenimeinto de articulos
      */
-// correjir, se necesita obtener absolutamente todas las caracteristicas para mostrarlas en los checks y cambiar nombre
 app.controller('ObtenerChecksCaracteristicasController', function($scope,$http,$stateParams) {
     var sIdArticulo = $stateParams.id_articulo;
     //Ajax obtener valores de las caracteristicas a ser seleccionadas (cheks)

@@ -1,6 +1,11 @@
 <div class="card" ng-init="ocultarBuscador();" >
     <div class="row" ng-init="obtenerPreciosArticulo();">
-        <div class="col-md-12">
+        <div class="col-md-1">
+            <div class="form-group">
+                <img ng-src="{{articulo.archivo}}" class="img-rounded" height="310" width="310"/>
+            </div>           
+        </div>
+        <div class="col-md-11">
             <!-- Formulario -->
             <div class="col-lg-offset-2 col-md-8 col-sm-6">
                 <div class="card-body" ng-controller="ObtenerChecksCaracteristicasController">
@@ -30,7 +35,7 @@
                         </growl-notification>
                         <!-- Fin Notificacion de error-->
                         <!-- Notificacion de satisfactoriedad-->
-                        <growl-notification ng-if="tipo == 2" ng-click="$growlNotification.remove()" style="background: rgba(81, 255, 44, 1)">
+                        <growl-notification ng-if="iExito == 1" ng-click="$growlNotification.remove()" style="background: rgba(81, 255, 44, 1)">
                             <div class="row">
                                 <div class="col-md-8">
                                     {{mensaje}}
@@ -38,6 +43,10 @@
                             </div>
                         </growl-notification>
                         <!-- Fin Notificacion de satisfactoriedad-->
+                        <div class="form-group">
+                            <input type="text" class="form-control" value={{articulo.precio}} id="precio">
+                            <label for="regular1">Precio</label>
+                        </div>
                         <div class="form-group">
                             <div class="scroll-area-historico-precios" data-spy="scroll" data-offset="0">
                                 <div class="section-body">   
@@ -98,34 +107,36 @@
                                 <button type="button" class="btn btn-block ink-reaction btn-flat btn-accent-light" ng-click="agregarValorCaracteristica()">Agregar caracteristica</button>
                             </div>
                         </div>
+                        <div class="scroll-area-caracteristicas" data-spy="scroll" data-offset="0">
+                            <div class="florm-group" ng-init="cargarCaracterislicasDeArticulo();">
+                                <section class="style-default-bright">
+                                    <div class="section-body">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Valor</th>
+                                                    <th class="text-right">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="caracteristica_tabla in caracteristicas_tabla">
+                                                    <td>{{caracteristica_tabla.nombre}}</td>
+                                                    <td>{{caracteristica_tabla.valor}}</td>
+                                                    <td class="text-right">
+                                                        <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div><!--end .section-body -->
+                                </section>
 
-                        <div class="florm-group" ng-init="cargarCaracterislicasDeArticulo();">
-                            <section class="style-default-bright">
-                                <div class="section-body">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Tipo</th>
-                                                <th>Valor</th>
-                                                <th class="text-right">Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="caracteristica_tabla in caracteristicas_tabla">
-                                                <td>{{caracteristica_tabla.nombre}}</td>
-                                                <td>{{caracteristica_tabla.valor}}</td>
-                                                <td class="text-right">
-                                                    <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div><!--end .section-body -->
-                            </section>
-                            <div class="row text-center">
-                                <div class="col-sm-4  col-md-offset-4">
-                                    <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarArtitulo();">Modificar</button>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-sm-4  col-md-offset-4">
+                                <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarArtitulo();">Modificar</button>
                             </div>
                         </div>
                     </form>

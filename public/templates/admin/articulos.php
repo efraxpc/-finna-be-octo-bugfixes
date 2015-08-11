@@ -1,7 +1,7 @@
 <div class="row">
     <div class="card" ng-init="obtenerArticulosSinPaginar();">
         <div class="col-md-1">
-            <button type="button" class="btn btn-success">Agregar</button>
+            <button type="button" class="btn btn-success" ui-sref="agregar-articulo">Agregar</button>
         </div>
         <!-- Barrita de buscador -->
         <div class="col-md-12">

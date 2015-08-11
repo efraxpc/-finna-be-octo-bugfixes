@@ -118,9 +118,9 @@ class ElementoController extends BaseController {
         $iCategoria = Input::get('iCategoria');
         $iHabilitado = Input::get('iHabilitado');
         $sIdArticulo = Input::get('sIdArticulo');
-
+        $sPrecio = Input::get('sPrecio');
         $oArticulo = new Articulo();
-        $oResultado = $oArticulo->Actualizar_backend($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo);  
+        $oResultado = $oArticulo->Actualizar_backend($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo,$sPrecio);  
         return Response::json(array('oResultado' => $oResultado));        
     }
 }

@@ -34,10 +34,16 @@
                 position: relative;
                 overflow: auto;
             }
+            .scroll-area-caracteristicas{
+                height: 200px;
+                width: auto;
+                position: relative;
+                overflow: auto;
+            }            
+
             [mass-autocomplete] {
                 position: relative;
             }
-
             .ac-container {
                 position: absolute;
                 top: 100% !important;
@@ -112,12 +118,12 @@
                             </a>
                             <ul class="dropdown-menu animation-dock">
                                 <li class="dropdown-header">Config</li>
-                                <li><a href="../../html/pages/profile.html">My profile</a></li>
-                                <li><a href="../../html/pages/blog/post.html">My blog <span class="badge style-danger pull-right">16</span></a></li>
-                                <li><a href="../../html/pages/calendar.html">My appointments</a></li>
+                                <li><a href="#">Mi cuenta</a></li>
+                                <li><a href="#">My blog <span class="badge style-danger pull-right">16</span></a></li>
+                                <li><a href="#">My appointments</a></li>
                                 <li class="divider"></li>
-                                <li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
-                                <li><a href="../../html/pages/login.html"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                                <li><a href="#"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
+                                <li><a href="#"><i class="fa fa-fw fa-power-off text-danger"></i> Cerrar sesión</a></li>
                             </ul><!--end .dropdown-menu -->
                         </li><!--end .dropdown -->
                     </ul><!--end .header-nav-profile -->
@@ -208,7 +214,10 @@
         <!-- BEGIN JAVASCRIPT -->
         <!--        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>-->
 
-        <script src="admin/assets/js/angular/appAdmin.js"></script>
+        <script src="js/angular/admin/appAdmin.js"></script>
+        <script src="js/angular/admin/crud.js"></script>
+        <script src="js/angular/admin/buscador.js"></script>
+        <script src="js/angular/admin/editar.js"></script>
         <script src="libs/mass-autocomplete-master/massautocomplete.min.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>

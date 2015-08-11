@@ -62,10 +62,11 @@ class Articulo extends Eloquent{
      * @param  string $sDescripcion
      * @param  integer $iCategoria 
      * @param  integer $iHabilitado 
-     * @param  integer $sIdArticulo                          
+     * @param  integer $sIdArticulo       
+     * @param  string $sPrecio   
      * @return object
      */
-    public function Actualizar_backend($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo){
-        return DB::select('CALL articulo_Actualizar_backend(?,?,?,?,?)',array($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo));
+    public function Actualizar_backend($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo,$sPrecio){
+        return DB::select('CALL articulo_Actualizar_backend(?,?,?,?,?,?)',array($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo,$sPrecio));
     }
 }

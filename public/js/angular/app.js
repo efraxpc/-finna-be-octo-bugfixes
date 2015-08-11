@@ -42,38 +42,5 @@
         $scope.cambiarMostrar_productos = function(newVal) {
             $scope.mostrar_productos = newVal;
         };
-
-        /*        $scope.mostrar_imagen = function(){
-            $http.get('obtener_imagen').
-            success(function(data, status, headers, config) {
-                $scope.imagen = data.oResultado;
-                console.log($scope.imagen);
-            }).
-            error(function(data, status, headers, config) {
-                // log error
-            });
-        }*/
-        /*
-        $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-            console.log('hola');
-        });
-        */
     });
-
-    /////////////
-    // linkar evento luego de que ng-repeat termine
-    /*
-    app.directive('onFinishRender', function ($timeout) {
-        return {
-            restrict: 'A',
-            link: function (scope, element, attr) {
-                if (scope.$last === true) {
-                    $timeout(function () {
-                        scope.$emit('ngRepeatFinished');
-                    });
-                }
-            }
-        }
-    });  
-    */
 }).call(this);

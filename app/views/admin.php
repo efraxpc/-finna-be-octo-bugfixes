@@ -146,15 +146,24 @@
 </div>-->
                         <div class="row">
                             <!-- BEGIN SITE ACTIVITY -->
-                            <div class="col-md-11" ng-hide="bMostrarBuscador" ng-controller="BarraBuscadorController" ng-hide="bMostrarBuscador==false">
+                            <div class="col-md-2" ng-hide="bMostrarBuscador" ng-controller="BarraBuscadorController" ng-hide="bMostrarBuscador==false">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">                                
+                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">                             
                                 </div>
                             </div>
-                            <!-- /.col-lg-6 -->    
-                            <div ui-view></div>
-                            <!-- END SITE ACTIVITY -->
+                            <div class="col-md-1 col-md-offset-9" ng-hide="bMostrarBuscador">
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-success" ui-sref="articulos-agregar" ng-click="cambiarMostrarSeccionSecundariaAgregarArticulo(0);cambiariExito(0);cambiariNotificacion(0);cambiarIError(0);cambiarItipo(0);">Agregar</button>  
+                                </div>
+                            </div>
                         </div><!--end .row -->
+
+                        <div class="card" >
+                            <div ui-view></div>
+
+                        </div>
+                        <!-- /.col-lg-6 -->    
+                        <!-- END SITE ACTIVITY -->
                     </div><!--end .section-body -->
                 </section>
             </div><!--end #content-->

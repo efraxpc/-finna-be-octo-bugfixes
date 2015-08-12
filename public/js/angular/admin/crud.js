@@ -37,9 +37,6 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
     /**
      * Mostrar el buscador de articulos
      */
-    $scope.mostrarBuscador = function(){
-        $scope.bMostrarBuscador = true;
-    }
 
     /**
      * Ajax para obtener todos los articulos ordenados por antiguedad
@@ -83,13 +80,6 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Agregar una caracteristica de un articulo
      */
     $scope.agregarValorCaracteristica = function(){
-        //ojo
-        //$scope.tipo = 0;
-        /*
-        $scope.cambiarItipo(0);
-        $scope.cambiarIError(0);
-        */
-        //$scope.error = 0; 
         var sCaracteristica = document.getElementById('sValorCaracteristica').value;
         $scope.sIdCategoria = document.getElementById('sValorCaracteristica').getAttribute("valor-categoria");
         var oInputCheck = document.getElementsByClassName("input-check");
@@ -105,12 +95,13 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         success(function(data, status, headers, config) {
             //var iResultado = data.oResultado[0].tupla;
             $scope.tipo = data.oResultado[0].tipo;
-            //$scope.cambiarItipo(data.oResultado[0].tipo);
+            $scope.cambiarItipo(data.oResultado[0].tipo);
             $scope.mensaje = data.oResultado[0].mensajes;
-            $scope.cambiariExito(data.oResultado[0].exito_caracteristica);
+            console.log($scope.tipo );
             //caso haya seteado en la bd
-            if ($scope.iExito === 1){
+            if ($scope.tipo === 2){
                 //recargar pagina
+                $scope.cambiariNotificacion(1);
                 $state.go($state.current, {}, {reload: true},1000);             
             }else{
                 //$scope.cambiarIError(true);
@@ -160,13 +151,15 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         success(function(data, status, headers, config) {
             var iResultado = data.oResultado[0].tupla;
             $scope.tipo = data.oResultado[0].tipo;
-            $scope.cambiariExito(data.oResultado[0].exito_modificar);
+            $scope.cambiariExito(data.oResultado[0].tipo);
             $scope.mensaje = data.oResultado[0].mensajes;
+            $scope.cambiariExito(data.oResultado[0].exito_modificar);
             //console.log($scope.iExito);
             //caso haya seteado un nuevo precio en la bd
-            /*
-            if( $scope.iExito === 1){
+
+            /*            if( iResultado === 2){
                 //recargar la pagina con delay
+                $scope.iExito = 1;
                 $state.go($state.current, {}, {reload: true},3000);
             }*/
             //$state.transitionTo($state.current, $stateParams, { reload: true, inherit: false});

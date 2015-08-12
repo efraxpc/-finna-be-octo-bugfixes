@@ -1,7 +1,7 @@
 <div class="row">
     <div class="card" ng-init="obtenerArticulosSinPaginar();">
         <div class="col-md-1">
-            <button type="button" class="btn btn-success" ui-sref="agregar-articulo">Agregar</button>
+            <button type="button" class="btn btn-success" ui-sref="articulos-agregar">Agregar</button>
         </div>
         <!-- Barrita de buscador -->
         <div class="col-md-12">
@@ -22,7 +22,7 @@
                                 <td>{{articulo.titulo}}</td>
                                 <td>{{articulo.precio}} S/.</td>
                                 <td class="text-right">
-                                    <a class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit row" ng-click="editar(articulo.id);cambiariExito(0);
+                                    <a class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit row" ng-click="editar(articulo.id);cambiariExito(0);cambiariNotificacion(0);cambiarIError(0);cambiarItipo(0);
 "><i class="fa fa-pencil" ></i></a>
                                     <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
                                 </td>

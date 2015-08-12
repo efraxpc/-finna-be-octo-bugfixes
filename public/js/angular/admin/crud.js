@@ -4,13 +4,24 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
     $scope.cambiariExito = function(newVal) {
         $scope.iExito = newVal;
     }
+    $scope.cambiarMensaje = function(newVal) {
+        $scope.mensaje = newVal;
+    }
+    $scope.cambiariNotificacion = function(newVal) {
+        $scope.iNotificacion = newVal;
+    }    
+    $scope.cambiarItipo = function(newVal) {
+        $scope.tipo = newVal;
+    }   
+    $scope.cambiarIError = function(newVal) {
+        $scope.error = newVal;
+    }  
     /**
      * Ocultar el buscador de articulos
      */
     $scope.ocultarBuscador = function(){
         $scope.bMostrarBuscador = false;
     }
-
     /**
      * Mostrar el buscador de articulos
      */
@@ -25,6 +36,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         $http.get('api-obtener-articulos-sin-paginacion').
         success(function(data, status, headers, config) {
             $scope.articulos = data.oResultado;
+            //console.log($scope.articulos);
         }).
         error(function(data, status, headers, config) {
             // log error
@@ -40,7 +52,8 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      */
     $scope.obtenerPreciosArticulo = function() {
         //ocultar la etiqueta de mensajes
-        $scope.tipo = 0;
+        //$scope.tipo = 0;  cambiar
+
         $http.post('api-obtener-historico-precios-segun-articulo',{sIdArticulo : $stateParams.id_articulo}).
         success(function(data, status, headers, config) {
             $scope.precios_articulos = data.oResultado;
@@ -58,8 +71,13 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Agregar una caracteristica de un articulo
      */
     $scope.agregarValorCaracteristica = function(){
-        $scope.tipo = 0;
-        $scope.error = 0;
+        //ojo
+        //$scope.tipo = 0;
+        /*
+        $scope.cambiarItipo(0);
+        $scope.cambiarIError(0);
+        */
+        //$scope.error = 0; 
         var sCaracteristica = document.getElementById('sValorCaracteristica').value;
         $scope.sIdCategoria = document.getElementById('sValorCaracteristica').getAttribute("valor-categoria");
         var oInputCheck = document.getElementsByClassName("input-check");
@@ -75,6 +93,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         success(function(data, status, headers, config) {
             //var iResultado = data.oResultado[0].tupla;
             $scope.tipo = data.oResultado[0].tipo;
+            //$scope.cambiarItipo(data.oResultado[0].tipo);
             $scope.mensaje = data.oResultado[0].mensajes;
             $scope.cambiariExito(data.oResultado[0].exito_caracteristica);
             //caso haya seteado en la bd
@@ -82,6 +101,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
                 //recargar pagina
                 $state.go($state.current, {}, {reload: true},1000);             
             }else{
+                //$scope.cambiarIError(true);
                 $scope.error = true;
             }
         }).
@@ -109,7 +129,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Click para modificar un articulo
      */
     $scope.modificarArtitulo = function(){
-        $scope.tipo = 0;
+        //$scope.tipo = 0; cambiar
         var sTitulo = document.getElementById('titulo').value;
         var sDescripcion = document.getElementById('descripcion').value;
         var iCategoria = document.getElementById('categoria').value;
@@ -130,12 +150,49 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             $scope.tipo = data.oResultado[0].tipo;
             $scope.cambiariExito(data.oResultado[0].exito_modificar);
             $scope.mensaje = data.oResultado[0].mensajes;
-            console.log($scope.iExito);
+            //console.log($scope.iExito);
             //caso haya seteado un nuevo precio en la bd
+            /*
             if( $scope.iExito === 1){
                 //recargar la pagina con delay
-                $state.go($state.current, {}, {reload: true},1000);
-            }
+                $state.go($state.current, {}, {reload: true},3000);
+            }*/
+            //$state.transitionTo($state.current, $stateParams, { reload: true, inherit: false});
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+        });
+    }
+    $scope.AgregarArtitulo = function(){
+        var sTitulo = document.getElementById('titulo').value;
+        var sDescripcion = document.getElementById('descripcion').value;
+        var iCategoria = document.getElementById('categoria');
+        var sIdArticulo = $stateParams.id_articulo;
+        var sPrecio = document.getElementById('precio').value;
+        
+        console.log(iCategoria);
+
+        //saber si #habilitao esta checked o no
+        if ($('#habilitado').is(":checked")){
+            var iHabilitado = 1;
+        }else{
+            var iHabilitado = 0;
+        }
+        //Ajax para modificar un articulo
+        $http.post('api-actualizar-articulo-backend',{sIdArticulo:sIdArticulo,sTitulo:sTitulo,sDescripcion:sDescripcion,
+                                                      iCategoria:iCategoria,iHabilitado:iHabilitado,sPrecio:sPrecio}).
+        success(function(data, status, headers, config) {
+            var iResultado = data.oResultado[0].tupla;
+            $scope.tipo = data.oResultado[0].tipo;
+            $scope.cambiariExito(data.oResultado[0].exito_modificar);
+            $scope.mensaje = data.oResultado[0].mensajes;
+            //console.log($scope.iExito);
+            //caso haya seteado un nuevo precio en la bd
+            /*
+            if( $scope.iExito === 1){
+                //recargar la pagina con delay
+                $state.go($state.current, {}, {reload: true},3000);
+            }*/
             //$state.transitionTo($state.current, $stateParams, { reload: true, inherit: false});
         }).
         error(function(data, status, headers, config) {

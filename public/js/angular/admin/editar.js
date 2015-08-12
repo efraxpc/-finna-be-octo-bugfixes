@@ -1,5 +1,6 @@
 var app = angular.module('appAdmin');
-app.controller('ProcesarEditarController', function($http,$scope,$location,$stateParams){
+app.controller('ProcesarEditarArticuloController', function($http,$scope,$location,$stateParams){
+
     //***Ajax obtener obtener datos de articulo en backend***//
     $http.post('api-obtener-datos-articulos-backend',{sIdArticulo : $stateParams.id_articulo}).
     success(function(data, status, headers, config) {
@@ -17,3 +18,28 @@ app.controller('ProcesarEditarController', function($http,$scope,$location,$stat
         // log error
     });  
 });
+
+app.controller('SeleccionarCategoriaController', function($scope,$http,$stateParams,$state) {
+    //reiniciar variable iExito que muestra mensjae de exito
+    $scope.cambiariExito(0);
+    /**
+     * Evento cambiar de categoria en el select de modificar articulos
+     */
+    $scope.EventoCambiarCategoria = function(){
+        //***Ajax obtener todas las categorias condicionado***//
+        $http.post('api-setear-categorias-backend',{sIdArticulo : $stateParams.id_articulo,iIdCategoria:$scope.selection.categoria}).
+        success(function(data, status, headers, config) {
+            $scope.cambiarMensaje(data.oResultado[0].mensajes);
+            var iTipo = data.oResultado[0].tipo;
+            if( iTipo === 2){
+                $scope.cambiariNotificacion(1);
+                //recargar la pagina con delay
+                $state.go($state.current, {}, {reload: true},1000);
+            }
+        }).error(function(data, status, headers, config) {
+            // log error
+        });  
+    }
+});
+
+

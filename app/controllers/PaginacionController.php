@@ -14,7 +14,7 @@ class PaginacionController extends BaseController {
         $oElementosPaginacion = $articulo->Obtener_todos_paginacion();
 
         // Get pagination information and slice the results.
-        $iElementpsPorPagina = 6;
+        $iElementpsPorPagina = 8;
         $iTotalElementosPaginacion = count($oElementosPaginacion);
         $start = (Paginator::getCurrentPage() - 1) * $iElementpsPorPagina;
         $sliced = array_slice($oElementosPaginacion, $start, $iElementpsPorPagina);
@@ -39,7 +39,7 @@ class PaginacionController extends BaseController {
         $oElementosPaginacion = $articulo->Obtener_todos_segun_caracteristica($iIdCaracteristica);
 
         // Get pagination information and slice the results.
-        $iElementpsPorPagina = 6;
+        $iElementpsPorPagina = 8;
         $iTotalElementosPaginacion = count($oElementosPaginacion);
         $start = (Paginator::getCurrentPage() - 1) * $iElementpsPorPagina;
         $sliced = array_slice($oElementosPaginacion, $start, $iElementpsPorPagina);
@@ -62,7 +62,7 @@ class PaginacionController extends BaseController {
 
 
         // Get pagination information and slice the results.
-        $iElementpsPorPagina = 6;
+        $iElementpsPorPagina = 8;
         $iTotalElementosPaginacion = count($oElementosPaginacion);
         $start = (Paginator::getCurrentPage() - 1) * $iElementpsPorPagina;
         $sliced = array_slice($oElementosPaginacion, $start, $iElementpsPorPagina);
@@ -84,7 +84,7 @@ class PaginacionController extends BaseController {
         $oElementosPaginacion = $oArticuloCaracteristicaValorCategoria->Obtener_todos_segun_tag($sEntrada);
         //dd($oElementosPaginacion);die;
         // Get pagination information and slice the results.
-        $iElementpsPorPagina = 4;
+        $iElementpsPorPagina = 8;
         $iTotalElementosPaginacion = count($oElementosPaginacion);
         $start = (Paginator::getCurrentPage() - 1) * $iElementpsPorPagina;
         $sliced = array_slice($oElementosPaginacion, $start, $iElementpsPorPagina);

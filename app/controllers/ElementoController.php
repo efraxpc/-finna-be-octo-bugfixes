@@ -123,4 +123,23 @@ class ElementoController extends BaseController {
         $oResultado = $oArticulo->Actualizar_backend($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo,$sPrecio);  
         return Response::json(array('oResultado' => $oResultado));        
     }
+
+    /**
+     * Setea una categoria a un articulo
+     * @return object
+     */
+    public function api_setear_categorias_backend(){
+        $sIdArticulo = Input::get('sIdArticulo');
+        $iIdCategoria = Input::get('iIdCategoria');
+        $oArticulo = new Articulo();
+        $oResultado = $oArticulo->Setear_categoria($sIdArticulo,$iIdCategoria);  
+        return Response::json(array('oResultado' => $oResultado));
+    }
+
+    public function api_obtener_caracteristicas_segun_cat_mto_articulos_backend(){
+        $iIdCategoria = Input::get('iIdCategoria');
+        $oCategoriaCaracteristica = new CategoriaCaracteristica();
+        $oResultado = $oCategoriaCaracteristica->Obtener_valores_segun_categoria($iIdCategoria);  
+        return Response::json(array('oResultado' => $oResultado));        
+    }
 }

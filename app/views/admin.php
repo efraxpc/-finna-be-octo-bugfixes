@@ -216,6 +216,7 @@
         <script src="js/angular/admin/appAdmin.js"></script>
         <script src="js/angular/admin/crud.js"></script>
         <script src="js/angular/admin/buscador.js"></script>
+        <script src="js/angular/admin/agregar.js"></script>
         <script src="js/angular/admin/editar.js"></script>
         <script src="libs/mass-autocomplete-master/massautocomplete.min.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>

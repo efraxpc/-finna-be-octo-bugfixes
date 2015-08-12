@@ -69,4 +69,14 @@ class Articulo extends Eloquent{
     public function Actualizar_backend($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo,$sPrecio){
         return DB::select('CALL articulo_Actualizar_backend(?,?,?,?,?,?)',array($sTitulo,$sDescripcion,$iCategoria,$iHabilitado,$sIdArticulo,$sPrecio));
     }
+
+    /**
+     * Setea una categoria
+     * @param  string $sIdArticulo 
+     * @param  integer $iIdCategoria 
+     * @return object
+     */
+    public function Setear_categoria($sIdArticulo,$iIdCategoria){
+        return DB::select('CALL articulo_Setear_categoria(?,?)',array($sIdArticulo,$iIdCategoria));
+    }
 }

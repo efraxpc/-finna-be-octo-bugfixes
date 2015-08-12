@@ -1,4 +1,4 @@
-<div class="card" ng-init="ocultarBuscador();" >
+<div class="card" ng-init="ocultarBuscador();">
     <div class="row" ng-init="obtenerPreciosArticulo();">
         <div class="col-md-1">
             <div class="form-group text-center">
@@ -18,13 +18,22 @@
                             <textarea name="textarea1" id="descripcion" class="form-control" rows="3" placeholder="" ng-model="articulo.descripcion"></textarea>
                             <label for="textarea1">Descipcion</label>
                         </div>
-                        <div class="form-group">
-                            <select id="categoria" name="select1" class="form-control">
+                        <div class="form-group" ng-controller="SeleccionarCategoriaController">
+                            <select id="categoria" name="select1" class="form-control" ng-change="EventoCambiarCategoria();" ng-model="selection.categoria">
                                 <option value="{{articulo.id_categoria}}" selected>{{articulo.nombre_categoria}}</option>
                                 <option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
                             </select>
                             <label for="select1">Categoria</label>
                         </div>
+                        <!--                        <div class="form-group" ng-controller="selectController">
+<select ng-change="EventoCambiarCategoria();" ng-model="selection.item">
+<option value="">Clothing</option>
+<option ng-repeat="item in clothes">{{ item }}</option>
+</select>
+<p>
+Selection: <code>{{ selection }}</code>
+</p>
+</div>-->
                         <!-- Notificacion de error-->
                         <growl-notification ng-if="tipo == 1" ng-click="$growlNotification.remove()">
                             <div class="row">
@@ -36,6 +45,13 @@
                         <!-- Fin Notificacion de error-->
                         <!-- Notificacion de satisfactoriedad-->
                         <growl-notification ng-if="iExito == 1" ng-click="$growlNotification.remove()" style="background: rgba(81, 255, 44, 1)">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    {{mensaje}}
+                                </div>
+                            </div>
+                        </growl-notification>
+                        <growl-notification ng-if="iNotificacion === 1" ng-click="$growlNotification.remove()" style="background: rgba(255, 186, 44, 0.9)">
                             <div class="row">
                                 <div class="col-md-8">
                                     {{mensaje}}
@@ -136,7 +152,7 @@
                         </div>
                         <div class="row text-center">
                             <div class="col-sm-4  col-md-offset-4">
-                                <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarArtitulo();">Modificar</button>
+                                <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarArtitulo();cambiariNotificacion(0);">Modificar</button>
                             </div>
                         </div>
                     </form>

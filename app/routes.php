@@ -51,6 +51,13 @@ Route::post('/api-obtener-valores-caracteristicas-articulo-backend', array('as' 
 
 Route::post('/api-actualizar-articulo-backend', array('as' => 'api_actualizar_articulo_backend','uses' =>  'ElementoController@actualizar_articulo_backend'));
 
+Route::post('/api-obtener-todas-categorias-backend', array('as' => 'api_obtener_todas_categorias_backend','uses' =>  'ElementoController@api_obtener_todas_categorias_backend'));
+
+Route::post('/api-setear-categorias-backend', array('as' => 'api_setear_categorias_backend','uses' =>  'ElementoController@api_setear_categorias_backend'));
+
+Route::post('/api-obtener-caracteristicas-segun-cat-mto-articulos-backend', array('as' => 'api_obtener_caracteristicas_segun_cat_mto_articulos_backend','uses' =>  'ElementoController@api_obtener_caracteristicas_segun_cat_mto_articulos_backend'));
+
+
 /*
 Route::get('/admin2', function()
 {

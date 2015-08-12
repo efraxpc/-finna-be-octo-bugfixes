@@ -8,14 +8,13 @@ class CategoriaCaracteristica extends Eloquent{
 
 
     /**
-     * Obtener todos los registros segun un articulo
+     * Obtener todos los registros segun un articulo, substrae una categoria y busca las caracteristicas, segun esa categoria
      * @param  string $sIdArticulo
      * @return object
      */
-    // correjir, se necesita obtener absolutamente todas las caracteristicas para mostrarlas en los checks y cambiar nombre
     public function Obtener_segun_categoria($sIdArticulo)
     {
-        return DB::select('CALL categoria_caract_Obtener_todos_segun_cat(?)',array($sIdArticulo));
+        return DB::select('CALL categoria_caract_Obtener_todos_segun_art_cat(?)',array($sIdArticulo));
     }
 
     /**
@@ -42,8 +41,21 @@ class CategoriaCaracteristica extends Eloquent{
 
     }
 
+    /**
+     * Obtiene las caracteristicas segun un articulo
+     * @param  string $sIdArticulo
+     * @return object
+     */
     public function Obtener_valores_segun_articulo($sIdArticulo){
         return DB::select('CALL categoria_caract_Obtener_todos_segun_art(?)',array($sIdArticulo));
+    }
 
+    /**
+     * Obtiene las caracteristicas segun una categoria dada
+     * @param  integer $iIdCategoria
+     * @return object
+     */
+    public function Obtener_valores_segun_categoria($iIdCategoria){
+        return DB::select('CALL categoria_caract_Obtener_todos_segun_cat(?)',array($iIdCategoria));
     }
 }

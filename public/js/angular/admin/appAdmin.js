@@ -16,15 +16,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: "/articulos",
         templateUrl: "templates/admin/articulos.php"
     })
-        .state('agregar-articulo', {
-        url: "/agregar-articulo",
-        templateUrl: "templates/admin/articulos_editar.php",
-        controller: "ProcesarEditarController"
+        .state('articulos-agregar', {
+        url: "/articulos-agregar",
+        templateUrl: "templates/admin/articulos_agregar.php",
+        controller: "ProcesarAgregarArticuloController"
     })
         .state('articulos-editar', {
         url: "/editar-articulo/:id_articulo",
         templateUrl: "templates/admin/articulos_editar.php",
-        controller: "ProcesarEditarController"
+        controller: "ProcesarEditarArticuloController"
     })
         .state('buscar', {
         url: "/buscar/:textoBuscador",
@@ -45,8 +45,8 @@ app.controller('InicioController',function($scope,$state,$stateParams,$location)
 });
 
 /**
-     * Obtiene todas las caracteristicas de una categoria, aplicada al mentenimeinto de articulos
-     */
+* Obtiene todas las caracteristicas de una categoria, aplicada al mentenimeinto de articulos
+*/
 app.controller('ObtenerChecksCaracteristicasController', function($scope,$http,$stateParams) {
     var sIdArticulo = $stateParams.id_articulo;
     //Ajax obtener valores de las caracteristicas a ser seleccionadas (cheks)

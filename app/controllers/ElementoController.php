@@ -93,7 +93,7 @@ class ElementoController extends BaseController {
     public function obtener_valores_caracterisricas_segun_categoria_backend(){
         $sIdArticulo = Input::get('sIdArticulo');
         $oCategoriaCaracteristica = new CategoriaCaracteristica();
-        $oResultado = $oCategoriaCaracteristica->Obtener_segun_categoria($sIdArticulo);  
+        $oResultado = $oCategoriaCaracteristica->Obtener_caracteristicas_segun_categoria($sIdArticulo);  
         return Response::json(array('oResultado' => $oResultado));
     }
 
@@ -136,10 +136,29 @@ class ElementoController extends BaseController {
         return Response::json(array('oResultado' => $oResultado));
     }
 
+    /**
+     * Obtiene las caracteristicas que van a ser mostradas en la seccion secundaria,justo cuando le usamos el combobox en agregar articulo, donde se muestra la seccion secundaria
+     * @return object
+     */
     public function api_obtener_caracteristicas_segun_cat_mto_articulos_backend(){
         $iIdCategoria = Input::get('iIdCategoria');
         $oCategoriaCaracteristica = new CategoriaCaracteristica();
         $oResultado = $oCategoriaCaracteristica->Obtener_valores_segun_categoria($iIdCategoria);  
         return Response::json(array('oResultado' => $oResultado));        
+    }
+    /**
+     * Setea un articulo en el backend
+     * @return object donde valida si ingresaste o no varios campos
+     */
+    public function api_setear_articulo_backend(){
+        $sTitulo = Input::get('sTitulo');
+        $iIdCategoria = Input::get('iCategoria');
+        $sDescripcion = Input::get('sDescripcion');
+        $iHabilitado = Input::get('iHabilitado');
+        $sPrecio = Input::get('sPrecio');
+        $oArticulo = new Articulo();
+        //dd($iHabilitado);die;
+        $oResultado = $oArticulo->Setear_backend($sTitulo,$sDescripcion,$sPrecio,$iIdCategoria,$iHabilitado);  
+        return Response::json(array('oResultado' => $oResultado));
     }
 }

@@ -12,7 +12,7 @@ class CategoriaCaracteristica extends Eloquent{
      * @param  string $sIdArticulo
      * @return object
      */
-    public function Obtener_segun_categoria($sIdArticulo)
+    public function Obtener_caracteristicas_segun_categoria($sIdArticulo)
     {
         return DB::select('CALL categoria_caract_Obtener_todos_segun_art_cat(?)',array($sIdArticulo));
     }
@@ -25,11 +25,11 @@ class CategoriaCaracteristica extends Eloquent{
      */
     public function Obtener_segun_categoria_y_caracteristica($sCategoria, $sTextoBuscadorCaracteristicas)
     {
-        return DB::select('CALL categoria_caract_Obtener_segun_categoria(?,?)',array($sCategoria, $sTextoBuscadorCaracteristicas));
+        return DB::select('CALL categoria_caract_Obtener_segun_categoria_car(?,?)',array($sCategoria, $sTextoBuscadorCaracteristicas));
     }
 
     /**
-     * Setea los valores de caracteriscias nuevos, en caso de ya existir dichos valores no hace nada
+     * Setea los valores de caracteriscias nuevos, en caso se existir ya esa carracteristica con ese valor, el script lo actualiza, tambien relaciona la caracteristica entrante con el articulo entrante
      * @param  string $sValorCaracteristica 
      * @param  string $sIdCategoria      
      * @param  string $sIdCaracteristica

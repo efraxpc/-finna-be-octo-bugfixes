@@ -14,7 +14,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('articulos', {
         url: "/articulos",
-        templateUrl: "templates/admin/articulos.php"
+        templateUrl: "templates/admin/articulos.php",
+
     })
         .state('articulos-agregar', {
         url: "/articulos-agregar",
@@ -33,6 +34,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
     });
 
 });
+
+
+
+
 
 app.controller('InicioController',function($scope,$state,$stateParams,$location){
     /**

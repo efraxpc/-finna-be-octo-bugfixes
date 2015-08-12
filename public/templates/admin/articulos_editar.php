@@ -1,5 +1,5 @@
-<div class="card" ng-init="ocultarBuscador();">
-    <div class="row" ng-init="obtenerPreciosArticulo();">
+<div class="card">
+    <div class="row" ng-init="obtenerPreciosArticulo();cambiarIMostrarBuscador(1);">
         <div class="col-md-1">
             <div class="form-group text-center">
                 <img ng-src="{{articulo.archivo}}" class="img-rounded" height="310" width="310"/>
@@ -97,7 +97,6 @@ Selection: <code>{{ selection }}</code>
                                 </label>
                             </div>
                         </div>
-
 
                         <!-- Button to display second notification -->
                         <div class="form-group">

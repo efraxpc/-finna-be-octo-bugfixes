@@ -71,12 +71,25 @@ class Articulo extends Eloquent{
     }
 
     /**
-     * Setea una categoria
+     * Cambia una categoria a un articulo dado
      * @param  string $sIdArticulo 
      * @param  integer $iIdCategoria 
      * @return object
      */
     public function Setear_categoria($sIdArticulo,$iIdCategoria){
         return DB::select('CALL articulo_Setear_categoria(?,?)',array($sIdArticulo,$iIdCategoria));
+    }
+
+    /**
+     * Setea un articulo
+     * @param  string $sTitulo      
+     * @param  string $sDescripcion 
+     * @param  string $sPrecio      
+     * @param  integer $iIdCategoria 
+     * @param  integer $iHabilitado  
+     * @return object con validaciones 
+     */
+    public function Setear_backend($sTitulo,$sDescripcion,$sPrecio,$iIdCategoria,$iHabilitado){
+        return DB::select('CALL articulo_Setear_backend(?,?,?,?,?)',array($sTitulo,$sDescripcion,$sPrecio,$iIdCategoria,$iHabilitado));
     }
 }

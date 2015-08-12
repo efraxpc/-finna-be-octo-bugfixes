@@ -1,6 +1,18 @@
 var app = angular.module('appAdmin');
-
+//ojo pasar las funciones de terceros a otro archivo
 app.controller('CrudController', function($scope,$http,$state,$stateParams,$location, $rootScope) {
+    $scope.validarObjetoVacio = function isEmpty(obj) {
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                return false;
+        }
+        return true;
+    }
+
+    $scope.cambiarMostrarSeccionSecundariaAgregarArticulo = function(newVal) {
+        $scope.iMostrarSeccionSecundariaAgregarArticulo = newVal;
+    }
+
     $scope.cambiariExito = function(newVal) {
         $scope.iExito = newVal;
     }
@@ -19,8 +31,8 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
     /**
      * Ocultar el buscador de articulos
      */
-    $scope.ocultarBuscador = function(){
-        $scope.bMostrarBuscador = false;
+    $scope.cambiarIMostrarBuscador = function(newVal){
+        $scope.bMostrarBuscador = newVal;
     }
     /**
      * Mostrar el buscador de articulos
@@ -163,14 +175,15 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             // log error
         });
     }
-    $scope.AgregarArtitulo = function(){
+    /**
+     * Agregar un articulo, con validaciones
+     * @param {integer} iIdcategoria
+     */
+    $scope.AgregarArtitulo = function(iIdcategoria){
         var sTitulo = document.getElementById('titulo').value;
         var sDescripcion = document.getElementById('descripcion').value;
-        var iCategoria = document.getElementById('categoria');
-        var sIdArticulo = $stateParams.id_articulo;
+        var iCategoria = iIdcategoria;
         var sPrecio = document.getElementById('precio').value;
-        
-        console.log(iCategoria);
 
         //saber si #habilitao esta checked o no
         if ($('#habilitado').is(":checked")){
@@ -178,26 +191,29 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         }else{
             var iHabilitado = 0;
         }
-        //Ajax para modificar un articulo
-        $http.post('api-actualizar-articulo-backend',{sIdArticulo:sIdArticulo,sTitulo:sTitulo,sDescripcion:sDescripcion,
-                                                      iCategoria:iCategoria,iHabilitado:iHabilitado,sPrecio:sPrecio}).
+        //console.log(iCategoria);
+
+        //Ajax para setear un articulo
+        $http.post('api-setear-articulo-backend',{sTitulo:sTitulo,sDescripcion:sDescripcion,
+                                                  iCategoria:iCategoria,iHabilitado:iHabilitado,sPrecio:sPrecio}).
         success(function(data, status, headers, config) {
-            var iResultado = data.oResultado[0].tupla;
+            var iResultado = data.oResultado[0];
             $scope.tipo = data.oResultado[0].tipo;
-            $scope.cambiariExito(data.oResultado[0].exito_modificar);
+            var iTupla = data.oResultado[0].tupla;
             $scope.mensaje = data.oResultado[0].mensajes;
-            //console.log($scope.iExito);
-            //caso haya seteado un nuevo precio en la bd
-            /*
-            if( $scope.iExito === 1){
-                //recargar la pagina con delay
-                $state.go($state.current, {}, {reload: true},3000);
-            }*/
-            //$state.transitionTo($state.current, $stateParams, { reload: true, inherit: false});
+            console.log(iTupla);
+
+            if(iTupla === 1){
+                $scope.iExito = 1;
+                $state.go('articulos');
+            }
         }).
         error(function(data, status, headers, config) {
             // log error
         });
+    }
+    $scope.mostrarBuscador = function(){
+        $scope.cambiarIMostrarBuscador(true);
     }
 });
 

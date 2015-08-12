@@ -146,8 +146,8 @@
 </div>-->
                         <div class="row">
                             <!-- BEGIN SITE ACTIVITY -->
-                            <div class="col-md-11" ng-if="bMostrarBuscador==true" ng-controller="BarraBuscadorController" ng-hide="bMostrarBuscador==true==false">
-                                <div class="input-group" >
+                            <div class="col-md-11" ng-hide="bMostrarBuscador" ng-controller="BarraBuscadorController" ng-hide="bMostrarBuscador==false">
+                                <div class="input-group">
                                     <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">                                
                                 </div>
                             </div>
@@ -180,18 +180,18 @@
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
-                            <a ui-sref="index" class="active" ng-click="ocultarBuscador();">
-                                <div class="gui-icon"><i class="md md-home" ng-click="ocultarBuscador();"></i></div>
-                                <span class="title" ng-click="ocultarBuscador();"><p>Panel de Control</p></span>
+                            <a ui-sref="index" class="active" >
+                                <div class="gui-icon"><i class="md md-home"></i></div>
+                                <span class="title" ><p>Panel de Control</p></span>
                             </a>
                         </li><!--end /menu-li -->
                         <!-- END DASHBOARD -->
 
                         <!-- BEGIN EMAIL -->
                         <li>
-                            <a ui-sref="articulos" ng-click="mostrarBuscador();">
-                                <div class="gui-icon"><i class="md md-web" ng-click="mostrarBuscador();"></i></div>
-                                <span class="title" ng-click="mostrarBuscador();"><p>Articulos</p></span>
+                            <a ui-sref="articulos">
+                                <div class="gui-icon"><i class="md md-web"></i></div>
+                                <span class="title" ng-click="cambiarItipo(0);cambiariExito(0)"><p>Articulos</p></span>
                             </a>
                         </li>
                         <!--end /menu-li -->

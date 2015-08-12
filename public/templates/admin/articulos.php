@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="card" ng-init="obtenerArticulosSinPaginar();">
+    <div class="card" ng-init="obtenerArticulosSinPaginar();cambiarIMostrarBuscador(0);">
         <div class="col-md-1">
-            <button type="button" class="btn btn-success" ui-sref="articulos-agregar">Agregar</button>
+            <button type="button" class="btn btn-success" ui-sref="articulos-agregar" ng-click="cambiarMostrarSeccionSecundariaAgregarArticulo(0);cambiariExito(0);cambiariNotificacion(0);cambiarIError(0);cambiarItipo(0);">Agregar</button>
         </div>
         <!-- Barrita de buscador -->
         <div class="col-md-12">
@@ -17,6 +17,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <growl-notification ng-if="iExito == 1" ng-click="$growlNotification.remove()" style="background: rgba(81, 255, 44, 1)">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        {{mensaje}}
+                                    </div>
+                                </div>
+                            </growl-notification>
                             <tr ng-repeat="articulo in articulos">
                                 <td><img ng-src="{{articulo.archivo}}" height="42" width="42"/></td>
                                 <td>{{articulo.titulo}}</td>

@@ -19,10 +19,14 @@ app.controller('MostrarSeccionAgregarCategoriasArticuloController', function($ht
      */
     $scope.EventoMostrarSelectorCategoria = function(seleccionado) {
         /*Ajax para obtener las caracteristicas segun una categoria, con elproposito de mostrar la seccion de categoias en agregar articulo*/
-        $http.post('api-obtener-caracteristicas-segun-cat-mto-articulos-backend').{iIdCategoria : $scope.categoria.id}.
+        $http.post('api-obtener-caracteristicas-segun-cat-mto-articulos-backend',{iIdCategoria : $scope.categoria.id}).
         success(function(data, status, headers, config) {
-            $scope.categorias = data.oResultado;
-            console.log($scope.categorias);
+            $scope.categoriasSegundaSeccionAgregarArticulo = data.oResultado;
+            //verificar si el objeto viene vacio
+            var iVerificarObjeto = $scope.validarObjetoVacio($scope.categoriasSegundaSeccionAgregarArticulo);
+            if(iVerificarObjeto === false){
+                $scope.cambiarMostrarSeccionSecundariaAgregarArticulo(1);
+            }
         }).
         error(function(data, status, headers, config) {
             // log error

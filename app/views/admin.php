@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app = 'appAdmin' ng-controller="CrudController">
+<html lang="en" ng-app = 'appAdmin' ng-controller="CrudController">
     <head>
         <title>.::Admin::.</title>
         <!-- BEGIN META -->
@@ -18,11 +18,13 @@
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/rickshaw/rickshaw.css?1422792967" />
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/morris/morris.core.css?1420463396" />
         <link type="text/css" rel="stylesheet" href="libs/mass-autocomplete-master/massautocomplete.theme.css" />
+
         <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
         <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-animate.min.js"></script>
         <script src="libs/angular-growl-notifications/angular-growl-notifications.min.js"></script>
+
         <style type="text/css">
             .scroll-area {
                 height: 600px;
@@ -49,6 +51,15 @@
                 top: 100% !important;
                 left: 0 !important;
                 width: 100% !important;
+            }
+            .trans{
+                background-color:#00BB00;
+                color:#CC0000;
+                position:absolute;
+                text-align:center;
+                padding:65px;
+                font-size:25px;
+                font-weight:bold;
             }
         </style>
         <style>
@@ -160,7 +171,6 @@
 
                         <div class="card" >
                             <div ui-view></div>
-
                         </div>
                         <!-- /.col-lg-6 -->    
                         <!-- END SITE ACTIVITY -->
@@ -189,16 +199,16 @@
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
-                            <a ui-sref="index" class="active" >
+                            <a ui-sref="index" class="active" ng-click="cambiarItipo(0);cambiariExito(0)">
                                 <div class="gui-icon"><i class="md md-home"></i></div>
-                                <span class="title" ><p>Panel de Control</p></span>
+                                <span class="title" ng-click="cambiarItipo(0);cambiariExito(0)"><p>Panel de Control</p></span>
                             </a>
                         </li><!--end /menu-li -->
                         <!-- END DASHBOARD -->
 
                         <!-- BEGIN EMAIL -->
                         <li>
-                            <a ui-sref="articulos">
+                            <a ui-sref="articulos" ng-click="cambiarItipo(0);cambiariExito(0)">
                                 <div class="gui-icon"><i class="md md-web"></i></div>
                                 <span class="title" ng-click="cambiarItipo(0);cambiariExito(0)"><p>Articulos</p></span>
                             </a>
@@ -227,6 +237,7 @@
         <script src="js/angular/admin/buscador.js"></script>
         <script src="js/angular/admin/agregar.js"></script>
         <script src="js/angular/admin/editar.js"></script>
+
         <script src="libs/mass-autocomplete-master/massautocomplete.min.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>

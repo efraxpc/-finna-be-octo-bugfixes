@@ -1,4 +1,4 @@
-<div class="row" ng-init="obtenerPreciosArticulo();cambiarIMostrarBuscador(1)">
+<div class="row" ng-init="obtenerPreciosArticulo();cambiarIMostrarBuscador(1);cambiariAgregarArticulo(1)">
     <div class="col-md-12">
         <!-- Formulario -->
         <div class="col-lg-offset-2 col-md-8 col-sm-6">
@@ -59,12 +59,11 @@
                     </div>
                     <!--select categorias-->
                     <div class="form-group" >
-                        <select id="categoria" name="select1" class="form-control" ng-options="categoria.nombre for categoria in categorias" ng-model="categoria" ng-change="EventoMostrarSelectorCategoria(seleccionado);">
+                        <select id="categoria" name="select1" class="form-control" ng-options="categoria.nombre for categoria in categorias" ng-model="categoria">
                             <option value="">-- Seleccione --</option>
                         </select>
                         <label for="select1">Categoria</label>
                     </div>
-                    {{seleccion.categoria.nombre}}
                     <!--fin select categorias-->
                     <div class="form-group">
                         <div class="checkbox checkbox-styled tile-text">
@@ -82,7 +81,7 @@
                         <div class="form-group">
                             <div ng-controller="BuscadorArticulosController">
                                 <div mass-autocomplete>
-                                    <input ng-model="dirty.value" id="sValorCaracteristica" class="form-control" mass-autocomplete-item="autocomplete_options" ng-change="foo();" valor-categoria = {{articulo.id_categoria}}>
+                                    <input ng-model="dirty.value" id="sValorCaracteristica" class="form-control" mass-autocomplete-item="autocomplete_options" ng-change="foo();" >
                                 </div>
                             </div>
                             <label>Buscar caracteristicas por...</label>
@@ -131,7 +130,7 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-sm-4  col-md-offset-4">
-                            <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="AgregarArtitulo(categoria.id);cambiarItipo(0);">Agregar</button>
+                            <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="AgregarArtitulo(categoria.id);cambiarItipo(0);cambiarIExito(0);">Agregar</button>
                         </div>
                     </div>
                 </form>

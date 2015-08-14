@@ -1,5 +1,11 @@
 var app = angular.module('appAdmin');
-app.controller('ProcesarEditarArticuloController', function($http,$scope,$location,$stateParams){
+app.controller('ProcesarEditarArticuloController', function($http,$scope,$location,$stateParams,$state){
+
+    var sEstadoActual = $state.includes('articulos-agregar-paso-2');
+    // caso ruta actual sea AGREGAR SEGUNDO PASO, hacer blur en agregar caracteristicas
+    if(sEstadoActual){
+        $scope.cambiariBlurAgregarCaracteristicas(1);
+    }
 
     //***Ajax obtener obtener datos de articulo en backend***//
     $http.post('api-obtener-datos-articulos-backend',{sIdArticulo : $stateParams.id_articulo}).
@@ -21,7 +27,7 @@ app.controller('ProcesarEditarArticuloController', function($http,$scope,$locati
 
 app.controller('SeleccionarCategoriaController', function($scope,$http,$stateParams,$state) {
     //reiniciar variable iExito que muestra mensjae de exito
-    $scope.cambiariExito(0);
+    //$scope.cambiariExito(0);
     /**
      * Evento cambiar de categoria en el select de modificar articulos
      */

@@ -25,5 +25,13 @@
                 // log error
             });
         }
+
+        $scope.eventoAccionarFiltro = function(){
+            var arr = $('.recoger_datos_input_filtro').map(function(){
+                return this.value;
+            }).get();
+            console.log(arr);
+
+        }
     });
 }).call(this);

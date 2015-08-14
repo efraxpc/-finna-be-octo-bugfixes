@@ -1,5 +1,6 @@
 var app = angular.module('appAdmin',["ui.router","ngSanitize","MassAutoComplete","growlNotifications"]);
 
+
 app.config(function($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
@@ -27,6 +28,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: "templates/admin/articulos_editar.php",
         controller: "ProcesarEditarArticuloController"
     })
+        .state('articulos-agregar-paso-2', {
+        url: "/articulos-agregar-paso-dos/:id_articulo",
+        templateUrl: "templates/admin/articulos_editar.php",
+        controller: "ProcesarEditarArticuloController"
+    })
         .state('buscar', {
         url: "/buscar/:textoBuscador",
         templateUrl: "templates/admin/resultado_buscador.php",
@@ -34,9 +40,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
     });
 
 });
-
-
-
 
 
 app.controller('InicioController',function($scope,$state,$stateParams,$location){
@@ -70,5 +73,4 @@ app.controller('ObtenerChecksCaracteristicasController', function($scope,$http,$
                 subscription.checked = false;
         });
     }
-
 });

@@ -23,23 +23,45 @@ app.controller('BarraBuscadorController', function($scope,$location){
 });
 
 app.controller('BuscadorArticulosController', function ($scope, $sce, $q, $http) {
+    //var sCategoria = document.getElementById('categoria').value;
+    //var iCategoria = $scope.categoria;
+    console.log($scope.categoria);
     $scope.dirty = {};
     var states = [];
+
     function suggest_state(term) {
-        //***Ajax obtener todas las caracteristicas de una categoria segun un tag**/
-        $http.post('api-obtener-caracteristicas-segun-tag',{sTextoBuscadorCaracteristicas: term, sCategoria : $scope.articulo.id_categoria}).
-        success(function(data, status, headers, config) {
-            var resultado = data.oResultado;
-            for(var i = 0; i < resultado.length; i++){
-                foo.push(resultado[i].valor_caracteristica);
-            }
-            console.log(foo);
-            states = foo;
-            console.log(states);
-        }).
-        error(function(data, status, headers, config) {
-            // log error
-        });
+        if($scope.iAgregarArticulo === 1){
+            //***Ajax obtener todas las caracteristicas de una categoria segun un tag  CASO AGREGAR**/
+            $http.post('api-obtener-caracteristicas-segun-tag',{sTextoBuscadorCaracteristicas: term, sCategoria : $scope.categoria.id}).
+            success(function(data, status, headers, config) {
+                var resultado = data.oResultado;
+                for(var i = 0; i < resultado.length; i++){
+                    foo.push(resultado[i].valor_caracteristica);
+                }
+                console.log(foo);
+                states = foo;
+                console.log(states);
+            }).
+            error(function(data, status, headers, config) {
+                // log error
+            });            
+        }else{
+            //***Ajax obtener todas las caracteristicas de una categoria segun un tag CASO EDITAR**/
+            $http.post('api-obtener-caracteristicas-segun-tag',{sTextoBuscadorCaracteristicas: term, sCategoria : $scope.articulo.id_categoria}).
+            success(function(data, status, headers, config) {
+                var resultado = data.oResultado;
+                for(var i = 0; i < resultado.length; i++){
+                    foo.push(resultado[i].valor_caracteristica);
+                }
+                console.log(foo);
+                states = foo;
+                console.log(states);
+            }).
+            error(function(data, status, headers, config) {
+                // log error
+            });
+        }        
+
 
         var foo = [];
         var q = term.toLowerCase().trim();
@@ -54,7 +76,6 @@ app.controller('BuscadorArticulosController', function ($scope, $sce, $q, $http)
         }
         return results;
     }
-
     $scope.autocomplete_options = {
         suggest: suggest_state
     };

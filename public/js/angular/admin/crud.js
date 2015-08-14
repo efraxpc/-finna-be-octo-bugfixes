@@ -8,11 +8,15 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         }
         return true;
     }
-
+    $scope.cambiariBlurAgregarCaracteristicas  = function(newVal){
+        $scope.iBlurAgregarCaracteristicas = newVal;
+    }
     $scope.cambiarMostrarSeccionSecundariaAgregarArticulo = function(newVal) {
         $scope.iMostrarSeccionSecundariaAgregarArticulo = newVal;
     }
-
+    $scope.cambiariAgregarArticulo = function(newVal){
+        $scope.iAgregarArticulo = newVal;
+    }
     $scope.cambiariExito = function(newVal) {
         $scope.iExito = newVal;
     }
@@ -155,14 +159,6 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             $scope.mensaje = data.oResultado[0].mensajes;
             $scope.cambiariExito(data.oResultado[0].exito_modificar);
             //console.log($scope.iExito);
-            //caso haya seteado un nuevo precio en la bd
-
-            /*            if( iResultado === 2){
-                //recargar la pagina con delay
-                $scope.iExito = 1;
-                $state.go($state.current, {}, {reload: true},3000);
-            }*/
-            //$state.transitionTo($state.current, $stateParams, { reload: true, inherit: false});
         }).
         error(function(data, status, headers, config) {
             // log error
@@ -194,19 +190,20 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             $scope.tipo = data.oResultado[0].tipo;
             var iTupla = data.oResultado[0].tupla;
             $scope.mensaje = data.oResultado[0].mensajes;
-            console.log(iTupla);
+            var iIdArticuloRecienCreado = data.oResultado[0].id_articulo_recien_creado;
+            console.log(iIdArticuloRecienCreado);
 
             if(iTupla === 1){
                 $scope.iExito = 1;
-                $state.go('articulos');
+                //$scope.cambiariExito(1);
+                //$state.go('articulos');
+                $state.go('articulos-agregar-paso-2', { id_articulo: iIdArticuloRecienCreado });
+                //$scope.cambiariExito(0);
             }
         }).
         error(function(data, status, headers, config) {
             // log error
         });
-    }
-    $scope.mostrarBuscador = function(){
-        $scope.cambiarIMostrarBuscador(true);
     }
 });
 

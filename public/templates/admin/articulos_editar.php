@@ -1,7 +1,7 @@
-<div class="row" ng-init="obtenerPreciosArticulo();cambiarIMostrarBuscador(1);">
+<div class="row" ng-init="obtenerPreciosArticulo();cambiarIMostrarBuscador(1);cambiariAgregarArticulo(0);">
     <div class="col-md-1">
         <div class="form-group text-center">
-            <img ng-src="{{articulo.archivo}}" class="img-rounded" height="310" width="310"/>
+            <img ng-src="{{articulo.archivo}}" class="img-rounded" height="310" width="340"/>
         </div>           
     </div>
     <div class="col-md-11">
@@ -24,15 +24,6 @@
                         </select>
                         <label for="select1">Categoria</label>
                     </div>
-                    <!--                        <div class="form-group" ng-controller="selectController">
-<select ng-change="EventoCambiarCategoria();" ng-model="selection.item">
-<option value="">Clothing</option>
-<option ng-repeat="item in clothes">{{ item }}</option>
-</select>
-<p>
-Selection: <code>{{ selection }}</code>
-</p>
-</div>-->
                     <!-- Notificacion de error-->
                     <growl-notification ng-if="tipo == 1" ng-click="$growlNotification.remove()">
                         <div class="row">
@@ -98,7 +89,7 @@ Selection: <code>{{ selection }}</code>
                     </div>
 
                     <!-- Button to display second notification -->
-                    <div class="form-group">
+                    <div class="form-group" >
                         <div ng-controller="BuscadorArticulosController">
                             <div mass-autocomplete>
                                 <input ng-model="dirty.value" id="sValorCaracteristica" class="form-control" mass-autocomplete-item="autocomplete_options" ng-change="foo();" valor-categoria = {{articulo.id_categoria}}>
@@ -106,6 +97,7 @@ Selection: <code>{{ selection }}</code>
                         </div>
                         <label>Buscar caracteristicas por...</label>
                     </div>
+
                     <div class="form-group" >
                         <div class="checkbox checkbox-styled tile-text" ng-repeat="subscription in entities">
                             <label>
@@ -116,7 +108,7 @@ Selection: <code>{{ selection }}</code>
                             </label>
                         </div>
                     </div>
-                    <div class="row text-center">
+                    <div class="row text-center" ng-blur="iBlurAgregarCaracteristicas==1">
                         <div class="col-sm-4">
                             <button type="button" class="btn btn-block ink-reaction btn-flat btn-accent-light" ng-click="agregarValorCaracteristica();cambiarItipo(0);cambiarIExito(0);">Agregar caracteristica</button>
                         </div>

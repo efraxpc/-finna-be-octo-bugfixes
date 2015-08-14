@@ -142,7 +142,7 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-sm-4  col-md-offset-4">
-                            <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarArtitulo();cambiariNotificacion(0);cambiarItipo(0);cambiarIExito(0);">Modificar</button>
+                            <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarArtitulo();reinicializarVariables();">Modificar</button>
                         </div>
                     </div>
                 </form>

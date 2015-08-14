@@ -1,9 +1,6 @@
 var app = angular.module('appAdmin');
 app.controller('ProcesarAgregarArticuloController', function($http,$scope,$location,$stateParams){
-    //ocultar mensaje de exito
-    //$scope.cambiariExito(0);
     //***Ajax obtener todas las categorias***//
-    
     $http.get('api-obtener-todas-las-categorias-backend').
     success(function(data, status, headers, config) {
         $scope.categorias = data.oResultado;

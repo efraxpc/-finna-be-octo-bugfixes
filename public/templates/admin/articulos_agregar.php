@@ -77,7 +77,7 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-sm-4  col-md-offset-4">
-                            <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="AgregarArtitulo(categoria.id);">Agregar</button>
+                            <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="AgregarArtitulo(categoria.id); reinicializarVariables();">Agregar</button>
                         </div>
                     </div>
                 </form>

@@ -46,12 +46,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Ajax para obtener todos los articulos ordenados por antiguedad
      */
     $scope.obtenerArticulosSinPaginar = function() {
-        //reiniciar Itipo
-        $scope.cambiarItipo(0);
-        //reiniciar iExito
-        $scope.cambiariExito(0);
-        $scope.cambiariNotificacion(0);
-        $scope.cambiarIError(0);
+
         /*Ajax obtener articulos listado backend*/
         $http.get('api-obtener-articulos-sin-paginacion').
         success(function(data, status, headers, config) {
@@ -71,13 +66,6 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Ajax para obtener todos precios del articulo
      */
     $scope.obtenerPreciosArticulo = function() {
-        //ocultar la etiqueta de mensajes
-        //reiniciar Itipo
-        $scope.cambiarItipo(0);
-        //reiniciar iExito
-        $scope.cambiariExito(0);
-        $scope.cambiariNotificacion(0);
-        $scope.cambiarIError(0);
 
         $http.post('api-obtener-historico-precios-segun-articulo',{sIdArticulo : $stateParams.id_articulo}).
         success(function(data, status, headers, config) {
@@ -170,7 +158,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             $scope.cambiariExito(data.oResultado[0].tipo);
             $scope.mensaje = data.oResultado[0].mensajes;
             $scope.cambiariExito(data.oResultado[0].exito_modificar);
-            //console.log($scope.iExito);
+            console.log($scope.iExito);
         }).
         error(function(data, status, headers, config) {
             // log error
@@ -207,15 +195,21 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
 
             if(iTupla === 1){
                 $scope.iExito = 1;
-                //$scope.cambiariExito(1);
-                //$state.go('articulos');
                 $state.go('articulos-agregar-paso-2', { id_articulo: iIdArticuloRecienCreado });
-                //$scope.cambiariExito(0);
             }
         }).
         error(function(data, status, headers, config) {
             // log error
         });
+    }
+
+    $scope.reinicializarVariables = function(){
+        //reiniciar Itipo
+        $scope.cambiarItipo(0);
+        //reiniciar iExito
+        $scope.cambiariExito(0);
+        $scope.cambiariNotificacion(0);
+        $scope.cambiarIError(0);
     }
 });
 

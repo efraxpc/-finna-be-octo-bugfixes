@@ -13,12 +13,16 @@ app.controller('BuscarController', function($http,$scope,$location,$stateParams)
     });
 });
 
-app.controller('BarraBuscadorController', function($scope,$location){
+app.controller('BarraBuscadorController', function($scope,$location,$state){
     /**
      * Reenvia a BuscarController
      */
     $scope.rutaBuscar = function() {
         $location.path('/buscar/'+ $scope.sValorBusqueda);
+        // caso la caja de buscador este vacia redireccionar al listado principal
+        if(!$scope.sValorBusqueda.length){
+            $state.go('articulos');
+        }
     }; 
 });
 

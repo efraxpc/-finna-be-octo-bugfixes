@@ -27,7 +27,6 @@ app.controller('ProcesarEditarArticuloController', function($http,$scope,$locati
 
 app.controller('SeleccionarCategoriaController', function($scope,$http,$stateParams,$state) {
     //reiniciar variable iExito que muestra mensjae de exito
-    //$scope.cambiariExito(0);
     /**
      * Evento cambiar de categoria en el select de modificar articulos
      */

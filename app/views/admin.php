@@ -187,7 +187,7 @@
                         </a>
                     </div>
                     <div class="expanded">
-                        <a href="javascript:void(0);">
+                        <a href="javascript:void(0);" ng-click="reinicializarVariables();">
                             <span class="text-lg text-bold text-primary ">Proyecto&nbsp;Catalogo</span>
                         </a>
                     </div>
@@ -199,9 +199,9 @@
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
-                            <a ui-sref="index" class="active">
-                                <div class="gui-icon"><i class="md md-home"></i></div>
-                                <span class="title"><p>Panel de Control</p></span>
+                            <a ui-sref="index" class="active" ng-click="reinicializarVariables();">
+                                <div class="gui-icon" ><i class="md md-home"></i></div>
+                                <span class="title" ><p>Panel de Control</p></span>
                             </a>
                         </li><!--end /menu-li -->
                         <!-- END DASHBOARD -->
@@ -214,9 +214,9 @@
 </a>
 </li>-->
                         <li>
-                            <a ui-sref="articulos">
-                                <div class="gui-icon"><i class="md md-web"></i></div>
-                                <span class="title"><p>Articulos</p></span>
+                            <a ui-sref="articulos" ng-click="reinicializarVariables();">
+                                <div class="gui-icon" ><i class="md md-web"></i></div>
+                                <span class="title" ><p>Articulos</p></span>
                             </a>
                         </li>
                         <!--end /menu-li -->

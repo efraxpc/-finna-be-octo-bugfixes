@@ -9,7 +9,7 @@ app.controller('FiltroController',function($scope, $http, $routeParams){
          */
     $scope.mostrar_filtro = function() {
         //ajax obtener caracteristicas de filtro
-        $http.post('api/obtener/caracteristicas/filtro',{id_categoria : $routeParams.id_categoria}).
+        $http.post('api-obtener-caracteristicas-filtro',{id_categoria : $routeParams.id_categoria}).
         success(function(data, status, headers, config) {
             $scope.caracteristicas = data.oResultado;
             //console.log(data.oResultado);

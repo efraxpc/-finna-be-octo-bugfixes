@@ -11,7 +11,7 @@
                         <ul>
                             <li ng-repeat="caracteristica in caracteristicas"> {{caracteristica.nombre_caracteristica}}
                                 <ul>
-                                   <!-- Diferenciacion de valores de categorias en filtro-->
+                                    <!-- Diferenciacion de valores de categorias en filtro-->
                                     <li ng-repeat="caracteristica_valor in caracteristicas_valores">
                                         <p ng-show="caracteristica_valor.id_caracteristica == caracteristica.id">
                                             {{caracteristica_valor.valor}}

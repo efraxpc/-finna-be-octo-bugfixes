@@ -20,9 +20,9 @@
             controller  : 'BuscadorController',
         })
 
-//            .when('/admin', {
-//            templateUrl : 'templates/admin.php',
-//        })
+        //            .when('/admin', {
+        //            templateUrl : 'templates/admin.php',
+        //        })
             .when('/', {
             templateUrl : 'templates/index.php',
             controller  : 'PortadaController'

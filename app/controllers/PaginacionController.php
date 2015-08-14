@@ -95,4 +95,25 @@ class PaginacionController extends BaseController {
         // Create a paginator instance.
         return Paginator::make($oColeccion->all(), $iTotalElementosPaginacion, $iElementpsPorPagina);  
     }
+
+    public function api_obtener_articulos_paginados_segun_filtro(){
+        $oSeleccionChecksFiltro = Input::get('oSeleccionChecksFiltro');
+        //dd($oSeleccionChecksFiltro);
+        /*        
+        $oArticuloCaracteristicaValorCategoria = new ArticuloCaracteristicaValorCategoria();
+        $oElementosPaginacion = $oArticuloCaracteristicaValorCategoria->Obtener_todos_segun_tag($sEntrada);
+        // Get pagination information and slice the results.
+        $iElementpsPorPagina = 8;
+        $iTotalElementosPaginacion = count($oElementosPaginacion);
+        $start = (Paginator::getCurrentPage() - 1) * $iElementpsPorPagina;
+        $sliced = array_slice($oElementosPaginacion, $start, $iElementpsPorPagina);
+
+        // Eager load the relation.
+        $oColeccion = Articulo::hydrate($sliced);
+
+        // Create a paginator instance.
+        return Paginator::make($oColeccion->all(), $iTotalElementosPaginacion, $iElementpsPorPagina);  
+        */
+        return Response::json(array('oResultado' => array(1,2,3)));     
+    }
 }

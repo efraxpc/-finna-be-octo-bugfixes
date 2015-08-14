@@ -58,13 +58,13 @@
             </div>
         </div><!--/header-bottom-->
         <!--        seccion para colocar espacio responsive, segun plantilla-->
-<!--        
-           <section id="advertisement">
-            <div class="container">
-                <img src="images/shop/advertisement.jpg" alt="" />
-            </div>
-        </section>
-        -->
+        <!--        
+<section id="advertisement">
+<div class="container">
+<img src="images/shop/advertisement.jpg" alt="" />
+</div>
+</section>
+-->
         <section>
             <div class="container">
                 <div class="row">

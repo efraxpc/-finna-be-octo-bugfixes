@@ -27,7 +27,7 @@ Route::post('/api/obtener/articulos/segun/tag',array('as'=>'api_obtener_articulo
 
 Route::post('/api-obtener-caracteristicas-valores-filtro',array('as'=>'api_obtener_caracteristicas_valores_filtro','uses'=> 'FiltroController@obtener_valores_caracteristicas'));
 
-Route::post('/api/obtener/caracteristicas/filtro',array('as'=>'api_obtener_categorias_filtro','uses'=> 'FiltroController@obtener_caracteristicas'));
+Route::post('/api-obtener-caracteristicas-filtro',array('as'=>'api_obtener_categorias_filtro','uses'=> 'FiltroController@obtener_caracteristicas'));
 
 Route::get('administracion', array('as' => 'mostrar_admin','uses' 	=>  'PaginaController@mostrar_panel_admin'));
 
@@ -61,8 +61,7 @@ Route::post('/api-setear-articulo-backend', array('as' => 'api_setear_articulo_b
 
 Route::get('/api-obtener-todas-las-categorias-backend', array('as' => 'api_obtener_todas_las_categorias_backend','uses' 	=>  'ElementoController@api_obtener_todas_las_categorias_backend'));
 
-
-
+Route::post('/api-obtener-articulos-paginados-segun-filtro', array('as' => 'api_obtener_articulos_paginados_segun_filtro','uses' =>  'PaginacionController@api_obtener_articulos_paginados_segun_filtro'));
 /*
 Route::get('/admin2', function()
 {

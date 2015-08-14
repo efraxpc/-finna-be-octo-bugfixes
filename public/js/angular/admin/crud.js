@@ -136,7 +136,6 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Click para modificar un articulo
      */
     $scope.modificarArtitulo = function(){
-        //$scope.tipo = 0; cambiar
         var sTitulo = document.getElementById('titulo').value;
         var sDescripcion = document.getElementById('descripcion').value;
         var iCategoria = document.getElementById('categoria').value;
@@ -180,7 +179,6 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         }else{
             var iHabilitado = 0;
         }
-        //console.log(iCategoria);
 
         //Ajax para setear un articulo
         $http.post('api-setear-articulo-backend',{sTitulo:sTitulo,sDescripcion:sDescripcion,
@@ -212,4 +210,3 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         $scope.cambiarIError(0);
     }
 });
-

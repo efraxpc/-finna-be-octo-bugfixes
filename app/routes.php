@@ -25,7 +25,7 @@ Route::post('/api/obtener/articulos/segun/categoria',array('as'=>'api_obtener_ar
 
 Route::post('/api/obtener/articulos/segun/tag',array('as'=>'api_obtener_articulos_segun_tag','uses'=> 'PaginacionController@generar_paginacion_articulos_segun_tag'));
 
-Route::post('/api/obtener/caracteristicas/valores/filtro',array('as'=>'api_obtener_caracteristicas_valores_filtro','uses'=> 'FiltroController@obtener_valores_caracteristicas'));
+Route::post('/api-obtener-caracteristicas-valores-filtro',array('as'=>'api_obtener_caracteristicas_valores_filtro','uses'=> 'FiltroController@obtener_valores_caracteristicas'));
 
 Route::post('/api/obtener/caracteristicas/filtro',array('as'=>'api_obtener_categorias_filtro','uses'=> 'FiltroController@obtener_caracteristicas'));
 

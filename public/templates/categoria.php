@@ -14,32 +14,24 @@
                                 <ul>
                                     <!-- Diferenciacion de valores de categorias en filtro-->
                                     <li ng-repeat="caracteristica_valor in caracteristicas_valores">
-
-                                        <div class="checkbox" ng-show="caracteristica_valor.id_caracteristica == caracteristica.id">
-                                            <input type="checkbox" ng-model="selection.ids[caracteristica.id]" id="{{caracteristica.id}}" ng-model="seleccion" ng-click="eventoAccionarFiltro();" class="recoger_datos_input_filtro"> {{caracteristica_valor.valor}}
-                                        </div>
-                                    </label>
-
-                                <!--                         <p ng-show="caracteristica_valor.id_caracteristica == caracteristica.id">
+                                        <span ng-show="caracteristica_valor.id_caracteristica == caracteristica.id"> 
+                                            <label class="checkbox" for="filtro_check_{{$index}}">
+                                                <input type="checkbox" ng-model="oSeleccionChecksFiltro.ids[caracteristica_valor.id]" id="filtro_check_{{$index}}" ng-click="clickCheckFitro();"> {{caracteristica_valor.valor}}
+                                            </label>
+                                        </span>
+                                        <!--                         <p ng-show="caracteristica_valor.id_caracteristica == caracteristica.id">
 <input type="checkbox">{{caracteristica_valor.valor}}
-</p>-->
-                            </li>
+</p>-->                           
+
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-<!--                    <div ng-controller="Ctrl">
-                        <span ng-repeat="category in categories">
-                            <label class="checkbox" for="{{category.id}}">
-                                <input type="checkbox" ng-model="selection.ids[category.id]" name="group" id="{{category.id}}" />
-                                {{category.name}}
-                            </label>
-                        </span>
-                        <pre ng-bind="selection.ids | json"></pre>    
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <div class="col-sm-9 padding-right" ng-controller="AjaxBuscarProductosSegunCategoriaController" infinite-scroll="articulos_segun_categorias.nextPage()" infinite-scroll-distance="2" infinite-scroll-disabled="articulos_segun_categorias.busy">
     <div class="features_items"><!--features_items-->

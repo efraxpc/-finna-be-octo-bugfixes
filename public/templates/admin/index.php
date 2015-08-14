@@ -1,4 +1,4 @@
-<div class="row" ng-init="cambiarIMostrarBuscador(1)">
+<div class="row">
     <!-- Barrita de buscador -->
     <div class="col-md-12">
         <!-- Search form -->

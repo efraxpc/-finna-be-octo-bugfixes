@@ -1,9 +1,10 @@
 var app = angular.module('appAdmin');
 app.controller('ProcesarAgregarArticuloController', function($http,$scope,$location,$stateParams){
     //ocultar mensaje de exito
-    $scope.cambiariExito(0);
+    //$scope.cambiariExito(0);
     //***Ajax obtener todas las categorias***//
-    $http.get('api/obtener/categorias/menu/home').
+    
+    $http.get('api-obtener-todas-las-categorias-backend').
     success(function(data, status, headers, config) {
         $scope.categorias = data.oResultado;
         //console.log($scope.categorias);
@@ -14,6 +15,9 @@ app.controller('ProcesarAgregarArticuloController', function($http,$scope,$locat
 
 
 app.controller('MostrarSeccionAgregarCategoriasArticuloController', function($http,$scope,$location,$stateParams){
+    $scope.obtenerPreciosArticulo();
+    $scope.cambiarIMostrarBuscador(1);
+    $scope.cambiariAgregarArticulo(1);
     /**
      * Mostrar sseccion de categoria
      */

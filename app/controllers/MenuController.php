@@ -12,7 +12,7 @@ class MenuController extends BaseController {
      */
     public function obtener_categorias_menu_principal_home(){
         $oCategoria = new Categoria();
-        $oResultado = $oCategoria->Obtener_todos();
+        $oResultado = $oCategoria->Obtener_todos_frontend();
         return Response::json(array('oResultado' => $oResultado));
     }
 }

@@ -43,13 +43,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 
 app.controller('InicioController',function($scope,$state,$stateParams,$location){
-    /**
-     * Evento dar click en INICIO (pueden ser varios botones diferentes)
-     */
-    $scope.IrAInicio = function(){
-        $scope.bMostrarBuscador = false;
-        console.log($scope.bMostrarBuscador);
-    }
+    //reiniciar Itipo, quitando mensaje de error
+    $scope.cambiarItipo(0);
+    //reiniciar iExito, quitando mensaje de exito
+    $scope.cambiariExito(0);
+    
+    $scope.cambiarIMostrarBuscador(1);
 });
 
 /**

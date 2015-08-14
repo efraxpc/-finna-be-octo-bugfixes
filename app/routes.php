@@ -59,6 +59,10 @@ Route::post('/api-obtener-caracteristicas-segun-cat-mto-articulos-backend', arra
 
 Route::post('/api-setear-articulo-backend', array('as' => 'api_setear_articulo_backend','uses' =>  'ElementoController@api_setear_articulo_backend'));
 
+Route::get('/api-obtener-todas-las-categorias-backend', array('as' => 'api_obtener_todas_las_categorias_backend','uses' 	=>  'ElementoController@api_obtener_todas_las_categorias_backend'));
+
+
+
 /*
 Route::get('/admin2', function()
 {

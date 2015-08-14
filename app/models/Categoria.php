@@ -7,12 +7,19 @@ class Categoria extends Eloquent{
     protected $table = 'categoria';
 
     /**
-     * Obtiene todos los registros
+     * Obtener absolutamente todos los registros
      * @return object
      */
-    public function Obtener_todos()
-    {
+    public function Obtener_todos(){
         return DB::select('CALL categoria_Obtener_todos()');
+    }
+    /**
+     * Obtiene todos los registros para ser usados en el frontend, pagina principal
+     * @return object
+     */
+    public function Obtener_todos_frontend()
+    {
+        return DB::select('CALL categoria_Obtener_todos_frontend()');
     }
 
     /**

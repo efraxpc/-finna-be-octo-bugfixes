@@ -103,7 +103,7 @@
                     <ul class="header-nav header-nav-options">
                         <li class="header-nav-brand" >
                             <div class="brand-holder">
-                                <a ng-href="#inicio" ng-click="IrAInicio();">
+                                <a ng-href="#inicio">
                                     <span class="text-lg text-bold text-primary">Proyecto Catalogo</span>
                                 </a>
                             </div>
@@ -164,7 +164,7 @@
                             </div>
                             <div class="col-md-1 col-md-offset-9" ng-hide="bMostrarBuscador">
                                 <div class="input-group">
-                                    <button type="button" class="btn btn-success" ui-sref="articulos-agregar" ng-click="cambiarMostrarSeccionSecundariaAgregarArticulo(0);cambiariExito(0);cambiariNotificacion(0);cambiarIError(0);cambiarItipo(0);">Agregar</button>  
+                                    <button type="button" class="btn btn-success" ui-sref="articulos-agregar" ng-click="cambiarMostrarSeccionSecundariaAgregarArticulo(0);">Agregar</button>  
                                 </div>
                             </div>
                         </div><!--end .row -->
@@ -187,7 +187,7 @@
                         </a>
                     </div>
                     <div class="expanded">
-                        <a href="../../html/dashboards/dashboard.html">
+                        <a href="javascript:void(0);">
                             <span class="text-lg text-bold text-primary ">Proyecto&nbsp;Catalogo</span>
                         </a>
                     </div>
@@ -199,18 +199,24 @@
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
-                            <a ui-sref="index" class="active" ng-click="cambiarItipo(0);cambiariExito(0)">
+                            <a ui-sref="index" class="active">
                                 <div class="gui-icon"><i class="md md-home"></i></div>
-                                <span class="title" ng-click="cambiarItipo(0);cambiariExito(0)"><p>Panel de Control</p></span>
+                                <span class="title"><p>Panel de Control</p></span>
                             </a>
                         </li><!--end /menu-li -->
                         <!-- END DASHBOARD -->
 
                         <!-- BEGIN EMAIL -->
+                        <!--                        <li>
+<a ui-sref="articulos" ng-click="cambiarItipo(0);cambiariExito(0)">
+<div class="gui-icon"><i class="md md-web"></i></div>
+<span class="title" ng-click="cambiarItipo(0);cambiariExito(0)"><p>Articulos</p></span>
+</a>
+</li>-->
                         <li>
-                            <a ui-sref="articulos" ng-click="cambiarItipo(0);cambiariExito(0)">
+                            <a ui-sref="articulos">
                                 <div class="gui-icon"><i class="md md-web"></i></div>
-                                <span class="title" ng-click="cambiarItipo(0);cambiariExito(0)"><p>Articulos</p></span>
+                                <span class="title"><p>Articulos</p></span>
                             </a>
                         </li>
                         <!--end /menu-li -->

@@ -157,8 +157,13 @@ class ElementoController extends BaseController {
         $iHabilitado = Input::get('iHabilitado');
         $sPrecio = Input::get('sPrecio');
         $oArticulo = new Articulo();
-        //dd($iHabilitado);die;
         $oResultado = $oArticulo->Setear_backend($sTitulo,$sDescripcion,$sPrecio,$iIdCategoria,$iHabilitado);  
+        return Response::json(array('oResultado' => $oResultado));
+    }
+
+    public function api_obtener_todas_las_categorias_backend(){
+        $oCategoria = new Categoria();
+        $oResultado = $oCategoria->Obtener_todos();
         return Response::json(array('oResultado' => $oResultado));
     }
 }

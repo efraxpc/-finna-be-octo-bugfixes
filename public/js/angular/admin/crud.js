@@ -46,10 +46,17 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Ajax para obtener todos los articulos ordenados por antiguedad
      */
     $scope.obtenerArticulosSinPaginar = function() {
+        //reiniciar Itipo
+        $scope.cambiarItipo(0);
+        //reiniciar iExito
+        $scope.cambiariExito(0);
+        $scope.cambiariNotificacion(0);
+        $scope.cambiarIError(0);
+        /*Ajax obtener articulos listado backend*/
         $http.get('api-obtener-articulos-sin-paginacion').
         success(function(data, status, headers, config) {
             $scope.articulos = data.oResultado;
-            //console.log($scope.articulos);
+            console.log($scope.articulos);
         }).
         error(function(data, status, headers, config) {
             // log error
@@ -65,7 +72,12 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      */
     $scope.obtenerPreciosArticulo = function() {
         //ocultar la etiqueta de mensajes
-        //$scope.tipo = 0;  cambiar
+        //reiniciar Itipo
+        $scope.cambiarItipo(0);
+        //reiniciar iExito
+        $scope.cambiariExito(0);
+        $scope.cambiariNotificacion(0);
+        $scope.cambiarIError(0);
 
         $http.post('api-obtener-historico-precios-segun-articulo',{sIdArticulo : $stateParams.id_articulo}).
         success(function(data, status, headers, config) {

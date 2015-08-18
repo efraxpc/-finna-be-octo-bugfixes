@@ -12,7 +12,7 @@
                             <th>Imagen</th>
                             <th>Titulo</th>
                             <th>Precio</th>
-                            <th class="text-right">Actions</th>
+                            <th class="text-right">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,9 +24,9 @@
                             </div>
                         </growl-notification>
                         <tr ng-repeat="articulo in articulos">
-                            <td><img ng-src="{{articulo.archivo}}" height="42" width="42"/></td>
+                            <td><img ng-src="{{articulo.archivo}}" height="40" width="42"/></td>
                             <td>{{articulo.titulo}}</td>
-                            <td>{{articulo.precio}} S/.</td>
+                            <td > <p ng-hide="articulo.precio == 0">{{articulo.precio}} S/.</p></td>
                             <td class="text-right">
                                 <a class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit row" ng-click="editar(articulo.id);reinicializarVariables();"><i class="fa fa-pencil" ></i></a>
                                 <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>

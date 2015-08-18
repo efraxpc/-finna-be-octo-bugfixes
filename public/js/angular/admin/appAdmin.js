@@ -37,6 +37,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: "/buscar/:textoBuscador",
         templateUrl: "templates/admin/resultado_buscador.php",
         controller: "BuscarController"
+    })
+        .state('subir-imagen', {
+        url: "/subir-imagen",
+        templateUrl: "templates/admin/subir_imagenes.php"
+        //controller: "BuscarController"
     });
 
 });
@@ -47,10 +52,12 @@ app.controller('InicioController',function($scope,$state,$stateParams,$location)
     $scope.cambiarItipo(0);
     //reiniciar iExito, quitando mensaje de exito
     $scope.cambiariExito(0);
-    
+
     $scope.cambiarIMostrarBuscador(1);
 });
-
+app.controller('ExampleController', ['$scope', function($scope) {
+  $scope.templates = 'templates/admin/subir_imagenes.php';
+}]);
 /**
 * Obtiene todas las caracteristicas de una categoria, aplicada al mentenimeinto de articulos
 */

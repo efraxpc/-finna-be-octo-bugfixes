@@ -12,10 +12,11 @@
                     <div class="col-md-3 col-md-offset-7 text-center">
                         <img ng-src="images/rose.png" alt="">
                     </div>
-                </div>                    <div class="row">
-                <div class="col-md-3 col-md-offset-7 text-center">
-                    <small>.::Rose Consultores::.</small>
-                </div>
+                </div>                    
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-7 text-center">
+                        <small>.::Rose Consultores::.</small>
+                    </div>
                 </div>
                 <div id="flot-visitors" class="flot height-7" data-title="Activity entry" data-color="#7dd8d2,#0aa89e"></div>
             </div><!--end .card-body -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app = 'appAdmin' ng-controller="CrudController">
+<html lang="en" ng-app ="appAdmin" ng-controller="CrudController">
     <head>
         <title>.::Admin::.</title>
         <!-- BEGIN META -->
@@ -8,6 +8,7 @@
         <meta name="keywords" content="your,keywords">
         <meta name="description" content="Short explanation about this website">
         <!-- END META -->
+        <script src="admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
 
         <!-- BEGIN STYLESHEETS -->
         <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
@@ -18,13 +19,53 @@
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/rickshaw/rickshaw.css?1422792967" />
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/morris/morris.core.css?1420463396" />
         <link type="text/css" rel="stylesheet" href="libs/mass-autocomplete-master/massautocomplete.theme.css" />
+        <!-- END STYLESHEETS -->
 
+        <!--ng-file upload-->
         <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
         <script src="https:ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-animate.min.js"></script>
         <script src="libs/angular-growl-notifications/angular-growl-notifications.min.js"></script>
+        <!--fin ng-file upload-->
 
+        <script src="js/ng-file-upload-shim.min.js"></script>
+        <script src="js/ng-file-upload.min.js"></script>
+        <script src="dropzone/dist/min/dropzone.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="dropzone/dist/min/basic.min.css" />
+        <link type="text/css" rel="stylesheet" href="dropzone/dist/min/dropzone.min.css" />
+
+
+        <script src="js/angular/admin/appAdmin.js"></script>
+        <script src="js/angular/admin/crud.js"></script>
+        <script src="js/angular/admin/buscador.js"></script>
+        <script src="js/angular/admin/agregar.js"></script>
+        <script src="js/angular/admin/editar.js"></script> 
+
+
+        <style>
+            .buttone {
+                -moz-appearance: button;
+                /* Firefox */
+                -webkit-appearance: button;
+                /* Safari and Chrome */
+                padding: 10px;
+                margin: 10px;
+                width: 70px;
+            }
+            .drop-box {
+                background: #F8F8F8;
+                border: 5px dashed #DDD;
+                width: 200px;
+                height: 65px;
+                text-align: center;
+                padding-top: 25px;
+                margin: 10px;
+            }
+            .dragover {
+                border: 5px dashed blue;
+            }
+        </style>
         <style type="text/css">
             .scroll-area {
                 height: 600px;
@@ -92,11 +133,11 @@
 <script type="text/javascript" src="admin/assets/js/libs/utils/respond.min.js?1403934956"></script>
 <![endif]-->
     </head>
-    <body class="menubar-hoverable header-fixed " >
+    <body class="menubar-hoverable header-fixed">
         <growl-notifications></growl-notifications>
 
         <!-- BEGIN HEADER-->
-        <header id="header" >
+        <header id="header">
             <div class="headerbar">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="headerbar-left" ng-controller="InicioController">
@@ -207,12 +248,6 @@
                         <!-- END DASHBOARD -->
 
                         <!-- BEGIN EMAIL -->
-                        <!--                        <li>
-<a ui-sref="articulos" ng-click="cambiarItipo(0);cambiariExito(0)">
-<div class="gui-icon"><i class="md md-web"></i></div>
-<span class="title" ng-click="cambiarItipo(0);cambiariExito(0)"><p>Articulos</p></span>
-</a>
-</li>-->
                         <li>
                             <a ui-sref="articulos" ng-click="reinicializarVariables();">
                                 <div class="gui-icon" ><i class="md md-web"></i></div>
@@ -238,14 +273,8 @@
         <!-- BEGIN JAVASCRIPT -->
         <!--        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>-->
 
-        <script src="js/angular/admin/appAdmin.js"></script>
-        <script src="js/angular/admin/crud.js"></script>
-        <script src="js/angular/admin/buscador.js"></script>
-        <script src="js/angular/admin/agregar.js"></script>
-        <script src="js/angular/admin/editar.js"></script>
 
         <script src="libs/mass-autocomplete-master/massautocomplete.min.js"></script>
-        <script src="admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
         <script src="admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
         <script src="admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
         <script src="admin/assets/js/libs/spin.js/spin.min.js"></script>
@@ -271,7 +300,6 @@
         <script src="admin/assets/js/core/source/AppNavSearch.js"></script>
         <script src="admin/assets/js/core/source/AppVendor.js"></script>
         <script src="admin/assets/js/core/demo/Demo.js"></script>
-        <script src="admin/assets/js/core/demo/DemoDashboard.js"></script>
         <!-- END JAVASCRIPT -->
     </body>
 </html>

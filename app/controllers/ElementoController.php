@@ -166,4 +166,12 @@ class ElementoController extends BaseController {
         $oResultado = $oCategoria->Obtener_todos();
         return Response::json(array('oResultado' => $oResultado));
     }
+
+    public function api_subir_imagenes_multiple_backend(){
+        $file = $_FILES;
+        var_dump($file);
+        //$oCategoria = new Categoria();
+        //$oResultado = $oCategoria->Obtener_todos();
+        //return Response::json(array('oResultado' => $oResultado));
+    }
 }

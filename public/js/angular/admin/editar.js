@@ -31,6 +31,7 @@ app.controller('SeleccionarCategoriaController', function($scope,$http,$statePar
      * Evento cambiar de categoria en el select de modificar articulos
      */
     $scope.EventoCambiarCategoria = function(){
+        $scope.reinicializarVariables();
         //***Ajax obtener todas las categorias condicionado***//
         $http.post('api-setear-categorias-backend',{sIdArticulo : $stateParams.id_articulo,iIdCategoria:$scope.selection.categoria}).
         success(function(data, status, headers, config) {

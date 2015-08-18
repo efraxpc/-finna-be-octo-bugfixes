@@ -62,6 +62,12 @@ Route::post('/api-setear-articulo-backend', array('as' => 'api_setear_articulo_b
 Route::get('/api-obtener-todas-las-categorias-backend', array('as' => 'api_obtener_todas_las_categorias_backend','uses' 	=>  'ElementoController@api_obtener_todas_las_categorias_backend'));
 
 Route::post('/api-obtener-articulos-paginados-segun-filtro', array('as' => 'api_obtener_articulos_paginados_segun_filtro','uses' =>  'PaginacionController@api_obtener_articulos_paginados_segun_filtro'));
+
+Route::get('/borrar-tablas', array('as' => 'borrar_tablas','uses' 	=>  'BaseController@borrar_tablas'));
+
+Route::post('/api-subir-imagenes-multiple-backend', array('as' => 'api_subir_imagenes_multiple_backend','uses' =>  'ElementoController@api_subir_imagenes_multiple_backend'));
+
+
 /*
 Route::get('/admin2', function()
 {

@@ -84,6 +84,8 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Agregar una caracteristica de un articulo
      */
     $scope.agregarValorCaracteristica = function(){
+        //reiniciar iExito
+        $scope.cambiariExito(0);
         var sCaracteristica = document.getElementById('sValorCaracteristica').value;
         $scope.sIdCategoria = document.getElementById('sValorCaracteristica').getAttribute("valor-categoria");
         var oInputCheck = document.getElementsByClassName("input-check");
@@ -125,7 +127,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         $http.post('api-obtener-valores-caracteristicas-articulo-backend',{sIdArticulo:$stateParams.id_articulo}).
         success(function(data, status, headers, config) {
             $scope.caracteristicas_tabla = data.oResultado;
-            //console.log($scope.caracteristicas_tabla);
+            console.log($scope.caracteristicas_tabla);
         }).
         error(function(data, status, headers, config) {
             // log error
@@ -136,6 +138,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
      * Click para modificar un articulo
      */
     $scope.modificarArtitulo = function(){
+
         var sTitulo = document.getElementById('titulo').value;
         var sDescripcion = document.getElementById('descripcion').value;
         var iCategoria = document.getElementById('categoria').value;
@@ -157,7 +160,10 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             $scope.cambiariExito(data.oResultado[0].tipo);
             $scope.mensaje = data.oResultado[0].mensajes;
             $scope.cambiariExito(data.oResultado[0].exito_modificar);
-            console.log($scope.iExito);
+            console.log($scope.tipo);
+            if($scope.iExito === 1){
+                $state.go($state.current, {}, {reload: true});    
+            }
         }).
         error(function(data, status, headers, config) {
             // log error
@@ -209,4 +215,24 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         $scope.cambiariNotificacion(0);
         $scope.cambiarIError(0);
     }
+
+    $scope.procesarImagen = function(){
+        var files = document.getElementById('file').files;
+
+        $.each(files, function( index, value ) {
+            var formData = new FormData();
+            formData.append("file", file);
+
+            console.log(formData)
+            $http.post('api-subir-imagenes-multiple-backend', formData, {
+                transformRequest: angular.identity,
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .success(function (a, b, c) {
+            })
+                .error(function (a, b, c) {
+            });
+        });
+
+    };
 });

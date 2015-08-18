@@ -16,13 +16,9 @@
                                     <li ng-repeat="caracteristica_valor in caracteristicas_valores">
                                         <span ng-show="caracteristica_valor.id_caracteristica == caracteristica.id"> 
                                             <label class="checkbox" for="filtro_check_{{$index}}">
-                                                <input type="checkbox" ng-model="oSeleccionChecksFiltro.ids[caracteristica_valor.id]" id="filtro_check_{{$index}}" ng-click="clickCheckFitro();"> {{caracteristica_valor.valor}}
+                                                <input type="checkbox" ng-model="oSeleccionChecksFiltro.ids[caracteristica_valor.id]" id="filtro_check_{{$index}}" ng-checked="master"> {{caracteristica_valor.valor}}
                                             </label>
                                         </span>
-                                        <!--                         <p ng-show="caracteristica_valor.id_caracteristica == caracteristica.id">
-<input type="checkbox">{{caracteristica_valor.valor}}
-</p>-->                           
-
                                     </li>
                                 </ul>
                             </li>
@@ -42,7 +38,7 @@
                     <div class="single-products">
                         <div class="productinfo text-center">
                             <img ng-src="{{articulo.archivo}}" id="imagen_{{$index}}"/>
-                            <h2>{{articulo.precio}} S/.</h2>
+                            <h2 ng-hide="articulo.precio == 0">{{articulo.precio}} S/.</h2>
                             <p>{{articulo.descripcion | limitTo: 65}}</p>
                         </div>
                     </div>

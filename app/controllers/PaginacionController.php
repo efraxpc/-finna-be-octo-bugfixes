@@ -12,6 +12,8 @@ class PaginacionController extends BaseController {
     public function generar_paginacion_articulos(){
         $articulo = new Articulo();
         $oElementosPaginacion = $articulo->Obtener_todos_paginacion();
+        //echo "<pre>";
+        //dd($oElementosPaginacion);die;
 
         // Get pagination information and slice the results.
         $iElementpsPorPagina = 8;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app ="appAdmin" ng-controller="CrudController">
+<html lang="en" ng-app ="appAdmin" ng-controller="CrudController" ng-controller="ImagenController">
     <head>
         <title>.::Admin::.</title>
         <!-- BEGIN META -->
@@ -19,6 +19,7 @@
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/rickshaw/rickshaw.css?1422792967" />
         <link type="text/css" rel="stylesheet" href="admin/assets/css/theme-default/libs/morris/morris.core.css?1420463396" />
         <link type="text/css" rel="stylesheet" href="libs/mass-autocomplete-master/massautocomplete.theme.css" />
+
         <!-- END STYLESHEETS -->
 
         <!--ng-file upload-->
@@ -27,13 +28,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-animate.min.js"></script>
         <script src="libs/angular-growl-notifications/angular-growl-notifications.min.js"></script>
+        <script src="../bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
         <!--fin ng-file upload-->
+
 
         <script src="js/ng-file-upload-shim.min.js"></script>
         <script src="js/ng-file-upload.min.js"></script>
-        <script src="dropzone/dist/min/dropzone.min.js"></script>
-        <link type="text/css" rel="stylesheet" href="dropzone/dist/min/basic.min.css" />
-        <link type="text/css" rel="stylesheet" href="dropzone/dist/min/dropzone.min.css" />
 
 
         <script src="js/angular/admin/appAdmin.js"></script>
@@ -41,9 +41,12 @@
         <script src="js/angular/admin/buscador.js"></script>
         <script src="js/angular/admin/agregar.js"></script>
         <script src="js/angular/admin/editar.js"></script> 
-
+        <script src="js/angular/admin/Imagen.js"></script> 
 
         <style>
+            #texto_div_subir_imagen{
+                color: rgba(0, 0, 0, 0.52);
+            }
             .buttone {
                 -moz-appearance: button;
                 /* Firefox */
@@ -55,12 +58,12 @@
             }
             .drop-box {
                 background: #F8F8F8;
-                border: 5px dashed #DDD;
-                width: 200px;
-                height: 65px;
+                border: 6px dashed #DDD;
+                width: auto;
+                height: 102px;
                 text-align: center;
                 padding-top: 25px;
-                margin: 10px;
+                margin: 0px;
             }
             .dragover {
                 border: 5px dashed blue;
@@ -133,7 +136,7 @@
 <script type="text/javascript" src="admin/assets/js/libs/utils/respond.min.js?1403934956"></script>
 <![endif]-->
     </head>
-    <body class="menubar-hoverable header-fixed">
+    <body class="menubar-hoverable header-fixed" >
         <growl-notifications></growl-notifications>
 
         <!-- BEGIN HEADER-->
@@ -240,7 +243,7 @@
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
-                            <a ui-sref="index" class="active" ng-click="reinicializarVariables();">
+                            <a ui-sref="index" ui-sref-active="active" class="active" ng-click="reinicializarVariables();">
                                 <div class="gui-icon" ><i class="md md-home"></i></div>
                                 <span class="title" ><p>Panel de Control</p></span>
                             </a>
@@ -249,7 +252,7 @@
 
                         <!-- BEGIN EMAIL -->
                         <li>
-                            <a ui-sref="articulos" ng-click="reinicializarVariables();">
+                            <a ui-sref="articulos" ui-sref-active="active" ng-click="reinicializarVariables();">
                                 <div class="gui-icon" ><i class="md md-web"></i></div>
                                 <span class="title" ><p>Articulos</p></span>
                             </a>

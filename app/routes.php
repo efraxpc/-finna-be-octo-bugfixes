@@ -67,6 +67,10 @@ Route::get('/borrar-tablas', array('as' => 'borrar_tablas','uses' 	=>  'BaseCont
 
 Route::post('/api-subir-imagenes-multiple-backend', array('as' => 'api_subir_imagenes_multiple_backend','uses' =>  'ElementoController@api_subir_imagenes_multiple_backend'));
 
+Route::post('/api-recuperar-imagenes-articulo-backend', array('as' => 'api_recuperar_imagenes_articulo_backend','uses' =>  'ElementoController@api_recuperar_imagenes_articulo_backend'));
+
+Route::post('/api-setear-principal-segun-articulo-backend', array('as' => 'api_setear_principal_segun_articulo_backend','uses' =>  'ElementoController@api_setear_principal_segun_articulo_backend'));
+
 
 /*
 Route::get('/admin2', function()

@@ -24,7 +24,7 @@
                             </div>
                         </growl-notification>
                         <tr ng-repeat="articulo in articulos">
-                            <td><img ng-src="{{articulo.archivo}}" height="40" width="42"/></td>
+                            <td><img ng-src="{{articulo.ruta}}{{articulo.archivo}}" height="40" width="42"/></td>
                             <td>{{articulo.titulo}}</td>
                             <td > <p ng-hide="articulo.precio == 0">{{articulo.precio}} S/.</p></td>
                             <td class="text-right">

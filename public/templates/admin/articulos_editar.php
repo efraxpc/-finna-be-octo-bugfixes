@@ -1,10 +1,56 @@
-<div class="row" ng-init="obtenerPreciosArticulo();cambiarIMostrarBuscador(1);cambiariAgregarArticulo(0);">
-    <div class="col-md-1">
+<div class="row" ng-init="obtenerPreciosArticulo();cambiarIMostrarBuscador(1);cambiariAgregarArticulo(0);" ng-controller="ImagenController">
+    <div class="col-md-3">
         <div class="form-group text-center">
-            <img ng-src="{{articulo.archivo}}" class="img-rounded" height="310" width="340"/>
-        </div>           
+            <img ng-src="{{articulo.ruta}}{{articulo.archivo}}" class="img-rounded" height="310" width="340"/>
+        </div>   
+
+        <div class="card panel style-primary-dark">
+            <div class="card-head collapsed" data-toggle="collapse" data-parent="#accordion6" data-target="#accordion6-3">
+                <header>Subir imagenes</header>
+                <div class="tools">
+                    <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
+                </div>
+            </div>
+            <div id="accordion6-3" class="collapse">
+                <div class="card-body">
+                    <div>
+                        <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                             ngf-change="upload($files)"
+                             ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+                             accept="image/*,application/pdf"><p id="texto_div_subir_imagen">Arrastre o clickee aqui para subir imagenes</p></div>
+                        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                        Imagenes:
+                        <ul>
+                            <li ng-repeat="f in files" style="font:smaller">{{f.name}}</li>
+                        </ul>
+                    </div>  
+                </div>
+            </div>
+        </div><!--end .panel -->
+
+        <div class="card" ng-init="mostrarImagenesSegunArticulo();">
+            <div class="card-body no-padding">
+                <ul class="list divider-full-bleed">
+                    <li class="tile" ng-repeat="imagen in imagenes">
+                        <a class="tile-content ink-reaction">
+                            <div class="tile-text">
+                                <img width="100px" height="90px" src="{{imagen.ruta}}{{imagen.archivo}}" alt="" />
+                            </div>
+                        </a>
+                        <a class="btn btn-flat ink-reaction" ng-click="setearImagenPrincipalArticuloBackend(imagen.id)">
+                            <i class="md-stars"></i>
+                        </a>
+                        <a class="btn btn-flat ink-reaction" ng-click="eliminarFotoArticuloBackend(imagen.id)">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div><!--end .card-body -->
+        </div><!--end .card -->   
     </div>
-    <div class="col-md-11">
+
+
+    <div class="col-md-9">
         <!-- Formulario -->
         <div class="col-lg-offset-2 col-md-8 col-sm-6">
             <div class="card-body" ng-controller="ObtenerChecksCaracteristicasController">
@@ -137,7 +183,6 @@
                                     </table>
                                 </div><!--end .section-body -->
                             </section>
-
                         </div>
                     </div>
                     <div class="row text-center">

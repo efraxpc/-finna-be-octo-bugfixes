@@ -1,4 +1,4 @@
-var app = angular.module('appAdmin',["ui.router","ngSanitize","MassAutoComplete","growlNotifications"]);
+var app = angular.module('appAdmin',["ui.router","ngSanitize","MassAutoComplete","growlNotifications","uiRouterStyles","ngFileUpload"]);
 
 
 app.config(function($stateProvider, $urlRouterProvider) {
@@ -38,12 +38,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: "templates/admin/resultado_buscador.php",
         controller: "BuscarController"
     })
-        .state('subir-imagen', {
-        url: "/subir-imagen",
-        templateUrl: "templates/admin/subir_imagenes.php"
-        //controller: "BuscarController"
-    });
-
 });
 
 
@@ -56,7 +50,7 @@ app.controller('InicioController',function($scope,$state,$stateParams,$location)
     $scope.cambiarIMostrarBuscador(1);
 });
 app.controller('ExampleController', ['$scope', function($scope) {
-  $scope.templates = 'templates/admin/subir_imagenes.php';
+    $scope.templates = 'templates/admin/subir_imagenes.php';
 }]);
 /**
 * Obtiene todas las caracteristicas de una categoria, aplicada al mentenimeinto de articulos

@@ -14,7 +14,7 @@
                 <div class="product-image-wrapper" >
                     <div class="single-products" >
                         <div class="productinfo text-center">
-                            <img ng-src="{{content.archivo}}" id="imagen_{{$index}}"/>
+                            <img height="240px" ng-src="{{content.ruta}}{{content.archivo}}" id="imagen_{{$index}}"/>
                             <h2 ng-hide="content.precio==0">{{content.precio}} S/.</h2>
                             <p>{{content.descripcion  | limitTo: 65}}</p>
                         </div>

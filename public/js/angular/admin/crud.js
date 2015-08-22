@@ -1,6 +1,6 @@
 var app = angular.module('appAdmin');
 //ojo pasar las funciones de terceros a otro archivo
-app.controller('CrudController', function($scope,$http,$state,$stateParams,$location, $rootScope) {
+app.controller('CrudController', function($scope,$http,$state,$stateParams,$location,Upload,$timeout) {
     $scope.validarObjetoVacio = function isEmpty(obj) {
         for(var prop in obj) {
             if(obj.hasOwnProperty(prop))
@@ -31,7 +31,11 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
     }   
     $scope.cambiarIError = function(newVal) {
         $scope.error = newVal;
-    }  
+    }
+
+    $scope.cambiarSubirImagenes = function(newVal){
+        $scope.iMostrarSubirIamgenes = newVal;
+    }
     /**
      * Ocultar el buscador de articulos
      */
@@ -108,7 +112,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             if ($scope.tipo === 2){
                 //recargar pagina
                 $scope.cambiariNotificacion(1);
-                $state.go($state.current, {}, {reload: true},1000);             
+                $state.go($state.current, {}, {reload: true},1000);    
             }else{
                 //$scope.cambiarIError(true);
                 $scope.error = true;
@@ -214,6 +218,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         $scope.cambiariExito(0);
         $scope.cambiariNotificacion(0);
         $scope.cambiarIError(0);
+        $scope.cambiarMensaje(0);
     }
 
     $scope.procesarImagen = function(){
@@ -233,6 +238,56 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
                 .error(function (a, b, c) {
             });
         });
-
     };
+
+    $scope.$watch('files', function () {
+        $scope.upload($scope.files);
+    });
+    $scope.$watch('file', function () {
+        $scope.upload([$scope.file]);
+    });
+    $scope.log = '';
+
+    $scope.upload = function (files) {
+        $scope.reinicializarVariables();
+
+        if (files && files.length) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                Upload.upload({
+                    url: 'api-subir-imagenes-multiple-backend',
+                    fields: {
+                        'id_articulo': $stateParams.id_articulo
+                    },
+                    file: file
+                }).progress(function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    $scope.log = 'progress: ' + progressPercentage + '% ' +
+                        evt.config.file.name + '\n' + $scope.log;
+                    //console.log(evt.config.file);
+                }).success(function (data, status, headers, config) {
+                    $timeout(function() {
+                        $scope.log = 'file: ' + config.file.name + ', Response: ' + JSON.stringify(data) + '\n' + $scope.log;
+                        $scope.cambiariExito(data.oResultado[0].exito_agregar);
+                        $scope.mensaje = data.oResultado[0].mensajes
+                        $scope.cambiarItipo(data.oResultado[0].tipo);
+                        console.log(data.oResultado);
+                        $state.go($state.current, {}, {reload: true},1000);    
+                    });
+                });
+            }
+        }
+    };
+
+    $scope.mostrarImagenesSegunArticulo = function(){
+        //Ajax recuperar imagenes articulo
+        $http.post('api-recuperar-imagenes-articulo-backend',{id_articulo : $stateParams.id_articulo}).
+        success(function(data, status, headers, config) {
+            $scope.imagenes = data.oResultado;
+            //console.log( $scope.imagenes );
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+        });
+    }
 });

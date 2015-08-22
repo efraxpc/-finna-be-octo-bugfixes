@@ -1,4 +1,5 @@
 <?php
+use Imagecow\Image;
 /**
  * MenuController Class
  *
@@ -167,11 +168,47 @@ class ElementoController extends BaseController {
         return Response::json(array('oResultado' => $oResultado));
     }
 
+    /**
+     * Subir multiples imagenes asociadas a un articulo en el mantenimiento de articulos
+     * @return object
+     */
     public function api_subir_imagenes_multiple_backend(){
-        $file = $_FILES;
-        var_dump($file);
-        //$oCategoria = new Categoria();
-        //$oResultado = $oCategoria->Obtener_todos();
-        //return Response::json(array('oResultado' => $oResultado));
+        $sIdArticulo = Input::get('id_articulo');
+        $oFile = Input::file('file');
+        $sNombreImagen = "articulo_".$sIdArticulo."_imagen__".uniqid()."_".$oFile->getClientOriginalName();
+        //echo "<pre>";
+        //dd($sIdArticulo);die;
+        $Imagen = new Imagen();
+        $oResultado = $Imagen->Setear_segun_articulo($sNombreImagen,$sIdArticulo);
+        //dd($oResultado[0]->tipo);die;
+        if($oResultado[0]->tipo != 1){
+            //cambiar tamaño a imagen
+            $image = Image::createFromFile($oFile);
+            $image->resize(200);  
+            //guardar imagen en server
+            $image->save(public_path().'/imagenes/articulos/'.$sNombreImagen);
+
+        }
+        return Response::json(array('oResultado' => $oResultado));
+    }
+
+    /**
+     * Recupera las imagenes de un articulo en el backend
+     * @return object
+     */
+    public function api_recuperar_imagenes_articulo_backend(){
+        $sIdArticulo = Input::get('id_articulo');
+        $Imagen = new Imagen();
+        $oResultado = $Imagen->Obtener_segun_articulo($sIdArticulo);
+        return Response::json(array('oResultado' => $oResultado));
+    }
+
+    public function api_setear_principal_segun_articulo_backend(){
+        $sIdImagen= Input::get('id_imagen');
+        $sIdArticulo= Input::get('id_articulo');
+        $Imagen = new Imagen();
+        $oResultado = $Imagen->Setear_principal_segun_articulo($sIdImagen,$sIdArticulo);
+        return Response::json(array('oResultado' => $oResultado));
+        
     }
 }

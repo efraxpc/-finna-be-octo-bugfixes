@@ -14,7 +14,7 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="articulo in articulos">
-                            <td><img ng-src="{{articulo.archivo}}" height="42" width="42"/></td>
+                            <td><img ng-src="{{articulo.ruta}}{{articulo.archivo}}" height="42" width="42"/></td>
                             <td>{{articulo.titulo}}</td>
                             <td>{{articulo.precio}} S/.</td>
                             <td class="text-right">

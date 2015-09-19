@@ -25,10 +25,10 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
     }
     $scope.cambiariNotificacion = function(newVal) {
         $scope.iNotificacion = newVal;
-    }    
+    }
     $scope.cambiarItipo = function(newVal) {
         $scope.tipo = newVal;
-    }   
+    }
     $scope.cambiarIError = function(newVal) {
         $scope.error = newVal;
     }
@@ -55,7 +55,22 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
         $http.get('api-obtener-articulos-sin-paginacion').
         success(function(data, status, headers, config) {
             $scope.articulos = data.oResultado;
-            console.log($scope.articulos);
+            //console.log($scope.articulos);
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+        });
+    }
+    /**
+     * Ajax para obtener todos las categorias ordenados por antiguedad
+     */
+    $scope.obtenerCategoriasSinPaginar = function() {
+
+        /*Ajax obtener articulos listado backend*/
+        $http.get('api-obtener-categorias-sin-paginacion').
+        success(function(data, status, headers, config) {
+            $scope.categorias = data.oResultado;
+            //console.log($scope.categorias);
         }).
         error(function(data, status, headers, config) {
             // log error
@@ -64,6 +79,11 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
 
     $scope.editar = function(id_articulo){
         $location.path('/editar-articulo/'+id_articulo);
+    }
+
+    $scope.editarCategoria = function(id_categoria){
+        //console.log(id_categoria);
+        $location.path('/editar-categoria/'+id_categoria);
     }
 
     /**
@@ -112,7 +132,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             if ($scope.tipo === 2){
                 //recargar pagina
                 $scope.cambiariNotificacion(1);
-                $state.go($state.current, {}, {reload: true},1000);    
+                $state.go($state.current, {}, {reload: true},1000);
             }else{
                 //$scope.cambiarIError(true);
                 $scope.error = true;
@@ -166,7 +186,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
             $scope.cambiariExito(data.oResultado[0].exito_modificar);
             console.log($scope.tipo);
             if($scope.iExito === 1){
-                $state.go($state.current, {}, {reload: true});    
+                $state.go($state.current, {}, {reload: true});
             }
         }).
         error(function(data, status, headers, config) {
@@ -272,7 +292,7 @@ app.controller('CrudController', function($scope,$http,$state,$stateParams,$loca
                         $scope.mensaje = data.oResultado[0].mensajes
                         $scope.cambiarItipo(data.oResultado[0].tipo);
                         console.log(data.oResultado);
-                        $state.go($state.current, {}, {reload: true},1000);    
+                        $state.go($state.current, {}, {reload: true},1000);
                     });
                 });
             }

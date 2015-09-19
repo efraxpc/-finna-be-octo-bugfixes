@@ -71,6 +71,15 @@ Route::post('/api-recuperar-imagenes-articulo-backend', array('as' => 'api_recup
 
 Route::post('/api-setear-principal-segun-articulo-backend', array('as' => 'api_setear_principal_segun_articulo_backend','uses' =>  'ElementoController@api_setear_principal_segun_articulo_backend'));
 
+Route::post('/api-eliminar-imagen-segun-articulo-backend', array('as' => 'api_eliminar_imagen_segun_articulo_backend','uses' =>  'ElementoController@api_eliminar_imagen_segun_articulo_backend'));
+
+Route::post('/api-obtener-datos-articulo', array('as' => 'api_obtener_datos_articulo','uses' =>  'ElementoController@api_obtener_datos_articulo'));
+
+Route::post('/api-obtener-datos-categoria-backend', array('as' => 'api_obtener_datos_categoria_backend','uses' =>  'ElementoController@api_obtener_datos_categoria_backend'));
+
+Route::get('/api-obtener-categorias-sin-paginacion', array('as' => 'api_obtener_categorias_sin_paginacion','uses' =>  'ElementoController@api_obtener_categorias_sin_paginacion'));
+
+
 
 /*
 Route::get('/admin2', function()

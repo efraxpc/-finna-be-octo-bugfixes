@@ -18,15 +18,31 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: "templates/admin/articulos.php",
 
     })
+        .state('categorias', {
+        url: "/categorias",
+        templateUrl: "templates/admin/categorias.php",
+
+    })
         .state('articulos-agregar', {
         url: "/articulos-agregar",
         templateUrl: "templates/admin/articulos_agregar.php",
         controller: "ProcesarAgregarArticuloController"
     })
+
+        .state('categorias-agregar', {
+        url: "/categorias-agregar",
+        template: "Categorias",
+        //controller: "ProcesarAgregarArticuloController"
+    })
         .state('articulos-editar', {
         url: "/editar-articulo/:id_articulo",
         templateUrl: "templates/admin/articulos_editar.php",
         controller: "ProcesarEditarArticuloController"
+    })
+        .state('categorias-editar', {
+        url: "/editar-categoria/:id_categoria",
+        templateUrl: "templates/admin/categorias_editar.php",
+        controller: "ProcesarEditarCategoriaController"
     })
         .state('articulos-agregar-paso-2', {
         url: "/articulos-agregar-paso-dos/:id_articulo",
@@ -69,7 +85,7 @@ app.controller('ObtenerChecksCaracteristicasController', function($scope,$http,$
 
     $scope.updateSelection = function(position, entities) {
         angular.forEach(entities, function(subscription, index) {
-            if (position != index) 
+            if (position != index)
                 subscription.checked = false;
         });
     }

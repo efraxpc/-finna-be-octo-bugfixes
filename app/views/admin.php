@@ -42,6 +42,7 @@
         <script src="js/angular/admin/agregar.js"></script>
         <script src="js/angular/admin/editar.js"></script> 
         <script src="js/angular/admin/Imagen.js"></script> 
+        <script src="js/angular/admin/Categorias.js"></script> 
 
         <style>
             #texto_div_subir_imagen{
@@ -243,7 +244,7 @@
 
                         <!-- BEGIN DASHBOARD -->
                         <li>
-                            <a ui-sref="index" ui-sref-active="active" class="active" ng-click="reinicializarVariables();">
+                            <a ui-sref="index" class="active" ng-click="reinicializarVariables();">
                                 <div class="gui-icon" ><i class="md md-home"></i></div>
                                 <span class="title" ><p>Panel de Control</p></span>
                             </a>
@@ -252,9 +253,15 @@
 
                         <!-- BEGIN EMAIL -->
                         <li>
-                            <a ui-sref="articulos" ui-sref-active="active" ng-click="reinicializarVariables();">
+                            <a ui-sref="articulos" ng-click="reinicializarVariables();">
                                 <div class="gui-icon" ><i class="md md-web"></i></div>
                                 <span class="title" ><p>Articulos</p></span>
+                            </a>
+                        </li>                        
+                        <li>
+                            <a ui-sref="categorias" ng-click="reinicializarVariables();">
+                                <div class="gui-icon" ><i class="md md-web"></i></div>
+                                <span class="title" ><p>Categorias</p></span>
                             </a>
                         </li>
                         <!--end /menu-li -->

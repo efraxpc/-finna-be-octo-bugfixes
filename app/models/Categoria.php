@@ -30,4 +30,14 @@ class Categoria extends Eloquent{
     {
         return DB::select('CALL categoria_Obtener_todas_condicionado_backend(?)',array($sIdArticulo));
     }
+
+    /**
+     * Obtiene todas las caterogias
+     * @return object
+     */
+    /*
+    public function Obtener_todos_sin_paginacion(){
+        return DB::select('CALL categoria_Obtener_todas_condicionado_backend(?)',array($sIdArticulo));
+    }
+    */
 }

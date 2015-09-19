@@ -88,5 +88,6 @@
     <script src="js/angular/menu.js"></script>  
     <script src="js/angular/buscador.js"></script>  
     <script src="js/angular/filtro.js"></script>  
+    <script src="js/angular/articulo.js"></script>  
     </body>
 </html>

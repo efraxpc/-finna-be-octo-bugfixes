@@ -29,9 +29,21 @@ class Imagen extends Eloquent{
      * Setea imagen como principal para un articulo
      * @param  string $sIdImagen
      * @param  string $sIdArticulo
+     * @param  string $sArchivo
      * @return object
      */
-    public function Setear_principal_segun_articulo($sIdImagen,$sIdArticulo){
-        return DB::select('CALL Imagen_Setear_principal(?,?)',array($sIdImagen,$sIdArticulo));
+    public function Setear_principal_segun_articulo($sIdImagen,$sIdArticulo,$sArchivo){
+        return DB::select('CALL Imagen_Setear_principal(?,?,?)',array($sIdImagen,$sIdArticulo,$sArchivo));
+    }
+
+    /**
+     * Elimina una imagen de un articulo
+     * @param  string $sIdImagen   
+     * @param  string $sIdArticulo 
+     * @param  string $sArchivo 
+     * @return object
+     */
+    public function Eliminar_imagen_segun_articulo($sIdImagen,$sIdArticulo,$sArchivo){
+        return DB::select('CALL Imagen_Eliminar_segun_articulo(?,?,?)',array($sIdImagen,$sIdArticulo,$sArchivo));
     }
 }

@@ -1,0 +1,14 @@
+{
+    "name": "proyecto-catalogo",
+    "version": "0.0.1",
+    "description": "Catalogo generico de productos",
+    "main": "gulpfile.js",
+    "author": "efraxpc",
+    "license": "MIT",
+    "devDependencies": {
+        "gulp": "^3.9.0",
+        "gulp-concat": "^2.6.0",
+        "gulp-uglify": "^1.2.0",
+        "laravel-elixir": "*"
+    }
+}

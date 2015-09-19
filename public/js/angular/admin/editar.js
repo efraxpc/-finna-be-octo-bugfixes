@@ -22,7 +22,19 @@ app.controller('ProcesarEditarArticuloController', function($http,$scope,$locati
         $scope.categorias = data.oResultado;
     }).error(function(data, status, headers, config) {
         // log error
-    });  
+    });
+});
+
+app.controller('ProcesarEditarCategoriaController', function($http,$scope,$location,$stateParams,$state){
+    //***Ajax obtener obtener datos de categoria en backend***//
+    $http.post('api-obtener-datos-categoria-backend',{sIdCategoria : $stateParams.id_categoria}).
+    success(function(data, status, headers, config) {
+        $scope.categoria = data.oResultado[0];
+        //console.log($scope.categoria);
+    }).
+    error(function(data, status, headers, config) {
+        // log error
+    });
 });
 
 app.controller('SeleccionarCategoriaController', function($scope,$http,$stateParams,$state) {
@@ -44,8 +56,6 @@ app.controller('SeleccionarCategoriaController', function($scope,$http,$statePar
             }
         }).error(function(data, status, headers, config) {
             // log error
-        });  
+        });
     }
 });
-
-

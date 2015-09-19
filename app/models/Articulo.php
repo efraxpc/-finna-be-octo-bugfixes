@@ -92,4 +92,11 @@ class Articulo extends Eloquent{
     public function Setear_backend($sTitulo,$sDescripcion,$sPrecio,$iIdCategoria,$iHabilitado){
         return DB::select('CALL articulo_Setear_backend(?,?,?,?,?)',array($sTitulo,$sDescripcion,$sPrecio,$iIdCategoria,$iHabilitado));
     }
+    /**
+     * Obtiene datos de un articulo
+     * @param  string $sIdArticulo      
+     */
+    public function Obtener_datos($sIdArticulo){
+        return DB::select('CALL articulo_Obtener_datos(?)',array($sIdArticulo));
+    }
 }

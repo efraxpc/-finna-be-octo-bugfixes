@@ -18,6 +18,12 @@
                             <h2>{{articulo.precio}} S/.</h2>
                             <p>{{articulo.descripcion | limitTo: 65}}</p>
                         </div>
+                        <div align="center">
+                            <a ng-href="#articulo/{{articulo.id}}" class="btn btn-default add-to-cart">
+                                <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                                Ver
+                            </a>
+                        </div>
                     </div>
                     <div class="choose">
                         <ul class="nav nav-pills nav-justified">

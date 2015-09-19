@@ -37,10 +37,10 @@
                                 <img width="100px" height="90px" src="{{imagen.ruta}}{{imagen.archivo}}" alt="" />
                             </div>
                         </a>
-                        <a class="btn btn-flat ink-reaction" ng-click="setearImagenPrincipalArticuloBackend(imagen.id)">
+                        <a class="btn btn-flat ink-reaction" ng-click="setearImagenPrincipalArticuloBackend(imagen.id,imagen.archivo)">
                             <i class="md-stars"></i>
                         </a>
-                        <a class="btn btn-flat ink-reaction" ng-click="eliminarFotoArticuloBackend(imagen.id)">
+                        <a class="btn btn-flat ink-reaction" ng-click="eliminarImagenArticuloBackend(imagen.id,imagen.archivo)">
                             <i class="fa fa-trash"></i>
                         </a>
                     </li>
@@ -48,7 +48,6 @@
             </div><!--end .card-body -->
         </div><!--end .card -->   
     </div>
-
 
     <div class="col-md-9">
         <!-- Formulario -->
@@ -155,7 +154,7 @@
                         </div>
                     </div>
                     <div class="row text-center" ng-blur="iBlurAgregarCaracteristicas==1">
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <button type="button" class="btn btn-block ink-reaction btn-flat btn-accent-light" ng-click="agregarValorCaracteristica();cambiarItipo(0);cambiarIExito(0);">Agregar caracteristica</button>
                         </div>
                     </div>

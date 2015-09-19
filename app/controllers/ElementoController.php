@@ -203,12 +203,72 @@ class ElementoController extends BaseController {
         return Response::json(array('oResultado' => $oResultado));
     }
 
+    /**
+     * Setear una imagen como principal segun un articulo
+     * @return object
+     */
     public function api_setear_principal_segun_articulo_backend(){
         $sIdImagen= Input::get('id_imagen');
         $sIdArticulo= Input::get('id_articulo');
+        $sArchivo= Input::get('sArchivo');
         $Imagen = new Imagen();
-        $oResultado = $Imagen->Setear_principal_segun_articulo($sIdImagen,$sIdArticulo);
+        $oResultado = $Imagen->Setear_principal_segun_articulo($sIdImagen,$sIdArticulo,$sArchivo);
         return Response::json(array('oResultado' => $oResultado));
-        
+    }
+
+    /**
+     * Eliminar una imagen d eun articulo
+     * @return object
+     */
+    public function api_eliminar_imagen_segun_articulo_backend(){
+        $sIdImagen= Input::get('id_imagen');
+        $sIdArticulo= Input::get('id_articulo');
+        $sArchivo= Input::get('sArchivo');
+        $Imagen = new Imagen();
+        $oResultado = $Imagen->Eliminar_imagen_segun_articulo($sIdImagen,$sIdArticulo,$sArchivo);
+        $sRutaArchivo = public_path()."/imagenes/articulos/".$sArchivo;
+        //echo "<pre>";
+        //dd($sRutaArchivo);die;
+
+        if($oResultado[0]->exito_eliminar == 1){
+            if (is_readable($sRutaArchivo)){
+                unlink($sRutaArchivo);
+            }else{
+                echo "error";
+            }
+        }
+        return Response::json(array('oResultado' => $oResultado));
+    }
+    /**
+     * Obtiene los datos de un articulo
+     * @return object
+     */
+    public function api_obtener_datos_articulo(){
+        $sIdArticulo= Input::get('id_articulo');
+        $Articulo = new Articulo();
+        $oResultado = $Articulo->Obtener_datos($sIdArticulo);
+        return Response::json(array('oResultado' => $oResultado));        
+    }
+    /**
+     * Obtiene las categorias
+     * @return object
+     */
+
+    public function api_obtener_categorias_sin_paginacion(){
+        $Categoria = new Categoria();
+        $oResultado = $Categoria->Obtener_todos();
+        return Response::json(array('oResultado' => $oResultado));  
+    }   
+
+    /**
+     * Obtiene las datos de una categoria
+     * @return object
+     */
+
+    public function api_obtener_datos_categoria_backend(){
+        $sIdArticulo= Input::get('id_articulo');
+        $Categoria = new Categoria();
+        $oResultado = $Categoria->Obtener_todos();
+        return Response::json(array('oResultado' => $oResultado));  
     }
 }

@@ -20,9 +20,10 @@
             controller  : 'BuscadorController',
         })
 
-        //            .when('/admin', {
-        //            templateUrl : 'templates/admin.php',
-        //        })
+            .when('/articulo/:id_articulo', {
+            templateUrl : 'templates/detalles_articulo.php',
+            //controller  : 'InicioController',
+        })
             .when('/', {
             templateUrl : 'templates/index.php',
             controller  : 'PortadaController'
@@ -42,5 +43,6 @@
         $scope.cambiarMostrar_productos = function(newVal) {
             $scope.mostrar_productos = newVal;
         };
-    });
+    });    
+
 }).call(this);

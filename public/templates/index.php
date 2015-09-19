@@ -16,7 +16,13 @@
                         <div class="productinfo text-center">
                             <img height="240px" ng-src="{{content.ruta}}{{content.archivo}}" id="imagen_{{$index}}"/>
                             <h2 ng-hide="content.precio==0">{{content.precio}} S/.</h2>
-                            <p>{{content.descripcion  | limitTo: 65}}</p>
+                            <p>{{content.descripcion  | limitTo: 60}}</p>
+                        </div>
+                        <div align="center">
+                            <a ng-href="#articulo/{{content.id}}" class="btn btn-default add-to-cart">
+                                <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                                Ver
+                            </a>
                         </div>
                         <!--                        <div class="product-overlay">
 <div class="overlay-content">

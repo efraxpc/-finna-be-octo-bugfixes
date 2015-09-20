@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Modelo de tabla categoria
@@ -35,9 +35,18 @@ class Categoria extends Eloquent{
      * Obtiene todas las caterogias
      * @return object
      */
-    /*
-    public function Obtener_todos_sin_paginacion(){
-        return DB::select('CALL categoria_Obtener_todas_condicionado_backend(?)',array($sIdArticulo));
+
+    public function Modificar_backend($sTitulo,$sDescripcion,$iHabilitado,$sIdCategoria){
+        return DB::select('CALL categoria_Modificar_backend(?,?,?,?)',array($sTitulo,$sDescripcion,$iHabilitado,$sIdCategoria));
     }
-    */
+
+    /**
+     * Obtiene datos de una categoria individual
+     * @return object
+     */
+
+    public function Obtener_datos($sIdCategoria){
+        return DB::select('CALL categoria_Obtener_datos(?)',array($sIdCategoria));
+    }
+
 }

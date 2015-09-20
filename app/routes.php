@@ -49,7 +49,7 @@ Route::post('/api-obtener-valores-caracterisricas-segun-categoria', array('as' =
 
 Route::post('/api-obtener-valores-caracteristicas-articulo-backend', array('as' => 'api_obtener_valores_caracteristicas_articulo_backend','uses' =>  'ElementoController@obtener_valores_caracteristicas_articulo_backend'));
 
-Route::post('/api-actualizar-articulo-backend', array('as' => 'api_actualizar_articulo_backend','uses' =>  'ElementoController@actualizar_articulo_backend'));
+Route::post('/api-actualizar-articulo-backend', array('as' => 'api_actualizar_articulo_backend','uses' =>  'ElementoController@api_actualizar_articulo_backend'));
 
 Route::post('/api-obtener-todas-categorias-backend', array('as' => 'api_obtener_todas_categorias_backend','uses' =>  'ElementoController@api_obtener_todas_categorias_backend'));
 
@@ -79,6 +79,7 @@ Route::post('/api-obtener-datos-categoria-backend', array('as' => 'api_obtener_d
 
 Route::get('/api-obtener-categorias-sin-paginacion', array('as' => 'api_obtener_categorias_sin_paginacion','uses' =>  'ElementoController@api_obtener_categorias_sin_paginacion'));
 
+Route::post('/api-actualizar-categoria-backend', array('as' => 'api_actualizar_categoria_backend','uses' =>  'ElementoController@api_actualizar_categoria_backend'));
 
 
 /*

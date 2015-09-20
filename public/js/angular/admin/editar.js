@@ -26,6 +26,8 @@ app.controller('ProcesarEditarArticuloController', function($http,$scope,$locati
 });
 
 app.controller('ProcesarEditarCategoriaController', function($http,$scope,$location,$stateParams,$state){
+  //console.log($stateParams.id_categoria);
+
     //***Ajax obtener obtener datos de categoria en backend***//
     $http.post('api-obtener-datos-categoria-backend',{sIdCategoria : $stateParams.id_categoria}).
     success(function(data, status, headers, config) {

@@ -28,7 +28,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: "templates/admin/articulos_agregar.php",
         controller: "ProcesarAgregarArticuloController"
     })
-
         .state('categorias-agregar', {
         url: "/categorias-agregar",
         template: "Categorias",

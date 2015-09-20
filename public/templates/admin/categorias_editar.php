@@ -51,7 +51,7 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-sm-4  col-md-offset-4">
-                            <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarArtitulo();reinicializarVariables();">Modificar</button>
+                            <button type="button" class="btn btn-block ink-reaction btn-success" ng-click="modificarCategoria();reinicializarVariables();">Modificar</button>
                         </div>
                     </div>
                 </form>

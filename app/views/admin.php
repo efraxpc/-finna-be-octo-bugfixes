@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" ng-app ="appAdmin" ng-controller="CrudController" ng-controller="ImagenController">
-    <head>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
         <title>.::Admin::.</title>
         <!-- BEGIN META -->
-        <meta charset="utf-8">
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="your,keywords">
         <meta name="description" content="Short explanation about this website">
@@ -40,9 +40,9 @@
         <script src="js/angular/admin/crud.js"></script>
         <script src="js/angular/admin/buscador.js"></script>
         <script src="js/angular/admin/agregar.js"></script>
-        <script src="js/angular/admin/editar.js"></script> 
-        <script src="js/angular/admin/Imagen.js"></script> 
-        <script src="js/angular/admin/Categorias.js"></script> 
+        <script src="js/angular/admin/editar.js"></script>
+        <script src="js/angular/admin/Imagen.js"></script>
+        <script src="js/angular/admin/Categorias.js"></script>
 
         <style>
             #texto_div_subir_imagen{
@@ -86,7 +86,7 @@
                 width: auto;
                 position: relative;
                 overflow: auto;
-            }            
+            }
 
             [mass-autocomplete] {
                 position: relative;
@@ -167,7 +167,7 @@
                             <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
                                 <img src="admin/assets/img/avatar1.jpg?1403934956" alt="" />
                                 <span class="profile-info">
-                                    John vivas
+                                    Efrain Colmenares
                                     <small>Administrator</small>
                                 </span>
                             </a>
@@ -178,7 +178,7 @@
                                 <li><a href="#">My appointments</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
-                                <li><a href="#"><i class="fa fa-fw fa-power-off text-danger"></i> Cerrar sesi贸n</a></li>
+                                <li><a href="#"><i class="fa fa-fw fa-power-off text-danger"></i> Cerrar sesión</a></li>
                             </ul><!--end .dropdown-menu -->
                         </li><!--end .dropdown -->
                     </ul><!--end .header-nav-profile -->
@@ -203,13 +203,13 @@
                         <div class="row">
                             <!-- BEGIN SITE ACTIVITY -->
                             <div class="col-md-2" ng-hide="bMostrarBuscador" ng-controller="BarraBuscadorController" ng-hide="bMostrarBuscador==false">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">                             
-                                </div>
+                                <!--<div class="input-group">
+                                    <input type="text" class="form-control" ng-model="sValorBusqueda" ng-change="rutaBuscar();" placeholder="Buscar por...">
+                                </div>-->
                             </div>
                             <div class="col-md-1 col-md-offset-9" ng-hide="bMostrarBuscador">
                                 <div class="input-group">
-                                    <button type="button" class="btn btn-success" ui-sref="articulos-agregar" ng-click="cambiarMostrarSeccionSecundariaAgregarArticulo(0);">Agregar</button>  
+                                    <button type="button" class="btn btn-success" ui-sref="articulos-agregar" ng-click="cambiarMostrarSeccionSecundariaAgregarArticulo(0);">Agregar</button>
                                 </div>
                             </div>
                         </div><!--end .row -->
@@ -217,7 +217,7 @@
                         <div class="card" >
                             <div ui-view></div>
                         </div>
-                        <!-- /.col-lg-6 -->    
+                        <!-- /.col-lg-6 -->
                         <!-- END SITE ACTIVITY -->
                     </div><!--end .section-body -->
                 </section>
@@ -257,13 +257,13 @@
                                 <div class="gui-icon" ><i class="md md-web"></i></div>
                                 <span class="title" ><p>Articulos</p></span>
                             </a>
-                        </li>                        
-                        <li>
+                        </li>
+                        <!--<li>
                             <a ui-sref="categorias" ng-click="reinicializarVariables();">
                                 <div class="gui-icon" ><i class="md md-web"></i></div>
                                 <span class="title" ><p>Categorias</p></span>
                             </a>
-                        </li>
+                        </li>-->
                         <!--end /menu-li -->
                         <!-- END EMAIL -->
                     </ul><!--end .main-menu -->
@@ -271,7 +271,7 @@
 
                     <div class="menubar-foot-panel">
                         <small class="no-linebreak hidden-folded">
-                            <span class="opacity-75">Copyright &copy; 2015</span> <strong>.:Rose Consultores:.</strong>
+                            <span class="opacity-75">Copyright &copy; 2015</span> <strong>.:Efrain Colmenares:.</strong>
                         </small>
                     </div>
                 </div><!--end .menubar-scroll-panel-->

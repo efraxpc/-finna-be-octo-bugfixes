@@ -1,0 +1,5 @@
+[15-Feb-2016 01:10:13 UTC] PHP Fatal error:  Call to a member function getClientOriginalName() on a non-object in /home/ecolmena/public_html/catalogo/app/controllers/ElementoController.php on line 178
+[23-Feb-2016 03:07:44 UTC] PHP Fatal error:  Call to a member function getClientOriginalName() on a non-object in /home/ecolmena/public_html/catalogo/app/controllers/ElementoController.php on line 178
+[23-Feb-2016 03:08:04 UTC] PHP Fatal error:  Call to a member function getClientOriginalName() on a non-object in /home/ecolmena/public_html/catalogo/app/controllers/ElementoController.php on line 178
+[29-Feb-2016 04:03:48 UTC] PHP Fatal error:  Call to a member function getClientOriginalName() on a non-object in /home/ecolmena/public_html/catalogo/app/controllers/ElementoController.php on line 178
+[29-Feb-2016 05:26:23 UTC] PHP Fatal error:  Call to a member function getClientOriginalName() on a non-object in /home/ecolmena/public_html/catalogo/app/controllers/ElementoController.php on line 178

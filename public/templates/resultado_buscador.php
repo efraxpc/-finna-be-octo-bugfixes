@@ -15,7 +15,7 @@
                     <div class="single-products">
                         <div class="productinfo text-center">
                             <img ng-src="{{articulo.ruta}}{{articulo.archivo}}" id="imagen_{{$index}}"/>
-                            <h2>{{articulo.precio}} S/.</h2>
+                            <h2>{{articulo.precio}} Bs.F</h2>
                             <p>{{articulo.descripcion | limitTo: 65}}</p>
                         </div>
                         <div align="center">

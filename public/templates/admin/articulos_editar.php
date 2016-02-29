@@ -111,7 +111,7 @@
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="precio_articulo in precios_articulos">
-                                            <td>{{precio_articulo.precio}} S/.</td>
+                                            <td>{{precio_articulo.precio}} Bs.F</td>
                                             <td>{{precio_articulo.valido_desde}}</td> 
                                             <td>{{precio_articulo.valido_hasta}}</td>
                                         </tr>
